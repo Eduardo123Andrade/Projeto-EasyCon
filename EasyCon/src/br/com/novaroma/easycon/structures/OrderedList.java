@@ -4,13 +4,13 @@ import br.com.novaroma.easycon.entities.Entity;
 
 public class OrderedList {
 
-    private DLink first;
-    private DLink last;
+    private Link first;
+    private Link last;
     private int quantity;
 
     public void add(Entity entity) {
 
-        DLink newLink = new DLink(entity);
+        Link newLink = new Link(entity);
 
         if (isFirst()) {
             first = newLink;
@@ -69,8 +69,8 @@ public class OrderedList {
             removeLast();
         } else {
 
-            DLink previous = getOLink(position - 1);
-            DLink next = getOLink(position + 1);
+            Link previous = getOLink(position - 1);
+            Link next = getOLink(position + 1);
 
             previous.setNext(next);
             next.setPrevious(previous);
@@ -85,7 +85,7 @@ public class OrderedList {
 
     public String showList() {
 
-        DLink temp = first;
+        Link temp = first;
         String names = "";
 
         for (int i = 0; i < quantity; i++) {
@@ -98,7 +98,7 @@ public class OrderedList {
 
     public String showReverseList() {
 
-        DLink temp = last;
+        Link temp = last;
         String names = "";
 
         for (int i = 0; i < quantity; i++) {
@@ -117,13 +117,13 @@ public class OrderedList {
         return (position >= 0 && position < quantity);
     }
 
-    private DLink getOLink(int position) {
+    private Link getOLink(int position) {
 
         if (!isOccupied(position)) {
             throw new IllegalArgumentException("A posicao digitada esta fora do range.");
         }
 
-        DLink temp = first;
+        Link temp = first;
 
         for (int i = 0; i < position; i++) {
             temp = temp.getNext();
@@ -132,9 +132,9 @@ public class OrderedList {
         return temp;
     }
 
-    private int returnPosition(DLink newLink) {
+    private int returnPosition(Link newLink) {
 
-        DLink temp = first;
+        Link temp = first;
         int count = 0;
 
         for (int i = 0; i < quantity; i++) {
@@ -148,7 +148,7 @@ public class OrderedList {
         return count;
     }
 
-    private void addBetween(int position, DLink newLink) {
+    private void addBetween(int position, Link newLink) {
 
         if (position == 0) {
 
@@ -158,8 +158,8 @@ public class OrderedList {
             addLast(newLink);
         } else {
 
-            DLink previous = getOLink(position - 1);
-            DLink next = getOLink(position);
+            Link previous = getOLink(position - 1);
+            Link next = getOLink(position);
 
             previous.setNext(newLink);
             newLink.setNext(next);
@@ -170,7 +170,7 @@ public class OrderedList {
         }
     }
 
-    private void addFirst(DLink newLink) {
+    private void addFirst(Link newLink) {
 
         newLink.setNext(first);
         first.setPrevious(newLink);
@@ -179,7 +179,7 @@ public class OrderedList {
         quantity++;
     }
 
-    private void addLast(DLink newLink) {
+    private void addLast(Link newLink) {
 
         last.setNext(newLink);
         newLink.setPrevious(last);

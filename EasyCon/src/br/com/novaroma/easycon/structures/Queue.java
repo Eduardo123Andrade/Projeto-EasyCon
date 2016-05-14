@@ -80,4 +80,43 @@ public class Queue {
     private boolean isFull() {
         return count == queue.length;
     }
+    
+    public Entity search(String id) {
+       
+        Entity entityX = null;
+        int temp = first;
+        
+         if (!isEmpty()) {
+            for (int i = 0; i < count; i++) {
+                if (id.equalsIgnoreCase(queue[temp].getId())) {
+                    entityX = queue[temp];
+                }
+                temp++;
+
+                if (temp >= queue.length) {
+                    temp = 0;
+                }
+            }
+        }
+        
+        return entityX;
+    }
+    
+    public void update(Entity entity) {
+        
+         int temp = first;
+        
+         if (!isEmpty()) {
+            for (int i = 0; i < count; i++) {
+                if (entity.getId().equalsIgnoreCase(queue[temp].getId())) {
+                    queue[temp] = entity;
+                }
+                temp++;
+
+                if (temp >= queue.length) {
+                    temp = 0;
+                }
+            }
+        }
+    }
 }

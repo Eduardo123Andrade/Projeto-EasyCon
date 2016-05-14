@@ -63,4 +63,30 @@ public class Stack {
     private boolean isEmpty() {
         return top == -1;
     }
+    
+    public Entity search(String id) {
+       
+        Entity entityX = null;
+        
+        if (!isEmpty()) {
+            for (int i = 0; i <= top; i++) {
+                if (id.equals(stack[i].getId())) {
+                   entityX = stack[i]; 
+                }
+            }
+        }
+        
+        return entityX;
+    }
+    
+    public void update(Entity entity) {
+        
+        if (!isEmpty()) {
+            for (int i = 0; i <= top; i++) {
+                if (entity.getId().equals(stack[i].getId())) {
+                   stack[i] = entity; 
+                }
+            }
+        }
+    }
 }
