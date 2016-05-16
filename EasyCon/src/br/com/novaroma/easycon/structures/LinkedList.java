@@ -146,7 +146,7 @@ public class LinkedList {
         return temp;
     }
     
-    private boolean contains(String id) {
+    public boolean contains(String id) {
         
         Link temp = first;
         boolean boo = false;

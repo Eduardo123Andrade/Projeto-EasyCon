@@ -12,9 +12,9 @@ public class Address {
     public Address() {
     }
 
-    public Address(String city, String district, String block, String building, String number) {
-        this.city = city;
-        this.district = district;
+    public Address(String block, String building, String number) {
+        this.city = "Recife";
+        this.district = "Afogados";
         this.block = block;
         this.building = building;
         this.number = number;
