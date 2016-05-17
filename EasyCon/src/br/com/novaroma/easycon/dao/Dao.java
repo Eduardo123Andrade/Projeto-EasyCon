@@ -34,7 +34,7 @@ public class Dao implements IDao {
 
     @Override
     public void remove(String id, AvlTree tree) {
-        //tree.remove(id);
+        tree.delete(id);
     }
 
     @Override

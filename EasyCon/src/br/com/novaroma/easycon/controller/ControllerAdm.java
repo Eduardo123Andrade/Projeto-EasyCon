@@ -63,7 +63,7 @@ public class ControllerAdm { //COLOCAR TODAS AS EXCECOES DEPOIS!
         boolean boo = true;
 
         do {
-            codeRandom = random.nextInt(9999) + 1;
+            codeRandom = random.nextInt(99999) + 1;
             boo = verifyCodeOnList(codeRandom, list);
         } while (boo);
 
