@@ -1,6 +1,7 @@
 package br.com.novaroma.easycon.presentation.view.login;
 
 import br.com.novaroma.easycon.presentation.view.resident.DesktopDweller;
+import br.com.novaroma.easycon.presentation.view.syndic.DesktopSyndic;
 import com.sun.glass.events.KeyEvent;
 
 public class Login extends javax.swing.JFrame {
@@ -22,6 +23,8 @@ public class Login extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Login");
+        setResizable(false);
 
         jLabel1.setText("jLabel1");
 
@@ -94,6 +97,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -160,10 +164,11 @@ public class Login extends javax.swing.JFrame {
 
     private void login() {
         if(jComboBox1.getSelectedIndex() == 1){
-            DesktopDweller dd = new DesktopDweller(this, true);
-            dd.setVisible(true);
+            DesktopSyndic ds = new DesktopSyndic();
+            ds.setVisible(true);
         }else if(jComboBox1.getSelectedIndex() == 2){
-           
+            DesktopDweller dd = new DesktopDweller();
+            dd.setVisible(true);
         }else{
             
         }
