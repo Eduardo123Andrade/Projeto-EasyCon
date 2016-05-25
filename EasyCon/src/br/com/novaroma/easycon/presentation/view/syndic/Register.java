@@ -2,6 +2,7 @@ package br.com.novaroma.easycon.presentation.view.syndic;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class Register extends javax.swing.JInternalFrame {
 
@@ -378,11 +379,11 @@ public class Register extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField passwordField;
     // End of variables declaration//GEN-END:variables
 
-       private void save(){
+       private void save(){ //INACABADO!!!!
            String block = blockField.getText();
            String building = buildingField.getText();
            String number = numberField.getText();    
-           String gender = jComboBoxGender.getToolTipText(); //NAO ESTA PEGANDO O NOME!
+           String gender = jComboBoxGender.getName(); //NAO ESTA PEGANDO O NOME!
            String login = loginField.getText();
            String password = passwordField.getText();
            String phone = cellNumberField.getText();
@@ -391,6 +392,7 @@ public class Register extends javax.swing.JInternalFrame {
            String lastname = lastNameField.getText();
            String age = ageField.getText();
           
+           JOptionPane.showMessageDialog(null, gender);
            //conAdm.registerResident(tree, block, building, number, gender, login, password, phone, name, lastname, age, cpf); PASSAR A ARVORE!
            
            

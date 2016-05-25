@@ -1,6 +1,8 @@
 package br.com.novaroma.easycon.structures;
 
 import br.com.novaroma.easycon.entities.Entity;
+import br.com.novaroma.easycon.entities.Person;
+import br.com.novaroma.easycon.entities.Resident;
 
 public class LinkedList {
     
@@ -9,13 +11,17 @@ public class LinkedList {
     private int count;
     
     public void addFirst(Entity entity) {
-        
+
         Link newLink = new Link(first, null, entity);
-        first = newLink;
-        
-        if (isFirst()) {
-            last = first;
+       
+        if (!isFirst()) {
+            first.setPrevious(newLink);
         }
+        
+        first = newLink;
+
+        if (isFirst()) 
+            last = first;
         
         count++;
     }
@@ -51,13 +57,19 @@ public class LinkedList {
     }
     
     public void removeFirst() {
-        
-        if (isFirst()) {
+
+        if (isFirst()) 
             throw new IllegalArgumentException("Nao ha itens para serem excluidos!");
-        }
         
+
+        if (count == 1) {
+            first = last = null;
+        }
+        else {
         first = first.getNext();
         first.setPrevious(null);
+        }
+        
         count--;
     }
     
@@ -95,28 +107,45 @@ public class LinkedList {
     }
     
     public String showList() {
-        
+
         Link temp = first;
         String names = "";
-        
+
         while (temp != null) {
+            
+            if (temp.getEntity() instanceof Person) {
+                Person person = (Person)temp.getEntity();
+                
+                names += person.getName() + " ";
+            }
+            else{
             names += temp.getEntity().getId() + " ";
+            }
+            
             temp = temp.getNext();
         }
-        
+
         return names;
     }
     
     public String showReverseList() {
-        
+
         Link temp = last;
         String names = "";
         
         while (temp != null) {
+            if (temp.getEntity() instanceof Person) {
+                Person person = (Person)temp.getEntity();
+                
+                names += person.getName() + " ";
+            }
+            else{
             names += temp.getEntity().getId() + " ";
+            }
+            
             temp = temp.getPrevious();
         }
-        
+
         return names;
     }
     
@@ -189,5 +218,27 @@ public class LinkedList {
            
             temp = temp.getNext();
         }
+    }
+    
+    public static void main(String[] args) {
+        
+        LinkedList list = new LinkedList();
+        
+        Resident a = new Resident(null, null, null, null, null, "Felipe", null, null, "1", true);
+        Resident b = new Resident(null, null, null, null, null, "Catarina", null, null, "2", true);
+        Resident c = new Resident(null, null, null, null, null, "Lucas", null, null, "3", true);
+        Resident d = new Resident(null, null, null, null, null, "Marina", null, null, "4", true);
+       
+        list.addFirst(a);
+        list.addFirst(b);
+        list.addLast(c);
+        list.addBetween(d, 2);
+        System.out.println(list.showList());
+        System.out.println(list.showReverseList());
+        System.out.println(list.showQuantity());
+       
+        Resident x = new Resident(null, null, null, null, null, "Tiao Bocapreta", null, null, "1", true);
+        list.update(x);
+        System.out.println(list.showList());
     }
 }

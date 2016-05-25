@@ -1,9 +1,12 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
+import br.com.novaroma.easycon.controller.ControllerAdm;
 import com.sun.glass.events.KeyEvent;
 
 public class Remove extends javax.swing.JInternalFrame {
 
+    private ControllerAdm conAdm = new ControllerAdm();
+    
     public Remove() {
         initComponents();
     }
@@ -13,7 +16,7 @@ public class Remove extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        codeField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -56,7 +59,7 @@ public class Remove extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(55, 55, 55)
                             .addComponent(jButton1))))
                 .addContainerGap(73, Short.MAX_VALUE))
@@ -68,7 +71,7 @@ public class Remove extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
@@ -98,17 +101,17 @@ public class Remove extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField codeField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
     private void exit() {
         this.dispose();
     }
 
-    private void remove() {
-        
+    private void remove() { //ESTRUTURA
+        //conAdm.removeResident(codeField, tree);
     }
 }

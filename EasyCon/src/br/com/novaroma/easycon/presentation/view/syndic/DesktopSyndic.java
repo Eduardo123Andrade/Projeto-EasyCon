@@ -226,7 +226,7 @@ public class DesktopSyndic extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1KeyPressed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        remove();
+            remove();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem3KeyPressed

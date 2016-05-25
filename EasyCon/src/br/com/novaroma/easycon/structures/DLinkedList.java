@@ -1,8 +1,10 @@
 package br.com.novaroma.easycon.structures;
 
 import br.com.novaroma.easycon.entities.Entity;
+import br.com.novaroma.easycon.entities.Person;
+import br.com.novaroma.easycon.entities.Resident;
 
-public class DLinkedList {
+public class DLinkedList { //TESTADO - 100% OK!
 
     private DLink first;
     private DLink last;
@@ -11,12 +13,16 @@ public class DLinkedList {
     public void addFirst(Entity entity) {
 
         DLink newLink = new DLink(first, null, entity);
+       
+        if (!isFirst()) {
+            first.setPrevious(newLink);
+        }
+        
         first = newLink;
 
-        if (isFirst()) {
+        if (isFirst()) 
             last = first;
-        }
-
+        
         count++;
     }
 
@@ -52,12 +58,18 @@ public class DLinkedList {
 
     public void removeFirst() {
 
-        if (isFirst()) {
+        if (isFirst()) 
             throw new IllegalArgumentException("Nao ha itens para serem excluidos!");
-        }
+        
 
+        if (count == 1) {
+            first = last = null;
+        }
+        else {
         first = first.getNext();
         first.setPrevious(null);
+        }
+        
         count--;
     }
 
@@ -98,7 +110,16 @@ public class DLinkedList {
         String names = "";
 
         while (temp != null) {
+            
+            if (temp.getEntity() instanceof Person) {
+                Person person = (Person)temp.getEntity();
+                
+                names += person.getName() + " ";
+            }
+            else{
             names += temp.getEntity().getId() + " ";
+            }
+            
             temp = temp.getNext();
         }
 
@@ -109,9 +130,17 @@ public class DLinkedList {
 
         DLink temp = last;
         String names = "";
-
+        
         while (temp != null) {
+            if (temp.getEntity() instanceof Person) {
+                Person person = (Person)temp.getEntity();
+                
+                names += person.getName() + " ";
+            }
+            else{
             names += temp.getEntity().getId() + " ";
+            }
+            
             temp = temp.getPrevious();
         }
 
@@ -142,5 +171,28 @@ public class DLinkedList {
             temp = temp.getNext();
         }
         return temp;
+    }
+    
+    public static void main(String[] args) {
+        
+        DLinkedList list = new DLinkedList();
+        
+        Resident a = new Resident(null, null, null, null, null, "Felipe", null, null, null, true);
+        Resident b = new Resident(null, null, null, null, null, "Catarina", null, null, null, true);
+        Resident c = new Resident(null, null, null, null, null, "Lucas", null, null, null, true);
+        Resident d = new Resident(null, null, null, null, null, "Marina", null, null, null, true);
+       
+        list.addFirst(a);
+        list.addFirst(b);
+        list.addLast(c);
+        list.addBetween(d, 2);
+        System.out.println(list.showList());
+        System.out.println(list.showReverseList());
+        System.out.println(list.showQuantity());
+        
+        list.removeBetween(3);
+        System.out.println(list.showList());
+        System.out.println(list.showReverseList());
+        System.out.println(list.showQuantity());    
     }
 }
