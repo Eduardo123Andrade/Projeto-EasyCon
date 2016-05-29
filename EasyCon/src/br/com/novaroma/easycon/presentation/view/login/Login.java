@@ -1,6 +1,7 @@
 package br.com.novaroma.easycon.presentation.view.login;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
+import br.com.novaroma.easycon.entities.Resident;
 import br.com.novaroma.easycon.presentation.view.resident.DesktopDweller;
 import br.com.novaroma.easycon.presentation.view.syndic.DesktopSyndic;
 import com.sun.glass.events.KeyEvent;
@@ -9,6 +10,7 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     private ControllerAdm conAdm = new ControllerAdm();
+    private Resident residentX = new Resident();
     
     public Login() {
         initComponents();
@@ -186,14 +188,22 @@ public class Login extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void login() {
-        if(jComboBox1.getSelectedIndex() == 1 && conAdm.verifySingIn(loginField.getText(), passwordField.getText())){
+        if(jComboBox1.getSelectedIndex() == 1 && conAdm.verifySingInAdm(loginField.getText(), passwordField.getText())){
             DesktopSyndic ds = new DesktopSyndic();
             ds.setVisible(true);
-        }else if(jComboBox1.getSelectedIndex() == 2){
+        }else if(jComboBox1.getSelectedIndex() == 2 && conAdm.verifySingInResident(loginField.getText(), passwordField.getText())){
             DesktopDweller dd = new DesktopDweller();
             dd.setVisible(true);
         }else{
             JOptionPane.showMessageDialog(null, "Login e/ou senha invalidos!");
         }
+    }
+
+    public Resident getResidentX() {
+        return residentX;
+    }
+
+    public void setResidentX(Resident residentX) {
+        this.residentX = residentX;
     }
 }

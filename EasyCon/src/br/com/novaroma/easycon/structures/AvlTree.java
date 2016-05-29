@@ -6,17 +6,34 @@ public class AvlTree {
 
     private AvlLink root = null;
     private String dataTree = "";
+    private int quantity;
 
     public AvlTree() {
         root = null;
     }
+    
+     public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
+    public AvlLink getRoot() {
+        return root;
+    }
+
+    public void setRoot(AvlLink root) {
+        this.root = root;
+    }
 
     public boolean isEmpty() {
-        return root == null;
+        return getRoot() == null;
     }
 
     public AvlLink getRootNode() {
-        return root;
+        return getRoot();
     }
 
     private static int height(AvlLink link) {  //Retorna altura do no.
@@ -42,7 +59,8 @@ public class AvlTree {
     }
 
     public boolean insert(Entity entity) {
-        root = insert(entity, root);
+        setRoot(insert(entity, getRoot()));
+        
         return true;
     }
 
@@ -50,6 +68,7 @@ public class AvlTree {
 
         if (link == null) {
             link = new AvlLink(entity);
+            quantity++;
         } 
         else if (entity.getId().compareTo(link.getEntity().getId()) < 0) {
             link.setLeft(insert(entity, link.getLeft()));
@@ -122,7 +141,7 @@ public class AvlTree {
     }
 
     public AvlLink search(String id) {
-        return search(root, id);
+        return search(getRoot(), id);
     }
 
     private AvlLink search(AvlLink temp, String id) {
@@ -141,7 +160,7 @@ public class AvlTree {
     }
 
     public String inorder() {
-        return inorder(root);
+        return inorder(getRoot());
     }
 
     private String inorder(AvlLink temp) {
@@ -156,7 +175,7 @@ public class AvlTree {
     }
 
     public void preorder() {
-        preorder(root);
+        preorder(getRoot());
     }
 
     private void preorder(AvlLink temp) {
@@ -169,7 +188,7 @@ public class AvlTree {
     }
 
     public void postorder() {
-        postorder(root);
+        postorder(getRoot());
     }
 
     private void postorder(AvlLink temp) {
@@ -183,7 +202,7 @@ public class AvlTree {
 
     public void update(Entity entity) {
 
-        AvlLink temp = root;
+        AvlLink temp = getRoot();
 
         while (temp != null) {
             if (entity.getId().equalsIgnoreCase(temp.getEntity().getId())) {
@@ -198,7 +217,7 @@ public class AvlTree {
     
     public void delete(String id) {
         Entity entity = search(id).getEntity();
-        deleteLink(root, entity);
+        deleteLink(getRoot(), entity);
     }
     
     private AvlLink deleteLink(AvlLink root, Entity entity) {
@@ -206,8 +225,12 @@ public class AvlTree {
         if (root == null) {
             return root;
         }
-    
-        if (entity.getId().compareTo(root.getEntity().getId()) < 0) {
+        
+        if (quantity == 1) {
+            this.root = null;
+            quantity--;
+        }
+        else if (entity.getId().compareTo(root.getEntity().getId()) < 0) {
             root.setLeft(deleteLink(root.getLeft(), entity));
         } 
 
@@ -250,6 +273,7 @@ public class AvlTree {
                 // Delete the inorder successor
                 root.setRight(deleteLink(root.getRight(), temp.getEntity()));
             }
+            quantity--;
         }
  
         // If the tree had only one node then return

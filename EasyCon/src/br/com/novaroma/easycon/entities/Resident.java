@@ -1,17 +1,18 @@
-
 package br.com.novaroma.easycon.entities;
 
 import java.io.Serializable;
 
 public class Resident extends Person implements Serializable {
-    
+
+    private static Resident currentResident;
+
     private Address adrdress;
     private String gender;
     private String login;
     private String password;
     private String phoneNumber;
     private boolean owe;
-    
+
     @Override
     public String getId() {
         return getCpf();
@@ -76,5 +77,20 @@ public class Resident extends Person implements Serializable {
 
     public void setOwe(boolean owe) {
         this.owe = owe;
+    }
+    
+    public String getOwe() {
+        if(owe == true)
+            return "Inadimplente";
+        else
+            return "Nao inadimplente";
+    }
+
+    public static Resident getCurrentResident() {
+        return currentResident;
+    }
+
+    public static void setCurrentResident(Resident aCurrentResident) {
+        currentResident = aCurrentResident;
     }
 }

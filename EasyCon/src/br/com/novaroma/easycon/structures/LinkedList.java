@@ -4,7 +4,7 @@ import br.com.novaroma.easycon.entities.Entity;
 import br.com.novaroma.easycon.entities.Person;
 import br.com.novaroma.easycon.entities.Resident;
 
-public class LinkedList {
+public class LinkedList { //90% TESTADO
     
     private Link first;
     private Link last;
@@ -237,8 +237,10 @@ public class LinkedList {
         System.out.println(list.showReverseList());
         System.out.println(list.showQuantity());
        
+        
         Resident x = new Resident(null, null, null, null, null, "Tiao Bocapreta", null, null, "1", true);
         list.update(x);
         System.out.println(list.showList());
+        
     }
 }

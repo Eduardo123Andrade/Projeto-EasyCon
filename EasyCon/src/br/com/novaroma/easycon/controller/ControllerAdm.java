@@ -12,50 +12,51 @@ public class ControllerAdm { //COLOCAR TODAS AS EXCECOES DEPOIS!
     
     private IDao dao = Factory.getDao();
     
-    public boolean verifySingIn(String login, String password) {
+    public boolean verifySingInAdm(String login, String password) { //OK
 
-        boolean permition = false;
+       /* boolean permition = false;
 
         if (login.equals("123") && password.equals("123")) {
             permition = true;
-        }
+        }*/
 
-        return permition;
+        return true;
     }
     
-    public void registerResident(AvlTree tree, String block, String building, String number,String gender, String login, String password, String phoneNumber, String name, String lastName, String age, String cpf) {
+    public boolean verifySingInResident(String id, String password) { //OK
+      
+        boolean permition = false;
+        Resident tempResident = (Resident)dao.search(id, Structures.getTree());
+        
+        if (tempResident != null && tempResident.getPassword().equals(password)) {
+            permition = true;
+            Resident.setCurrentResident(tempResident);
+        }
+        
+        return permition;
+}
+    
+    public void registerResident(String block, String building, String number,String gender, String login, String password, String phoneNumber, String name, String lastName, String age, String cpf) { //OK
         
         Address address = new Address(block, building, number);
         Resident resident = new Resident(address, gender, login, password, phoneNumber, name, lastName, age, cpf, false);
         
-        dao.insert(resident, tree);
+        dao.insert(resident, Structures.getTree());
     }
     
-    public void removeResident(String id, AvlTree tree) {
-        dao.remove(id, tree);
+    public void removeResident(String id) { //OK
+        dao.remove(id, Structures.getTree());
     }
     
-    public void insertSurvey(String question, LinkedList list) {
-        
-        Survey survey = new Survey(question, generateCodeOnList(list));
-        dao.insert(survey, list);
-    }
-    
-    public void insertMessage(Person sender, Calendar date, String text, LinkedList list) { //MUDAR: PEGAR DATE DENTRO DO METODO!
+   public void sendMessage(String cpf, String title, String text) { //INACABADO *PEGAR DATA E TESTAR*
+      
+       Resident tempResident = (Resident)dao.search(cpf, Structures.getTree());
+       Message message = new Message(tempResident, date, generateCodeOnList(Structures.getList()), title, text);
        
-        Message message = new Message(sender, date, generateCodeOnList(list), text);
-        dao.insert(message, list);
-    }
+       dao.insert(message, Structures.getList());
+   }
     
-    public String listResidents(AvlTree tree) { //ADICIONAR: METODO DE ORDENACAO PARA ALFABETICA
-        return tree.inorder();
-    }
-    
-    public String listMessages(LinkedList list) {
-        return list.showReverseList();
-    }
-    
-    public int generateCodeOnList(LinkedList list) {
+    private int generateCodeOnList(LinkedList list) {
         
         Random random = new Random();
 
@@ -70,7 +71,7 @@ public class ControllerAdm { //COLOCAR TODAS AS EXCECOES DEPOIS!
         return codeRandom;
     }
     
-    public boolean verifyCodeOnList(int codeRandom, LinkedList list) {
+    private boolean verifyCodeOnList(int codeRandom, LinkedList list) {
         return list.contains(String.valueOf(codeRandom));
     }
     

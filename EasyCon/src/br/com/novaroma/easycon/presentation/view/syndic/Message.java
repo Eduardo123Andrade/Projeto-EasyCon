@@ -1,11 +1,16 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
+import br.com.novaroma.easycon.entities.Resident;
+import br.com.novaroma.easycon.structures.AvlLink;
+import br.com.novaroma.easycon.structures.Structures;
 import java.awt.event.KeyEvent;
+import javax.swing.table.DefaultTableModel;
 
 public class Message extends javax.swing.JInternalFrame {
 
     public Message() {
         initComponents();
+        residentList(Structures.getTree().getRoot());
     }
 
     @SuppressWarnings("unchecked")
@@ -13,7 +18,7 @@ public class Message extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        residentTable = new javax.swing.JTable();
         jTextFieldReceiver = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -23,15 +28,23 @@ public class Message extends javax.swing.JInternalFrame {
 
         setTitle("Mensgem");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        residentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                " Morador"
+                " Morador", "CPF"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(residentTable);
 
         jButton1.setText("Enviar");
 
@@ -66,8 +79,8 @@ public class Message extends javax.swing.JInternalFrame {
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton1)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,12 +126,28 @@ public class Message extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextFieldReceiver;
+    private javax.swing.JTable residentTable;
     // End of variables declaration//GEN-END:variables
 
+  
+    
     private void exit() {
         this.dispose();
+    }
+    
+    private void residentList(AvlLink temp) {
+        
+        if (temp != null) {
+            residentList(temp.getLeft());
+            
+            Resident residentTemp = (Resident)temp.getEntity();
+            DefaultTableModel residentList = (DefaultTableModel) residentTable.getModel();
+            
+            residentList.addRow(new String[] {residentTemp.getName(), residentTemp.getCpf()});
+            
+            residentList(temp.getRight());
+        }
     }
 }

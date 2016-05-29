@@ -3,8 +3,9 @@ package br.com.novaroma.easycon.structures;
 
 import br.com.novaroma.easycon.entities.Entity;
 import br.com.novaroma.easycon.entities.Resident;
+import javax.swing.JOptionPane;
 
-public class DynamicQueue {
+public class DynamicQueue { //90% TESTADO!
     
     private LinkedList queue;
     
@@ -21,7 +22,7 @@ public class DynamicQueue {
     }
     
     public String showQueue() {
-       return queue.showReverseList();
+       return queue.showList();
     }
     
     public Entity search(String id) {
@@ -44,9 +45,12 @@ public class DynamicQueue {
         queue.toQueue(a);
         queue.toQueue(b);
         queue.toQueue(c);
-        
         System.out.println(queue.showQueue());
         
+        queue.update(new Resident(null, null, null, null, null, "Tiao bocapreta", null, null, "1", true));
+        System.out.println(queue.showQueue());
         
+        Resident x = (Resident)queue.search("3");
+        JOptionPane.showMessageDialog(null, x.getName());
     }
 }

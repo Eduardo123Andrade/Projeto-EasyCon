@@ -1,7 +1,12 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
+import br.com.novaroma.easycon.dao.IDao;
+import br.com.novaroma.easycon.entities.Resident;
+import br.com.novaroma.easycon.factories.Factory;
+import br.com.novaroma.easycon.structures.Structures;
 import com.sun.glass.events.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class Remove extends javax.swing.JInternalFrame {
 
@@ -73,9 +78,9 @@ public class Remove extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -111,7 +116,12 @@ public class Remove extends javax.swing.JInternalFrame {
         this.dispose();
     }
 
-    private void remove() { //ESTRUTURA
-        //conAdm.removeResident(codeField, tree);
+    private void remove() { //NAO FUNCIONA O REMOVER
+        //APOS VERIFICACAO
+        IDao dao = Factory.getDao();
+        Resident x = (Resident)dao.search(codeField.getText(), Structures.getTree());
+        
+        conAdm.removeResident(codeField.getText());
+        JOptionPane.showMessageDialog(null, x.getName() + " foi removido com sucesso!");
     }
 }

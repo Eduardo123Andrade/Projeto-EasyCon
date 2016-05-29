@@ -13,8 +13,8 @@ public class Dao implements IDao {
     }
 
     @Override
-    public void insert(Entity entity, Hash hash) {
-        //hash.add(entity); 
+    public void insert(Entity entity, Hash hash, int index) {
+        hash.add(entity, index); 
     }
 
     @Override
@@ -38,8 +38,8 @@ public class Dao implements IDao {
     }
 
     @Override
-    public void remove(String id, Hash hash) {
-        //hash.remove(id);
+    public void remove(Hash hash, int index) {
+        hash.remove(index);
     }
 
     @Override
@@ -63,8 +63,8 @@ public class Dao implements IDao {
     }
 
     @Override
-    public void update(Entity entity, Hash hash) {
-        //hash.update(entity);
+    public void update(Entity entity, Hash hash, int index) {
+        hash.update(entity, index);
     }
 
     @Override
@@ -88,8 +88,8 @@ public class Dao implements IDao {
     }
 
     @Override
-    public Entity search(String id, Hash hash) {
-        return null; //hash.search(id);
+    public Entity search(String id, Hash hash, int index) {
+        return hash.search(id, index);
     }
 
     @Override

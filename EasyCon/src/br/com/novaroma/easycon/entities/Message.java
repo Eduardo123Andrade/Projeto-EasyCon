@@ -9,6 +9,7 @@ public class Message extends Entity implements Serializable {
     private Person sender;
     private Calendar date;
     private int messageCode;
+    private String title;
     private String text;
     
     @Override
@@ -19,10 +20,11 @@ public class Message extends Entity implements Serializable {
     public Message() {
     }
 
-    public Message(Person sender, Calendar date, int messageCode, String text) {
+    public Message(Person sender, Calendar date, int messageCode, String title, String text) {
         this.sender = sender;
         this.date = date;
         this.messageCode = messageCode;
+        this.title = title;
         this.text = text;
     }
 
@@ -56,5 +58,13 @@ public class Message extends Entity implements Serializable {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

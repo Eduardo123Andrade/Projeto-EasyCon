@@ -23,12 +23,12 @@ public class Register extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         ageField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        cpfField = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         jComboBoxGender = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         cellNumberField = new javax.swing.JFormattedTextField();
+        lastnameField = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         loginField = new javax.swing.JTextField();
@@ -66,12 +66,6 @@ public class Register extends javax.swing.JInternalFrame {
 
         jLabel4.setText("CPF");
 
-        try {
-            cpfField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         jLabel5.setText("Genero");
 
         jComboBoxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Masculino", "Feminino" }));
@@ -86,24 +80,30 @@ public class Register extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
+        lastnameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lastnameFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
-                        .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(23, 23, 23)
-                        .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lastnameField))))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -142,7 +142,7 @@ public class Register extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4)
-                        .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lastnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel6)
                         .addComponent(cellNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -312,7 +312,7 @@ public class Register extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -342,6 +342,10 @@ public class Register extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lastNameFieldActionPerformed
 
+    private void lastnameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastnameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lastnameFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ageField;
@@ -349,7 +353,6 @@ public class Register extends javax.swing.JInternalFrame {
     private javax.swing.JTextField buildingField;
     private javax.swing.JFormattedTextField cellNumberField;
     private javax.swing.JTextField cityField;
-    private javax.swing.JFormattedTextField cpfField;
     private javax.swing.JTextField districtField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -373,29 +376,29 @@ public class Register extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField lastNameField;
+    private javax.swing.JTextField lastnameField;
     private javax.swing.JTextField loginField;
     private javax.swing.JTextField nameField;
     private javax.swing.JTextField numberField;
     private javax.swing.JPasswordField passwordField;
     // End of variables declaration//GEN-END:variables
 
-       private void save(){ //INACABADO!!!!
+       private void save(){
            String block = blockField.getText();
            String building = buildingField.getText();
            String number = numberField.getText();    
-           String gender = jComboBoxGender.getName(); //NAO ESTA PEGANDO O NOME!
+           String gender = jComboBoxGender.getSelectedItem().toString();
            String login = loginField.getText();
            String password = passwordField.getText();
            String phone = cellNumberField.getText();
-           String cpf = cpfField.getText();
+           String cpf = lastnameField.getText();
            String name = nameField.getText();
            String lastname = lastNameField.getText();
            String age = ageField.getText();
-          
-           JOptionPane.showMessageDialog(null, gender);
-           //conAdm.registerResident(tree, block, building, number, gender, login, password, phone, name, lastname, age, cpf); PASSAR A ARVORE!
-           
-           
+
+           //FAZER VERIFICACAO
+           conAdm.registerResident(block, building, number, gender, login, password, phone, name, lastname, age, cpf);
+           JOptionPane.showMessageDialog(null, "Morador cadastrado com sucesso!");
        }
 
     private void exit() {

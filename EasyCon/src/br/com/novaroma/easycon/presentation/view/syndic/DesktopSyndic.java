@@ -320,19 +320,19 @@ public class DesktopSyndic extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     
-    private void register() {
+    private void register() {      //OK
         Register r = new Register();
         jDesktopPane1.add(r);
         r.setVisible(true);
     }
     
-    private void roster(){
+    private void roster(){      //OK
         DwellerList dl = new DwellerList();
         jDesktopPane1.add(dl);
         dl.setVisible(true);
     }
 
-    private void remove() {
+    private void remove() {     //OK
        Remove r = new Remove();
        jDesktopPane1.add(r);
        r.setVisible(true);
