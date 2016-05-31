@@ -16,8 +16,7 @@ public class Maneger extends Person implements Serializable{
     }
 
     public Maneger(double savings, String name, String lastName, String age, String cpf) {
-        super(name, lastName, age, cpf);
-        this.savings = savings;
+        super("Frodo", "Bolseiro", "50", "11122233344");
     }
 
     public double getSavings() {

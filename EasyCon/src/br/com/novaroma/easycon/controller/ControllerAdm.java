@@ -5,7 +5,7 @@ import br.com.novaroma.easycon.dao.IDao;
 import br.com.novaroma.easycon.entities.*;
 import br.com.novaroma.easycon.factories.Factory;
 import br.com.novaroma.easycon.structures.*;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 public class ControllerAdm { //COLOCAR TODAS AS EXCECOES DEPOIS!
@@ -48,12 +48,27 @@ public class ControllerAdm { //COLOCAR TODAS AS EXCECOES DEPOIS!
         dao.remove(id, Structures.getTree());
     }
     
-   public void sendMessage(String cpf, String title, String text) { //INACABADO *PEGAR DATA E TESTAR*
+   public void sendMessage(String cpf, String title, String text) { //TRAVANDO
       
        Resident tempResident = (Resident)dao.search(cpf, Structures.getTree());
-       Message message = new Message(tempResident, date, generateCodeOnList(Structures.getList()), title, text);
+       Message message = new Message(new Maneger(), tempResident, new Date(), generateCodeOnList(Structures.getList()), title, text);
        
        dao.insert(message, Structures.getList());
+   }
+   
+   public void sendMessageToAll(AvlLink temp, String title, String text) { //TESTAR
+       
+       int code = generateCodeOnList(Structures.getList()); //CONSERTAR PRA TER APENAS UM CODIGO
+       
+       if (temp != null) {
+           sendMessageToAll(temp, title, text);
+           
+           Resident tempResident = (Resident)temp.getEntity();
+           Message message = new Message(new Maneger(), tempResident, new Date(), code, title, text);
+           dao.insert(message, Structures.getList());
+           
+           sendMessageToAll(temp, title, text);
+       }
    }
     
     private int generateCodeOnList(LinkedList list) {

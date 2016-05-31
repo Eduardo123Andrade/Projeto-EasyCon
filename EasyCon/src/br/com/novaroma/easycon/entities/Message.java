@@ -2,12 +2,13 @@
 package br.com.novaroma.easycon.entities;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 
 public class Message extends Entity implements Serializable {
 
     private Person sender;
-    private Calendar date;
+    private Person receptor;
+    private Date date;
     private int messageCode;
     private String title;
     private String text;
@@ -20,8 +21,9 @@ public class Message extends Entity implements Serializable {
     public Message() {
     }
 
-    public Message(Person sender, Calendar date, int messageCode, String title, String text) {
+    public Message(Person sender, Person receptor, Date date, int messageCode, String title, String text) {
         this.sender = sender;
+        this.receptor = receptor;
         this.date = date;
         this.messageCode = messageCode;
         this.title = title;
@@ -36,11 +38,11 @@ public class Message extends Entity implements Serializable {
         this.sender = sender;
     }
 
-    public Calendar getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Calendar date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -66,5 +68,13 @@ public class Message extends Entity implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Person getReceptor() {
+        return receptor;
+    }
+
+    public void setReceptor(Person receptor) {
+        this.receptor = receptor;
     }
 }
