@@ -1,6 +1,5 @@
 package br.com.novaroma.easycon.presentation.view.resident;
 
-import br.com.novaroma.easycon.presentation.view.syndic.Inbox;
 import br.com.novaroma.easycon.presentation.view.syndic.PollsList;
 import java.awt.event.KeyEvent;
 
@@ -320,14 +319,14 @@ public class DesktopDweller extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 
-    private void status() {
+    private void status() { //OK
      Status s = new Status();
      jDesktopPane1.add(s);
      s.setVisible(true);
     }
     
     
-    private void update(){
+    private void update(){ //OK
         Update u = new Update();
         jDesktopPane1.add(u);
         u.setVisible(true);
@@ -339,13 +338,13 @@ public class DesktopDweller extends javax.swing.JFrame {
         l.setVisible(true);
     }
 
-    private void send() {
+    private void send() { //OK
         Send s = new Send();
         jDesktopPane1.add(s);
         s.setVisible(true);
     }
 
-    private void inbox() {
+    private void inbox() { //OK
         Inbox i = new Inbox();
         jDesktopPane1.add(i);
         i.setVisible(true);

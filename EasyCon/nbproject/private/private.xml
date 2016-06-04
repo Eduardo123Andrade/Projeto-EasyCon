@@ -4,7 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/EasyCon/src/br/com/novaroma/easycon/presentation/view/resident/DesktopDweller.java</file>
-            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/EasyCon/src/br/com/novaroma/easycon/presentation/view/resident/Update.java</file>
+            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/EasyCon/src/br/com/novaroma/easycon/controller/ControllerAdm.java</file>
+            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/EasyCon/src/br/com/novaroma/easycon/presentation/view/syndic/Inbox.java</file>
+            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/EasyCon/src/br/com/novaroma/easycon/presentation/view/syndic/ExitBox.java</file>
+            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/EasyCon/src/br/com/novaroma/easycon/presentation/view/syndic/DesktopSyndic.java</file>
+            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/EasyCon/src/br/com/novaroma/easycon/controller/ControllerResident.java</file>
         </group>
     </open-files>
 </project-private>

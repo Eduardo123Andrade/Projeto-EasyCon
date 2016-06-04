@@ -402,31 +402,31 @@ public class DesktopSyndic extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 
-    private void register() {
+    private void register() { //OK
         Register r = new Register();
         jDesktopPane1.add(r);
         r.setVisible(true);
     }
 
-    private void roster() {
+    private void roster() { //OK
         DwellerList dl = new DwellerList();
         jDesktopPane1.add(dl);
         dl.setVisible(true);
     }
 
-    private void remove() {
+    private void remove() { //OK
         Remove r = new Remove();
         jDesktopPane1.add(r);
         r.setVisible(true);
     }
 
-    private void send() {
+    private void send() { //OK
         Message m = new Message();
         jDesktopPane1.add(m);
         m.setVisible(true);
     }
 
-    private void inbox() {
+    private void inbox() { //OK
         Inbox i = new Inbox();
         jDesktopPane1.add(i);
         i.setVisible(true);

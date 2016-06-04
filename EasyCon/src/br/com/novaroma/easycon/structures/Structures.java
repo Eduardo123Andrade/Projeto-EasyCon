@@ -1,6 +1,8 @@
 
 package br.com.novaroma.easycon.structures;
 
+import java.util.Random;
+
 public class Structures {
    
     private static AvlTree tree = new AvlTree();
@@ -49,5 +51,23 @@ public class Structures {
         stack = aStack;
     }
     
+    public static int generateCodeOnStack() {
+        
+        Random random = new Random();
+
+        int codeRandom;
+        boolean boo = true;
+
+        do {
+            codeRandom = random.nextInt(99999) + 1;
+            boo = verifyCodeOnStack(codeRandom, stack);
+        } while (boo);
+
+        return codeRandom;
+    }
+    
+    public static boolean verifyCodeOnStack(int code, Stack stack) {
+        return stack.contanis(String.valueOf(code));
+    }
     
 }

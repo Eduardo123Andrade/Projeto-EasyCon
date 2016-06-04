@@ -1,9 +1,14 @@
 package br.com.novaroma.easycon.presentation.view.resident;
 
+import br.com.novaroma.easycon.controller.ControllerResident;
+import br.com.novaroma.easycon.entities.Resident;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class Send extends javax.swing.JInternalFrame {
 
+    private ControllerResident conRes = new ControllerResident();
+    
     public Send() {
         initComponents();
     }
@@ -122,5 +127,11 @@ public class Send extends javax.swing.JInternalFrame {
     
     private void send(){
         
+        String title = jTextFieldSubject.getText();
+        String text = jTextArea1.getText();
+        
+        conRes.sendMessage(title, text, Resident.getCurrentResident());
+        
+        JOptionPane.showMessageDialog(null, "Mensagem enviada com sucesso!");
     }
 }

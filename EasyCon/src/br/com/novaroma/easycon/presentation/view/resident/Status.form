@@ -88,14 +88,15 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabelCpf" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="jLabelName" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
-                          <Component id="jLabelAge" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabelName" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCpf" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabelPassword" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelAge" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="400" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -107,7 +108,10 @@
                       <Component id="jLabelAge" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jLabelCpf" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabelCpf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace min="0" pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -127,6 +131,11 @@
         <Component class="javax.swing.JLabel" name="jLabelAge">
           <Properties>
             <Property name="text" type="java.lang.String" value="Idade"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelPassword">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Senha"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -154,7 +163,7 @@
                       <Component id="jLabelNumber" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="47" max="32767" attributes="0"/>
+                  <EmptySpace pref="293" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabelFamily" min="-2" max="-2" attributes="0"/>

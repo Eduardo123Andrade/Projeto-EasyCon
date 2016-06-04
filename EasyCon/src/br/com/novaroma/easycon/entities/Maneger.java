@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 public class Maneger extends Person implements Serializable{
 
+    private static Maneger currentManeger = new Maneger();
     private double savings;
     
     @Override
@@ -13,10 +14,11 @@ public class Maneger extends Person implements Serializable{
     }
 
     public Maneger() {
+        super("Frodo", "Bolseiro", "50", "11122233344");
     }
 
     public Maneger(double savings, String name, String lastName, String age, String cpf) {
-        super("Frodo", "Bolseiro", "50", "11122233344");
+        super(name, lastName, age, cpf);
     }
 
     public double getSavings() {
@@ -25,5 +27,13 @@ public class Maneger extends Person implements Serializable{
 
     public void setSavings(double savings) {
         this.savings = savings;
+    }
+
+    public static Maneger getCurrentManeger() {
+        return currentManeger;
+    }
+
+    public static void setCurrentManeger(Maneger currentManeger) {
+        Maneger.currentManeger = currentManeger;
     }
 }

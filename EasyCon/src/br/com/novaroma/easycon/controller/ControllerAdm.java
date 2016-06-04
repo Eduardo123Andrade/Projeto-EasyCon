@@ -6,7 +6,6 @@ import br.com.novaroma.easycon.entities.*;
 import br.com.novaroma.easycon.factories.Factory;
 import br.com.novaroma.easycon.structures.*;
 import java.util.Date;
-import java.util.Random;
 
 public class ControllerAdm { //COLOCAR TODAS AS EXCECOES DEPOIS!
     
@@ -51,43 +50,23 @@ public class ControllerAdm { //COLOCAR TODAS AS EXCECOES DEPOIS!
    public void sendMessage(String cpf, String title, String text) { //TRAVANDO
       
        Resident tempResident = (Resident)dao.search(cpf, Structures.getTree());
-       Message message = new Message(new Maneger(), tempResident, new Date(), generateCodeOnList(Structures.getList()), title, text);
+       Message message = new Message(Maneger.getCurrentManeger(), tempResident, new Date(), Structures.generateCodeOnStack(), title, text);
        
-       dao.insert(message, Structures.getList());
+       dao.insert(message, Structures.getStack());
    }
    
    public void sendMessageToAll(AvlLink temp, String title, String text) { //TESTAR
        
-       int code = generateCodeOnList(Structures.getList()); //CONSERTAR PRA TER APENAS UM CODIGO
+       int code = Structures.generateCodeOnStack(); //CONSERTAR PRA TER APENAS UM CODIGO
        
        if (temp != null) {
-           sendMessageToAll(temp, title, text);
+           sendMessageToAll(temp.getLeft(), title, text);
            
            Resident tempResident = (Resident)temp.getEntity();
-           Message message = new Message(new Maneger(), tempResident, new Date(), code, title, text);
-           dao.insert(message, Structures.getList());
+           Message message = new Message(Maneger.getCurrentManeger(), tempResident, new Date(), code, title, text);
+           dao.insert(message, Structures.getStack());
            
-           sendMessageToAll(temp, title, text);
+           sendMessageToAll(temp.getRight(), title, text);
        }
    }
-    
-    private int generateCodeOnList(LinkedList list) {
-        
-        Random random = new Random();
-
-        int codeRandom;
-        boolean boo = true;
-
-        do {
-            codeRandom = random.nextInt(99999) + 1;
-            boo = verifyCodeOnList(codeRandom, list);
-        } while (boo);
-
-        return codeRandom;
-    }
-    
-    private boolean verifyCodeOnList(int codeRandom, LinkedList list) {
-        return list.contains(String.valueOf(codeRandom));
-    }
-    
 }

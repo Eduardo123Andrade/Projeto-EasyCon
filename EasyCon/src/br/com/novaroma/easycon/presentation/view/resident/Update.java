@@ -1,11 +1,16 @@
 package br.com.novaroma.easycon.presentation.view.resident;
 
+import br.com.novaroma.easycon.controller.ControllerAdm;
+import br.com.novaroma.easycon.entities.Resident;
 import java.awt.event.KeyEvent;
 
 public class Update extends javax.swing.JInternalFrame {
 
+    ControllerAdm conAdm = new ControllerAdm();
+
     public Update() {
         initComponents();
+        setLables();
     }
 
     @SuppressWarnings("unchecked")
@@ -24,7 +29,7 @@ public class Update extends javax.swing.JInternalFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabelStatus = new javax.swing.JLabel();
         jLabelNumber = new javax.swing.JLabel();
-        jLabelLogin = new javax.swing.JLabel();
+        jLabelSenha = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jTextFieldPassword = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -101,7 +106,7 @@ public class Update extends javax.swing.JInternalFrame {
 
         jLabelNumber.setText("Numero");
 
-        jLabelLogin.setText("Login");
+        jLabelSenha.setText("Senha");
 
         jLabel11.setText("Senha");
 
@@ -123,9 +128,9 @@ public class Update extends javax.swing.JInternalFrame {
                                 .addGap(34, 34, 34)
                                 .addComponent(jLabelNumber)
                                 .addGap(32, 32, 32)
-                                .addComponent(jLabelLogin))
+                                .addComponent(jLabelSenha))
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel12)
@@ -140,7 +145,7 @@ public class Update extends javax.swing.JInternalFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelStatus)
                     .addComponent(jLabelNumber)
-                    .addComponent(jLabelLogin))
+                    .addComponent(jLabelSenha))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -153,6 +158,11 @@ public class Update extends javax.swing.JInternalFrame {
         );
 
         jButton2.setText("Alterar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jButton2KeyPressed(evt);
@@ -204,7 +214,7 @@ public class Update extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             update();
         }
     }//GEN-LAST:event_jButton2KeyPressed
@@ -214,76 +224,61 @@ public class Update extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonExitActionPerformed
 
     private void jButtonExitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonExitKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             exit();
         }
     }//GEN-LAST:event_jButtonExitKeyPressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        update();
+        setLables();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonExit;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelAge;
-    private javax.swing.JLabel jLabelAge1;
-    private javax.swing.JLabel jLabelAge2;
-    private javax.swing.JLabel jLabelAge3;
     private javax.swing.JLabel jLabelAge4;
-    private javax.swing.JLabel jLabelCpf;
-    private javax.swing.JLabel jLabelCpf1;
-    private javax.swing.JLabel jLabelCpf2;
-    private javax.swing.JLabel jLabelCpf3;
     private javax.swing.JLabel jLabelCpf4;
-    private javax.swing.JLabel jLabelFamily;
-    private javax.swing.JLabel jLabelFamily1;
-    private javax.swing.JLabel jLabelFamily2;
-    private javax.swing.JLabel jLabelFamily3;
     private javax.swing.JLabel jLabelFamily4;
-    private javax.swing.JLabel jLabelLogin;
-    private javax.swing.JLabel jLabelName;
-    private javax.swing.JLabel jLabelName1;
-    private javax.swing.JLabel jLabelName2;
-    private javax.swing.JLabel jLabelName3;
     private javax.swing.JLabel jLabelName4;
     private javax.swing.JLabel jLabelNumber;
+    private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelStatus;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextFieldName;
-    private javax.swing.JTextField jTextFieldName1;
-    private javax.swing.JTextField jTextFieldName2;
-    private javax.swing.JTextField jTextFieldName3;
     private javax.swing.JTextField jTextFieldName4;
     private javax.swing.JTextField jTextFieldPassword;
     private javax.swing.JTextField jTextFieldPassword2;
     // End of variables declaration//GEN-END:variables
 
- private void exit() {
+    private void exit() {
         this.dispose();
     }
 
     private void update() {
-        //atualizar dados
+        String name = jTextFieldName4.getText();
+        String password = jTextFieldPassword.getText();
+        String confirmation = jTextFieldPassword2.getText();
+
+        if (password.equals(confirmation)) {
+            Resident.getCurrentResident().setName(name);
+            Resident.getCurrentResident().setPassword(password);
+        }
     }
 
+    private void setLables() {
+        jLabelName4.setText("Nome: " + Resident.getCurrentResident().getName());
+        jLabelCpf4.setText("CPF: " + Resident.getCurrentResident().getCpf());
+        jLabelAge4.setText("Idade: " + Resident.getCurrentResident().getAge());
+        jLabelStatus.setText("Inadimplente: " + Resident.getCurrentResident().getOwe());
+        jLabelNumber.setText("Telefone: " + Resident.getCurrentResident().getPhoneNumber());
+        jLabelSenha.setText("Senha: " + Resident.getCurrentResident().getPassword());
+    }
 }

@@ -186,10 +186,10 @@
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                   <Component id="jLabelNumber" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="jLabelLogin" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSenha" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextFieldPassword" min="-2" pref="108" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -211,7 +211,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelSenha" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -239,9 +239,9 @@
             <Property name="text" type="java.lang.String" value="Numero"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelLogin">
+        <Component class="javax.swing.JLabel" name="jLabelSenha">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Login"/>
+            <Property name="text" type="java.lang.String" value="Senha"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
@@ -265,6 +265,7 @@
         <Property name="text" type="java.lang.String" value="Alterar"/>
       </Properties>
       <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jButton2KeyPressed"/>
       </Events>
     </Component>

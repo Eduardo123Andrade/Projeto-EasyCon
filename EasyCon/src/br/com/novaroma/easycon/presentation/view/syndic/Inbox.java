@@ -1,11 +1,21 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
+import br.com.novaroma.easycon.dao.IDao;
+import br.com.novaroma.easycon.entities.Maneger;
+import br.com.novaroma.easycon.entities.Message;
+import br.com.novaroma.easycon.factories.Factory;
+import br.com.novaroma.easycon.structures.Stack;
+import br.com.novaroma.easycon.structures.Structures;
 import com.sun.glass.events.KeyEvent;
+import javax.swing.table.DefaultTableModel;
 
 public class Inbox extends javax.swing.JInternalFrame {
 
+    IDao dao = Factory.getDao();
+
     public Inbox() {
         initComponents();
+        messageList(Structures.getStack());
     }
 
     @SuppressWarnings("unchecked")
@@ -27,11 +37,11 @@ public class Inbox extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Assunto", "Morador", "Data"
+                "Codigo", "Assunto", "Morador", "Data"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -61,7 +71,12 @@ public class Inbox extends javax.swing.JInternalFrame {
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
-        jButton2.setText("Enviar mensagen");
+        jButton2.setText("Visualizar Mensagem");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,12 +85,14 @@ public class Inbox extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton2))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                             .addComponent(jTextField1)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -103,7 +120,7 @@ public class Inbox extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             exit();
         }
     }//GEN-LAST:event_jButton1KeyPressed
@@ -114,9 +131,14 @@ public class Inbox extends javax.swing.JInternalFrame {
 
     private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            openMenssege();
+            openMessage();
         }
     }//GEN-LAST:event_jTable1KeyPressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        openMessage();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -129,12 +151,33 @@ public class Inbox extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-     private void exit() {
+    private void exit() {
         this.dispose();
     }
 
-    private void openMenssege() {
+    private void openMessage() {
 
+        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        Message messageX = (Message) dao.search(id, Structures.getStack());
+
+        jTextField1.setText(messageX.getTitle());
+        jTextArea1.setText(messageX.getText());
     }
 
+    private void messageList(Stack stack) {
+
+        for (int i = Structures.getStack().getTop(); i >= 0; i--) {
+
+            Message messageX = (Message) Structures.getStack().returnInIndex(i);
+            
+            if (!messageX.getSender().equals(Maneger.getCurrentManeger())) {
+               
+                String date[] = messageX.getDate().toString().split(" ");
+
+                DefaultTableModel residentList = (DefaultTableModel) jTable1.getModel();
+                residentList.addRow(new String[]{messageX.getId(), messageX.getTitle(), messageX.getSender().getName(), date[2] + "/" + date[1] + "/" + date[5]});
+            }
+
+        }
+    }
 }

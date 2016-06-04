@@ -20,16 +20,16 @@ public class Stack {
     public void stackUp(Entity entity) {
 
         if (!isFull()) {
-            stack[top + 1] = entity;
-            top++;
+            getStack()[getTop() + 1] = entity;
+            setTop(getTop() + 1);
         }
     }
 
     public void unstack() {
 
         if (!isEmpty()) {
-            stack[top] = null;
-            top--;
+            getStack()[getTop()] = null;
+            setTop(getTop() - 1);
         }
     }
 
@@ -38,7 +38,7 @@ public class Stack {
         String topName = "";
 
         if (!isEmpty()) {
-            topName = stack[top].getId();
+            topName = getStack()[getTop()].getId();
         }
 
         return topName;
@@ -49,8 +49,8 @@ public class Stack {
         String fullStack = "";
 
         if (!isEmpty()) {
-            for (int i = 0; i <= top; i++) {
-                fullStack += stack[i].getId() + " ";
+            for (int i = 0; i <= getTop(); i++) {
+                fullStack += getStack()[i].getId() + " ";
             }
         }
 
@@ -58,11 +58,11 @@ public class Stack {
     }
 
     private boolean isFull() {
-        return top == stack.length;
+        return getTop() == getStack().length;
     }
 
     private boolean isEmpty() {
-        return top == -1;
+        return getTop() == -1;
     }
     
     public Entity search(String id) {
@@ -70,9 +70,9 @@ public class Stack {
         Entity entityX = null;
         
         if (!isEmpty()) {
-            for (int i = 0; i <= top; i++) {
-                if (id.equals(stack[i].getId())) {
-                   entityX = stack[i]; 
+            for (int i = 0; i <= getTop(); i++) {
+                if (id.equals(getStack()[i].getId())) {
+                   entityX = getStack()[i]; 
                 }
             }
         }
@@ -83,11 +83,41 @@ public class Stack {
     public void update(Entity entity) {
         
         if (!isEmpty()) {
-            for (int i = 0; i <= top; i++) {
-                if (entity.getId().equals(stack[i].getId())) {
-                   stack[i] = entity; 
+            for (int i = 0; i <= getTop(); i++) {
+                if (entity.getId().equals(getStack()[i].getId())) {
+                    getStack()[i] = entity; 
                 }
             }
         }
     }
+    
+    public boolean contanis(String id) {
+        
+        if(search(id) == null)
+            return false;
+        else
+            return true;
+    }
+    
+    public Entity returnInIndex(int index) {
+        return stack[index];
+    }
+
+    public int getTop() {
+        return top;
+    }
+
+    public void setTop(int top) {
+        this.top = top;
+    }
+
+    public Entity[] getStack() {
+        return stack;
+    }
+
+    public void setStack(Entity[] stack) {
+        this.stack = stack;
+    }
+    
+    
 }

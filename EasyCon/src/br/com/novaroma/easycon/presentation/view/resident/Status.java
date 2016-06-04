@@ -19,6 +19,7 @@ public class Status extends javax.swing.JInternalFrame {
         jLabelName = new javax.swing.JLabel();
         jLabelCpf = new javax.swing.JLabel();
         jLabelAge = new javax.swing.JLabel();
+        jLabelPassword = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabelStatus = new javax.swing.JLabel();
         jLabelNumber = new javax.swing.JLabel();
@@ -61,6 +62,8 @@ public class Status extends javax.swing.JInternalFrame {
 
         jLabelAge.setText("Idade");
 
+        jLabelPassword.setText("Senha");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -68,12 +71,13 @@ public class Status extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelCpf)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelName)
-                        .addGap(99, 99, 99)
-                        .addComponent(jLabelAge)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelName)
+                    .addComponent(jLabelCpf))
+                .addGap(99, 99, 99)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelPassword)
+                    .addComponent(jLabelAge))
+                .addContainerGap(400, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,7 +86,9 @@ public class Status extends javax.swing.JInternalFrame {
                     .addComponent(jLabelName)
                     .addComponent(jLabelAge))
                 .addGap(18, 18, 18)
-                .addComponent(jLabelCpf)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCpf)
+                    .addComponent(jLabelPassword))
                 .addGap(0, 26, Short.MAX_VALUE))
         );
 
@@ -113,7 +119,7 @@ public class Status extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelNumber)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabelFamily)
@@ -207,6 +213,7 @@ public class Status extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelLogin;
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelNumber;
+    private javax.swing.JLabel jLabelPassword;
     private javax.swing.JLabel jLabelStatus;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -222,6 +229,7 @@ public class Status extends javax.swing.JInternalFrame {
         jLabelName.setText("Nome: " + Resident.getCurrentResident().getName());
         jLabelStatus.setText("Status: " + Resident.getCurrentResident().getOwe());
         jLabelNumber.setText("Telefone: " + Resident.getCurrentResident().getPhoneNumber());
+        jLabelPassword.setText("Senha: " + Resident.getCurrentResident().getPassword());
     }
 
     private void update() {
