@@ -10,7 +10,7 @@ public class Queue {
     private int count;
 
     public Queue() {
-
+        queue = new Entity[50];
     }
 
     public Queue(int length) {

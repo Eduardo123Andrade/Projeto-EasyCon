@@ -18,7 +18,6 @@ public class DesktopDweller extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -26,6 +25,10 @@ public class DesktopDweller extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
 
@@ -72,19 +75,6 @@ public class DesktopDweller extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem1);
-
-        jMenuItem3.setText("Finanças");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenuItem3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jMenuItem3KeyPressed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
 
@@ -151,6 +141,35 @@ public class DesktopDweller extends javax.swing.JFrame {
         jMenu4.add(jMenuItem8);
 
         jMenuBar1.add(jMenu4);
+
+        jMenu6.setText("Reclamações");
+
+        jMenuItem6.setText("Reclamações");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenuItem6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jMenuItem6KeyPressed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem6);
+
+        jMenuBar1.add(jMenu6);
+
+        jMenu7.setText("Finanças");
+
+        jMenuItem9.setText("Finanças");
+        jMenuItem9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jMenuItem9KeyPressed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem9);
+
+        jMenuBar1.add(jMenu7);
 
         jMenu5.setText("Sair");
         jMenu5.addActionListener(new java.awt.event.ActionListener() {
@@ -264,15 +283,21 @@ public class DesktopDweller extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_jMenuItem8KeyPressed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        finance();
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        claims();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
-    private void jMenuItem3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem3KeyPressed
-       if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-           finance();
-       }
-    }//GEN-LAST:event_jMenuItem3KeyPressed
+    private void jMenuItem6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem6KeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            claims();
+        }
+    }//GEN-LAST:event_jMenuItem6KeyPressed
+
+    private void jMenuItem9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem9KeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            finances();
+        }
+    }//GEN-LAST:event_jMenuItem9KeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -281,15 +306,18 @@ public class DesktopDweller extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 
     private void status() {
@@ -335,10 +363,16 @@ public class DesktopDweller extends javax.swing.JFrame {
         this.dispose();
     }
 
-    private void finance() {
+    private void finances() {
         Finance f = new Finance(jDesktopPane1);
         jDesktopPane1.add(f);
         f.setVisible(true);
+    }
+    
+    private void claims(){
+        Claims c = new Claims();
+        jDesktopPane1.add(c);
+        c.setVisible(true);
     }
 
 }

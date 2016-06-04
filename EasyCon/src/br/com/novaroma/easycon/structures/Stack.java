@@ -9,6 +9,7 @@ public class Stack {
 
     public Stack() {
         top = -1;
+        stack = new Entity[50];
     }
 
     public Stack(int length) {

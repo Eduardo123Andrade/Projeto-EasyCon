@@ -23,12 +23,12 @@ public class Dao implements IDao {
     }
 
     @Override
-    public void insert(Entity entity, DynamicQueue queue) {
+    public void insert(Entity entity, Queue queue) {
         queue.toQueue(entity);
     }
 
     @Override
-    public void insert(Entity entity, DynamicStack stack) {
+    public void insert(Entity entity, Stack stack) {
         stack.stackUp(entity);
     }
 
@@ -48,12 +48,12 @@ public class Dao implements IDao {
     }
 
     @Override
-    public void remove(DynamicQueue queue) {
+    public void remove(Queue queue) {
         queue.dequeue();
     }
 
     @Override
-    public void remove(DynamicStack stack) {
+    public void remove(Stack stack) {
         stack.unstack();
     }
 
@@ -73,12 +73,12 @@ public class Dao implements IDao {
     }
 
     @Override
-    public void update(Entity entity, DynamicQueue queue) {
+    public void update(Entity entity, Queue queue) {
         queue.update(entity);
     }
 
     @Override
-    public void update(Entity entity, DynamicStack stack) {
+    public void update(Entity entity, Stack stack) {
         stack.update(entity);
     }
 
@@ -98,12 +98,12 @@ public class Dao implements IDao {
     }
 
     @Override
-    public Entity search(String id, DynamicQueue queue) {
+    public Entity search(String id, Queue queue) {
         return queue.search(id);
     }
 
     @Override
-    public Entity search(String id, DynamicStack stack) {
+    public Entity search(String id, Stack stack) {
         return stack.search(id);
     }
 }

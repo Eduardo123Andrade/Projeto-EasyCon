@@ -1,10 +1,12 @@
 package br.com.novaroma.easycon.presentation.view.resident;
 
+import br.com.novaroma.easycon.entities.Resident;
 import com.sun.glass.events.KeyEvent;
 public class Status extends javax.swing.JInternalFrame {
 
     public Status() {
         initComponents();
+        showStatus();
     }
 
     @SuppressWarnings("unchecked")
@@ -40,6 +42,11 @@ public class Status extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("Alterar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jButton2KeyPressed(evt);
@@ -183,6 +190,11 @@ public class Status extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButton2KeyPressed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        update();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
@@ -202,6 +214,14 @@ public class Status extends javax.swing.JInternalFrame {
 
     private void exit() {
         this.dispose();
+    }
+
+    private void showStatus() { 
+        jLabelAge.setText("Idade: " + Resident.getCurrentResident().getAge()); 
+        jLabelCpf.setText("CPF: " + Resident.getCurrentResident().getCpf());
+        jLabelName.setText("Nome: " + Resident.getCurrentResident().getName());
+        jLabelStatus.setText("Status: " + Resident.getCurrentResident().getOwe());
+        jLabelNumber.setText("Telefone: " + Resident.getCurrentResident().getPhoneNumber());
     }
 
     private void update() {

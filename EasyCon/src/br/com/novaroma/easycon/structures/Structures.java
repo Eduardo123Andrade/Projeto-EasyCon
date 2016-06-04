@@ -6,8 +6,8 @@ public class Structures {
     private static AvlTree tree = new AvlTree();
     private static Hash hash = new Hash();
     private static LinkedList list = new LinkedList();
-    private static DynamicQueue queue = new DynamicQueue();
-    private static DynamicStack stack = new DynamicStack();
+    private static Queue queue = new Queue();
+    private static Stack stack = new Stack();
 
     public static AvlTree getTree() {
         return tree;
@@ -33,19 +33,19 @@ public class Structures {
         list = aList;
     }
 
-    public static DynamicQueue getQueue() {
+    public static Queue getQueue() {
         return queue;
     }
 
-    public static void setQueue(DynamicQueue aQueue) {
+    public static void setQueue(Queue aQueue) {
         queue = aQueue;
     }
 
-    public static DynamicStack getStack() {
+    public static Stack getStack() {
         return stack;
     }
 
-    public static void setStack(DynamicStack aStack) {
+    public static void setStack(Stack aStack) {
         stack = aStack;
     }
     

@@ -21,12 +21,16 @@ public class DesktopSyndic extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
 
@@ -115,6 +119,19 @@ public class DesktopSyndic extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem5);
 
+        jMenuItem12.setText("Caixa de saida");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenuItem12.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jMenuItem12KeyPressed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem12);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Enquetes");
@@ -149,9 +166,6 @@ public class DesktopSyndic extends javax.swing.JFrame {
 
         jMenu4.setText("Alocações");
 
-        jMenuItem8.setText("Locar locais");
-        jMenu4.add(jMenuItem8);
-
         jMenuItem9.setText("Editar locação");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,6 +180,40 @@ public class DesktopSyndic extends javax.swing.JFrame {
         jMenu4.add(jMenuItem9);
 
         jMenuBar1.add(jMenu4);
+
+        jMenu6.setText("Reclamação");
+
+        jMenuItem8.setText("Reclamação");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenuItem8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jMenuItem8KeyPressed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem8);
+
+        jMenuBar1.add(jMenu6);
+
+        jMenu7.setText("Finanças");
+
+        jMenuItem11.setText("Finanças");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenuItem11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jMenuItem11KeyPressed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem11);
+
+        jMenuBar1.add(jMenu7);
 
         jMenu5.setText("Sair");
         jMenu5.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +274,7 @@ public class DesktopSyndic extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1KeyPressed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-            remove();
+        remove();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem3KeyPressed
@@ -299,6 +347,37 @@ public class DesktopSyndic extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu5ActionPerformed
 
+    private void jMenuItem8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem8KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            complaint();
+
+        }
+    }//GEN-LAST:event_jMenuItem8KeyPressed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        complaint();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        finances();
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem11KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            finances();
+        }
+    }//GEN-LAST:event_jMenuItem11KeyPressed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        exitBox();
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem12KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            exitBox();
+        }
+    }//GEN-LAST:event_jMenuItem12KeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
@@ -306,9 +385,13 @@ public class DesktopSyndic extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -318,24 +401,23 @@ public class DesktopSyndic extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
-    
-    
-    private void register() {      //OK
+
+    private void register() {
         Register r = new Register();
         jDesktopPane1.add(r);
         r.setVisible(true);
     }
-    
-    private void roster(){      //OK
+
+    private void roster() {
         DwellerList dl = new DwellerList();
         jDesktopPane1.add(dl);
         dl.setVisible(true);
     }
 
-    private void remove() {     //OK
-       Remove r = new Remove();
-       jDesktopPane1.add(r);
-       r.setVisible(true);
+    private void remove() {
+        Remove r = new Remove();
+        jDesktopPane1.add(r);
+        r.setVisible(true);
     }
 
     private void send() {
@@ -368,9 +450,25 @@ public class DesktopSyndic extends javax.swing.JFrame {
         el.setVisible(true);
     }
 
-    private void exit(){
+    private void exit() {
         this.dispose();
     }
 
-}
+    private void complaint() {
+        Complaint c = new Complaint();
+        jDesktopPane1.add(c);
+        c.setVisible(true);
+    }
 
+    private void finances() {
+        Finances f = new Finances();
+        jDesktopPane1.add(f);
+        f.setVisible(true);
+    }
+
+    private void exitBox() {
+        ExitBox eb = new ExitBox();
+        jDesktopPane1.add(eb);
+        eb.setVisible(true);
+    }
+}
