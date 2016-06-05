@@ -70,4 +70,22 @@ public class Structures {
         return stack.contanis(String.valueOf(code));
     }
     
+    public static int generateCodeOnList() {
+        
+        Random random = new Random();
+
+        int codeRandom;
+        boolean boo = true;
+
+        do {
+            codeRandom = random.nextInt(99999) + 1;
+            boo = verifyCodeOnList(codeRandom, list);
+        } while (boo);
+
+        return codeRandom;
+    }
+    
+    public static boolean verifyCodeOnList(int code, LinkedList list) {
+        return list.contains(String.valueOf(code));
+    }
 }

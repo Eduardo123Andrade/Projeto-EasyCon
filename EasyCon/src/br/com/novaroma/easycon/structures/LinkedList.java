@@ -3,6 +3,7 @@ package br.com.novaroma.easycon.structures;
 import br.com.novaroma.easycon.entities.Entity;
 import br.com.novaroma.easycon.entities.Person;
 import br.com.novaroma.easycon.entities.Resident;
+import javax.swing.JOptionPane;
 
 public class LinkedList { //90% TESTADO
     
@@ -184,6 +185,8 @@ public class LinkedList { //90% TESTADO
             if (temp.getEntity().getId().equalsIgnoreCase(id)) {
                 boo = true;
             }
+            
+            temp = temp.getNext();
         }
         
         return boo;
@@ -194,16 +197,19 @@ public class LinkedList { //90% TESTADO
         Link temp = first;
         int position = 0;
         int cont = 0;
-        
+         JOptionPane.showMessageDialog(null, "sdigjdsogs");
         if (contains(id)) {
-            while (temp != null) {                
+            while (temp != null) {      
                 if (temp.getEntity().getId().equalsIgnoreCase(id)) {
                     position = cont + 1;
                 }
                 cont++;
+                
+                temp = temp.getNext();
+                
             }
         }
-        
+       
         return position;
     }
     
@@ -218,6 +224,10 @@ public class LinkedList { //90% TESTADO
            
             temp = temp.getNext();
         }
+    }
+    
+    public Link getFirst() {
+        return first;
     }
     
     public static void main(String[] args) {

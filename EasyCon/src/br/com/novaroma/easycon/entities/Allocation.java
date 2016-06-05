@@ -1,9 +1,12 @@
 
 package br.com.novaroma.easycon.entities;
 
+import java.util.Date;
+
 public class Allocation {
     
     private String name;
+    private Date date; //Rever
     private double price;
 
     public Allocation() {

@@ -432,13 +432,19 @@ public class DesktopSyndic extends javax.swing.JFrame {
         i.setVisible(true);
     }
 
-    private void polls() {
+    private void exitBox() { //OK
+        ExitBox eb = new ExitBox();
+        jDesktopPane1.add(eb);
+        eb.setVisible(true);
+    }
+
+    private void polls() { //OK
         Polls p = new Polls();
         jDesktopPane1.add(p);
         p.setVisible(true);
     }
 
-    private void pollslist() {
+    private void pollslist() { //OK
         PollsList pl = new PollsList();
         jDesktopPane1.add(pl);
         pl.setVisible(true);
@@ -448,10 +454,6 @@ public class DesktopSyndic extends javax.swing.JFrame {
         EditLocation el = new EditLocation();
         jDesktopPane1.add(el);
         el.setVisible(true);
-    }
-
-    private void exit() {
-        this.dispose();
     }
 
     private void complaint() {
@@ -466,9 +468,7 @@ public class DesktopSyndic extends javax.swing.JFrame {
         f.setVisible(true);
     }
 
-    private void exitBox() {
-        ExitBox eb = new ExitBox();
-        jDesktopPane1.add(eb);
-        eb.setVisible(true);
+    private void exit() {
+        this.dispose();
     }
 }

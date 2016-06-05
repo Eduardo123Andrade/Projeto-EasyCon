@@ -1,20 +1,46 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
+import br.com.novaroma.easycon.dao.IDao;
+import br.com.novaroma.easycon.entities.Survey;
+import br.com.novaroma.easycon.factories.Factory;
+import br.com.novaroma.easycon.structures.Link;
+import br.com.novaroma.easycon.structures.Structures;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class PollsList extends javax.swing.JInternalFrame {
 
+    private IDao dao = Factory.getDao();
+    
     public PollsList() {
         initComponents();
+        surveyList(Structures.getList().getFirst());
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+
+        jLabel7.setText("jLabel7");
 
         setTitle("Lista de enquetes");
 
@@ -23,11 +49,11 @@ public class PollsList extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Assunto", "Data"
+                "Codigo", "Pergunta", "Data", "Votos"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -48,24 +74,102 @@ public class PollsList extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton2.setText("Visualizar resultados");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Pergunta:  ");
+
+        jLabel2.setText("a) ");
+
+        jLabel3.setText("b) ");
+
+        jLabel4.setText("c) ");
+
+        jLabel5.setText("d) ");
+
+        jLabel6.setText("e) ");
+
+        jLabel8.setText(".");
+
+        jLabel9.setText("Estatisticas");
+
+        jLabel10.setText(".");
+
+        jLabel11.setText(".");
+
+        jLabel12.setText(".");
+
+        jLabel13.setText(".");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGap(134, 134, 134)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel9))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel10))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel11))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel13))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
         );
 
         pack();
@@ -81,9 +185,27 @@ public class PollsList extends javax.swing.JInternalFrame {
        }
     }//GEN-LAST:event_jButton1KeyPressed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        openSurvey();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
@@ -91,4 +213,40 @@ public class PollsList extends javax.swing.JInternalFrame {
     private void exit() {
      this.dispose();  
     }    
+    
+    private void surveyList(Link temp) {
+        
+        while (temp != null) {
+            
+            Survey surveyTemp = (Survey) temp.getEntity();
+            DefaultTableModel surveyList = (DefaultTableModel) jTable1.getModel();
+            String[] date = surveyTemp.getDate().toString().split(" ");
+            
+            surveyList.addRow(new String[]{surveyTemp.getId(), surveyTemp.getQuestion(), date[2] + "/" + date[1] + "/" + date[5], String.valueOf(surveyTemp.getTotal())});
+            
+            temp = temp.getNext();
+        }
+    }
+    
+    private void openSurvey() {
+        
+        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        Survey surveyX = (Survey)dao.search(id, Structures.getList());
+        
+        JOptionPane.showMessageDialog(null, "disgods");
+        double[] percents = surveyX.returnPercent();
+        
+        jLabel1.setText(jLabel1.getText() + surveyX.getQuestion());
+        jLabel2.setText(jLabel2.getText() + surveyX.getAlternative(0));
+        jLabel3.setText(jLabel3.getText() + surveyX.getAlternative(1));
+        jLabel4.setText(jLabel4.getText() + surveyX.getAlternative(2));
+        jLabel5.setText(jLabel5.getText() + surveyX.getAlternative(3));
+        jLabel6.setText(jLabel6.getText() + surveyX.getAlternative(4));
+        
+        jLabel8.setText(percents[0] + "%   (" + surveyX.getAlternativeScore(0) + " votos)");
+        jLabel10.setText(percents[1] + "%   (" + surveyX.getAlternativeScore(1) + " votos)");
+        jLabel11.setText(percents[2] + "%   (" + surveyX.getAlternativeScore(2) + " votos)");
+        jLabel12.setText(percents[3] + "%   (" + surveyX.getAlternativeScore(3) + " votos)");
+        jLabel13.setText(percents[4] + "%   (" + surveyX.getAlternativeScore(4) + " votos)");
+    }
 }
