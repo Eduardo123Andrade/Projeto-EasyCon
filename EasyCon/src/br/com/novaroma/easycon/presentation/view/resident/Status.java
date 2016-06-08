@@ -23,10 +23,9 @@ public class Status extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabelStatus = new javax.swing.JLabel();
         jLabelNumber = new javax.swing.JLabel();
-        jLabelFamily = new javax.swing.JLabel();
-        jLabelLogin = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setTitle("Status");
 
@@ -96,15 +95,13 @@ public class Status extends javax.swing.JInternalFrame {
 
         jLabelStatus.setText("Status");
 
-        jLabelNumber.setText("Numero");
+        jLabelNumber.setText("Telefone");
 
-        jLabelFamily.setText("Numero de moradores");
+        jLabel1.setText("Bloco");
 
-        jLabelLogin.setText("Login");
+        jLabel2.setText("Edificio");
 
-        jLabel8.setText("jLabel1");
-
-        jLabel9.setText("jLabel1");
+        jLabel3.setText("Numero");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -114,19 +111,15 @@ public class Status extends javax.swing.JInternalFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelStatus)
-                    .addComponent(jLabelLogin))
+                    .addComponent(jLabel1))
                 .addGap(39, 39, 39)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelNumber)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabelFamily)
-                        .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(67, 67, 67))))
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabelNumber)
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,17 +128,12 @@ public class Status extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelStatus)
                     .addComponent(jLabelNumber)
-                    .addComponent(jLabelFamily))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelLogin)
-                            .addComponent(jLabel8)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel9)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,12 +193,11 @@ public class Status extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonExit;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelAge;
     private javax.swing.JLabel jLabelCpf;
-    private javax.swing.JLabel jLabelFamily;
-    private javax.swing.JLabel jLabelLogin;
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelNumber;
     private javax.swing.JLabel jLabelPassword;
@@ -225,11 +212,14 @@ public class Status extends javax.swing.JInternalFrame {
 
     private void showStatus() { 
         jLabelAge.setText("Idade: " + Resident.getCurrentResident().getAge()); 
-        jLabelCpf.setText("CPF: " + Resident.getCurrentResident().getCpf());
-        jLabelName.setText("Nome: " + Resident.getCurrentResident().getName());
+        jLabelCpf.setText("CPF/Login: " + Resident.getCurrentResident().getCpf());
+        jLabelName.setText("Nome: " + Resident.getCurrentResident().getName()+ " " + Resident.getCurrentResident().getLastName());
         jLabelStatus.setText("Status: " + Resident.getCurrentResident().getOwe());
         jLabelNumber.setText("Telefone: " + Resident.getCurrentResident().getPhoneNumber());
         jLabelPassword.setText("Senha: " + Resident.getCurrentResident().getPassword());
+        jLabel1.setText("Bloco: " + Resident.getCurrentResident().getAdrdress().getBlock());
+        jLabel2.setText("Edificio: " + Resident.getCurrentResident().getAdrdress().getBuilding());
+        jLabel3.setText("Numero: " + Resident.getCurrentResident().getAdrdress().getNumber());
     }
 
     private void update() {

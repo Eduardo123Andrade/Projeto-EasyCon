@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/EasyCon/src/br/com/novaroma/easycon/controller/ControllerAdm.java</file>
             <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/EasyCon/src/br/com/novaroma/easycon/entities/Resident.java</file>
             <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/EasyCon/src/br/com/novaroma/easycon/presentation/view/syndic/Register.java</file>
+            <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/EasyCon/src/br/com/novaroma/easycon/presentation/view/resident/Status.java</file>
             <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/EasyCon/src/br/com/novaroma/easycon/controller/ControllerResident.java</file>
             <file>file:/C:/Users/Felipe/Documents/NetBeansProjects/EasyCon/src/br/com/novaroma/easycon/entities/Address.java</file>
         </group>
