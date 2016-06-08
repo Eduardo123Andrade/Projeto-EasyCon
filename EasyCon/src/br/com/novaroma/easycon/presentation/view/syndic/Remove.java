@@ -146,8 +146,7 @@ public class Remove extends javax.swing.JInternalFrame {
 
     private void remove() {
         //APOS VERIFICACAO 
-        IDao dao = Factory.getDao();
-        Resident x = (Resident) dao.search(jTextField1.getText(), Structures.getTree());
+        Resident x = (Resident)conAdm.returnEntityTree(jTextField1.getText(), Structures.getTree());
 
         conAdm.removeResident(jTextField1.getText());
         JOptionPane.showMessageDialog(null, x.getName() + " foi removido com sucesso!");

@@ -1,8 +1,7 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
-import br.com.novaroma.easycon.dao.IDao;
+import br.com.novaroma.easycon.controller.ControllerAdm;
 import br.com.novaroma.easycon.entities.Survey;
-import br.com.novaroma.easycon.factories.Factory;
 import br.com.novaroma.easycon.structures.Link;
 import br.com.novaroma.easycon.structures.Structures;
 import java.awt.event.KeyEvent;
@@ -11,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class PollsList extends javax.swing.JInternalFrame {
 
-    private IDao dao = Factory.getDao();
+    private ControllerAdm conAdm = new ControllerAdm();
     
     public PollsList() {
         initComponents();
@@ -126,14 +125,15 @@ public class PollsList extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
-                        .addGap(134, 134, 134)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(134, 134, 134))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -231,7 +231,7 @@ public class PollsList extends javax.swing.JInternalFrame {
     private void openSurvey() {
         
         String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        Survey surveyX = (Survey)dao.search(id, Structures.getList());
+        Survey surveyX = (Survey)conAdm.returnEntityList(id, Structures.getList());
         
         JOptionPane.showMessageDialog(null, "disgods");
         double[] percents = surveyX.returnPercent();

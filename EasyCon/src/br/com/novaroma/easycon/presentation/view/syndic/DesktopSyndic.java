@@ -457,7 +457,7 @@ public class DesktopSyndic extends javax.swing.JFrame {
     }
 
     private void complaint() {
-        Complaint c = new Complaint();
+        ComplaintScreen c = new ComplaintScreen();
         jDesktopPane1.add(c);
         c.setVisible(true);
     }

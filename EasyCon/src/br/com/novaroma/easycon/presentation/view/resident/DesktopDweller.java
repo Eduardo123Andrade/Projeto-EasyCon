@@ -4,6 +4,7 @@ import br.com.novaroma.easycon.presentation.view.syndic.PollsList;
 import java.awt.event.KeyEvent;
 
 public class DesktopDweller extends javax.swing.JFrame {
+
     public DesktopDweller() {
         initComponents();
     }
@@ -273,13 +274,13 @@ public class DesktopDweller extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu5ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-      tenancy();
+        tenancy();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem8KeyPressed
-       if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-           tenancy();
-       }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            tenancy();
+        }
     }//GEN-LAST:event_jMenuItem8KeyPressed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -287,13 +288,13 @@ public class DesktopDweller extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem6KeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             claims();
         }
     }//GEN-LAST:event_jMenuItem6KeyPressed
 
     private void jMenuItem9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem9KeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             finances();
         }
     }//GEN-LAST:event_jMenuItem9KeyPressed
@@ -320,13 +321,12 @@ public class DesktopDweller extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void status() { //OK
-     Status s = new Status();
-     jDesktopPane1.add(s);
-     s.setVisible(true);
+        Status s = new Status();
+        jDesktopPane1.add(s);
+        s.setVisible(true);
     }
-    
-    
-    private void update(){ //OK
+
+    private void update() { //OK
         Update u = new Update();
         jDesktopPane1.add(u);
         u.setVisible(true);
@@ -350,16 +350,10 @@ public class DesktopDweller extends javax.swing.JFrame {
         i.setVisible(true);
     }
 
-    
-    private void pollslist() {
-        PollsList pl  = new PollsList();
+    private void pollslist() { //OK
+        PollsList pl = new PollsList();
         jDesktopPane1.add(pl);
         pl.setVisible(true);
-    }
-
-    
-    private void exit(){
-        this.dispose();
     }
 
     private void finances() {
@@ -367,11 +361,15 @@ public class DesktopDweller extends javax.swing.JFrame {
         jDesktopPane1.add(f);
         f.setVisible(true);
     }
-    
-    private void claims(){
+
+    private void claims() {//OK
         Claims c = new Claims();
         jDesktopPane1.add(c);
         c.setVisible(true);
+    }
+
+    private void exit() {
+        this.dispose();
     }
 
 }

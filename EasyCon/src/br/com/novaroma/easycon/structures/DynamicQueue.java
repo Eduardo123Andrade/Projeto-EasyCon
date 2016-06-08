@@ -33,6 +33,14 @@ public class DynamicQueue { //90% TESTADO!
         queue.update(entity);
     }
     
+    public boolean contains(String id) {
+        return queue.contains(id);
+    }
+    
+    public Link getFirst() {
+        return queue.getFirst();
+    }
+    
     public static void main(String[] args) {
         
         DynamicQueue queue = new DynamicQueue();

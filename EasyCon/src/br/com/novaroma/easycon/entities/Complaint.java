@@ -2,15 +2,15 @@
 package br.com.novaroma.easycon.entities;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 
 public class Complaint extends Entity implements Serializable {
 
     private int complaintCode;
-    private int urgency;
     private String category;
+    private String title;
     private String text;
-    private Calendar date;
+    private Date date;
     private Resident resident;
     private boolean solved;
     
@@ -22,14 +22,14 @@ public class Complaint extends Entity implements Serializable {
     public Complaint() {
     }
 
-    public Complaint(int complaintCode, int urgency, String category, String text, Calendar date, Resident resident, boolean solved) {
+    public Complaint(int complaintCode, String category, String title, String text, Resident resident) {
         this.complaintCode = complaintCode;
-        this.urgency = urgency;
         this.category = category;
+        this.title = title;
         this.text = text;
-        this.date = date;
+        this.date = new Date();
         this.resident = resident;
-        this.solved = solved;
+        this.solved = false;
     }
 
     public int getComplaintCode() {
@@ -38,14 +38,6 @@ public class Complaint extends Entity implements Serializable {
 
     public void setComplaintCode(int complaintCode) {
         this.complaintCode = complaintCode;
-    }
-
-    public int getUrgency() {
-        return urgency;
-    }
-
-    public void setUrgency(int urgency) {
-        this.urgency = urgency;
     }
 
     public String getCategory() {
@@ -64,11 +56,11 @@ public class Complaint extends Entity implements Serializable {
         this.text = text;
     }
 
-    public Calendar getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Calendar date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -86,5 +78,13 @@ public class Complaint extends Entity implements Serializable {
 
     public void setSolved(boolean solved) {
         this.solved = solved;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

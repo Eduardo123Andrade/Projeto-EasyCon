@@ -1,9 +1,8 @@
 package br.com.novaroma.easycon.presentation.view.resident;
 
-import br.com.novaroma.easycon.dao.IDao;
+import br.com.novaroma.easycon.controller.ControllerResident;
 import br.com.novaroma.easycon.entities.Message;
 import br.com.novaroma.easycon.entities.Resident;
-import br.com.novaroma.easycon.factories.Factory;
 import br.com.novaroma.easycon.structures.Stack;
 import br.com.novaroma.easycon.structures.Structures;
 import java.awt.event.KeyEvent;
@@ -11,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class Inbox extends javax.swing.JInternalFrame {
 
-    private IDao dao = Factory.getDao();
+    private ControllerResident conRes = new ControllerResident();
     
     public Inbox() {
         initComponents();
@@ -162,7 +161,7 @@ public class Inbox extends javax.swing.JInternalFrame {
     private void openMenssege() {
 
         String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        Message messageX = (Message)dao.search(id, Structures.getStack());
+        Message messageX = (Message)conRes.returnEntityStack(id, Structures.getStack());
         
         jTextField1.setText(messageX.getTitle());
         jTextArea1.setText(messageX.getText());

@@ -73,4 +73,20 @@ public class ControllerAdm { //COLOCAR TODAS AS EXCECOES DEPOIS!
         Survey survey = new Survey(question, Structures.generateCodeOnList(), alternatives);
         dao.insert(survey, Structures.getList());
     }
+    
+    public Entity returnEntityTree(String id, AvlTree tree) {
+        return dao.search(id, tree);
+    }
+    
+    public Entity returnEntityStack(String id, Stack stack) {
+        return dao.search(id, stack);
+    }
+    
+    public Entity returnEntityList(String id, LinkedList list) {
+        return dao.search(id, list);
+    }
+    
+    public Entity returnEntityHash(String id, Hash hash, int index) {
+        return dao.search(id, hash, index);
+    }
 }

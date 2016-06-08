@@ -1,18 +1,17 @@
 
 package br.com.novaroma.easycon.presentation.view.syndic;
 
-import br.com.novaroma.easycon.dao.IDao;
+import br.com.novaroma.easycon.controller.ControllerAdm;
 import br.com.novaroma.easycon.entities.Maneger;
 import br.com.novaroma.easycon.structures.Stack;
 import br.com.novaroma.easycon.structures.Structures;
 import br.com.novaroma.easycon.entities.Message;
-import br.com.novaroma.easycon.factories.Factory;
 import java.awt.event.KeyEvent;
 import javax.swing.table.DefaultTableModel;
 
 public class ExitBox extends javax.swing.JInternalFrame {
 
-    private IDao dao = Factory.getDao();
+    private ControllerAdm conAdm = new ControllerAdm();
     
     public ExitBox() {
         initComponents();
@@ -154,7 +153,7 @@ public class ExitBox extends javax.swing.JInternalFrame {
     private void openMenssege() {
 
         String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        Message messageX = (Message)dao.search(id, Structures.getStack());
+        Message messageX = (Message)conAdm.returnEntityStack(id, Structures.getStack());
         
         jTextFieldSubject.setText(messageX.getTitle());
         jTextArea1.setText(messageX.getText());
@@ -176,7 +175,4 @@ public class ExitBox extends javax.swing.JInternalFrame {
 
         }
     }
-    
-    
-
 }

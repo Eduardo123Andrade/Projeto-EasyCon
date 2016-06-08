@@ -66,7 +66,7 @@ public class Structures {
         return codeRandom;
     }
     
-    public static boolean verifyCodeOnStack(int code, Stack stack) {
+    private static boolean verifyCodeOnStack(int code, Stack stack) {
         return stack.contanis(String.valueOf(code));
     }
     
@@ -85,7 +85,26 @@ public class Structures {
         return codeRandom;
     }
     
-    public static boolean verifyCodeOnList(int code, LinkedList list) {
+    private static boolean verifyCodeOnList(int code, LinkedList list) {
         return list.contains(String.valueOf(code));
+    }
+    
+    public static int generateCodeOnHash() {
+        
+        Random random = new Random();
+
+        int codeRandom;
+        boolean boo = true;
+
+        do {
+            codeRandom = random.nextInt(99999) + 1;
+            boo = verifyCodeOnHash(codeRandom, hash);
+        } while (boo);
+
+        return codeRandom;
+    }
+    
+    private static boolean verifyCodeOnHash(int code, Hash hash) {
+        return hash.contains(String.valueOf(code));
     }
 }
