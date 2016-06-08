@@ -172,27 +172,4 @@ public class DLinkedList { //TESTADO - 100% OK!
         }
         return temp;
     }
-    
-    public static void main(String[] args) {
-        
-        DLinkedList list = new DLinkedList();
-        
-        Resident a = new Resident(null, null, null, null, null, "Felipe", null, null, null, true);
-        Resident b = new Resident(null, null, null, null, null, "Catarina", null, null, null, true);
-        Resident c = new Resident(null, null, null, null, null, "Lucas", null, null, null, true);
-        Resident d = new Resident(null, null, null, null, null, "Marina", null, null, null, true);
-       
-        list.addFirst(a);
-        list.addFirst(b);
-        list.addLast(c);
-        list.addBetween(d, 2);
-        System.out.println(list.showList());
-        System.out.println(list.showReverseList());
-        System.out.println(list.showQuantity());
-        
-        list.removeBetween(3);
-        System.out.println(list.showList());
-        System.out.println(list.showReverseList());
-        System.out.println(list.showQuantity());    
-    }
 }

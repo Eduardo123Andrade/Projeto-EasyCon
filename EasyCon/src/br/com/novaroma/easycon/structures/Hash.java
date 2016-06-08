@@ -3,9 +3,9 @@ package br.com.novaroma.easycon.structures;
 
 import br.com.novaroma.easycon.entities.Entity;
 
-public class Hash {
+public class Hash { //TA ERRADO
     
-    private DynamicQueue[] hash;
+    private DynamicQueue[] hash; 
 
     public Hash() {
         this.hash = new DynamicQueue[3];
@@ -48,5 +48,9 @@ public class Hash {
     
     public DynamicQueue getHashOnIndex(int index) {
         return hash[index];
+    }
+    
+    private int hashFunction(int id) {
+        return id % hash.length;
     }
 }

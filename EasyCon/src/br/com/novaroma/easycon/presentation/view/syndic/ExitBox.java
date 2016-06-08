@@ -2,6 +2,7 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
+import br.com.novaroma.easycon.controller.IControllerAdm;
 import br.com.novaroma.easycon.entities.Maneger;
 import br.com.novaroma.easycon.structures.Stack;
 import br.com.novaroma.easycon.structures.Structures;
@@ -11,11 +12,11 @@ import javax.swing.table.DefaultTableModel;
 
 public class ExitBox extends javax.swing.JInternalFrame {
 
-    private ControllerAdm conAdm = new ControllerAdm();
+    private IControllerAdm conAdm = new ControllerAdm();
     
     public ExitBox() {
         initComponents();
-        messageList(Structures.getStack());
+        messageList();
     }
 
     @SuppressWarnings("unchecked")
@@ -53,6 +54,7 @@ public class ExitBox extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
@@ -68,6 +70,8 @@ public class ExitBox extends javax.swing.JInternalFrame {
                 jButton1KeyPressed(evt);
             }
         });
+
+        jTextFieldSubject.setEditable(false);
 
         jButton2.setText("Visualizar mensagem");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +163,7 @@ public class ExitBox extends javax.swing.JInternalFrame {
         jTextArea1.setText(messageX.getText());
     }
     
-    private void messageList(Stack stack) {
+    private void messageList() {
 
         for (int i = Structures.getStack().getTop(); i >= 0; i--) {
 
@@ -170,7 +174,7 @@ public class ExitBox extends javax.swing.JInternalFrame {
                 String date[] = messageX.getDate().toString().split(" ");
 
                 DefaultTableModel residentList = (DefaultTableModel) jTable1.getModel();
-                residentList.addRow(new String[]{messageX.getId(), messageX.getTitle(), date[2] + "/" + date[1] + "/" + date[5]});
+                residentList.addRow(new String[]{messageX.getId(), messageX.getTitle(),messageX.getReceptor().getName(), date[2] + "/" + date[1] + "/" + date[5]});
             }
 
         }

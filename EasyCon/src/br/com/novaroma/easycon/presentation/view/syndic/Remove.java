@@ -1,18 +1,17 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
-import br.com.novaroma.easycon.dao.IDao;
+import br.com.novaroma.easycon.controller.IControllerAdm;
 import br.com.novaroma.easycon.entities.Resident;
-import br.com.novaroma.easycon.factories.Factory;
 import br.com.novaroma.easycon.structures.AvlLink;
 import br.com.novaroma.easycon.structures.Structures;
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Remove extends javax.swing.JInternalFrame {
 
-    private ControllerAdm conAdm = new ControllerAdm();
+    private IControllerAdm conAdm = new ControllerAdm();
     
     public Remove() {
         initComponents();
@@ -149,7 +148,11 @@ public class Remove extends javax.swing.JInternalFrame {
         Resident x = (Resident)conAdm.returnEntityTree(jTextField1.getText(), Structures.getTree());
 
         conAdm.removeResident(jTextField1.getText());
+        ((DefaultTableModel) jTable1.getModel()).setNumRows(0);
+        residentList(Structures.getTree().getRoot());
+        jTextField1.setText(null);
         JOptionPane.showMessageDialog(null, x.getName() + " foi removido com sucesso!");
+        
     }
 
     private void residentList(AvlLink temp) {
@@ -165,4 +168,5 @@ public class Remove extends javax.swing.JInternalFrame {
             residentList(temp.getRight());
         }
     }
+
 }

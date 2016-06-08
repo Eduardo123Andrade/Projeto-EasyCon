@@ -7,6 +7,7 @@ public class DesktopDweller extends javax.swing.JFrame {
 
     public DesktopDweller() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     @SuppressWarnings("unchecked")
@@ -21,6 +22,7 @@ public class DesktopDweller extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -105,6 +107,19 @@ public class DesktopDweller extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem5);
+
+        jMenuItem3.setText("Caixa de saida");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenuItem3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jMenuItem3KeyPressed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
 
@@ -299,6 +314,16 @@ public class DesktopDweller extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem9KeyPressed
 
+    private void jMenuItem3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem3KeyPressed
+       if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+           exitBox();
+       }
+    }//GEN-LAST:event_jMenuItem3KeyPressed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+       exitBox();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
@@ -312,6 +337,7 @@ public class DesktopDweller extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
@@ -321,7 +347,7 @@ public class DesktopDweller extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void status() { //OK
-        Status s = new Status();
+        Status s = new Status(jDesktopPane1);
         jDesktopPane1.add(s);
         s.setVisible(true);
     }
@@ -370,6 +396,12 @@ public class DesktopDweller extends javax.swing.JFrame {
 
     private void exit() {
         this.dispose();
+    }
+    
+    private void exitBox(){
+        ExitBox eb = new ExitBox();
+        jDesktopPane1.add(eb);
+        eb.setVisible(true);
     }
 
 }

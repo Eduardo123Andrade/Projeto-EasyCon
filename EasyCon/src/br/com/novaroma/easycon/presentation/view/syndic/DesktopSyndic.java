@@ -6,6 +6,7 @@ public class DesktopSyndic extends javax.swing.JFrame {
 
     public DesktopSyndic() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     @SuppressWarnings("unchecked")
@@ -29,6 +30,7 @@ public class DesktopSyndic extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -195,6 +197,19 @@ public class DesktopSyndic extends javax.swing.JFrame {
             }
         });
         jMenu6.add(jMenuItem8);
+
+        jMenuItem13.setText("Lista ");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        jMenuItem13.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jMenuItem13KeyPressed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem13);
 
         jMenuBar1.add(jMenu6);
 
@@ -378,6 +393,16 @@ public class DesktopSyndic extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem12KeyPressed
 
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        listComplaint();
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem13KeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            listComplaint();
+        }
+    }//GEN-LAST:event_jMenuItem13KeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
@@ -392,6 +417,7 @@ public class DesktopSyndic extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -470,5 +496,11 @@ public class DesktopSyndic extends javax.swing.JFrame {
 
     private void exit() {
         this.dispose();
+    }
+    
+    private void listComplaint(){
+        ComplaintList cl = new ComplaintList();
+        jDesktopPane1.add(cl);
+        cl.setVisible(true);
     }
 }

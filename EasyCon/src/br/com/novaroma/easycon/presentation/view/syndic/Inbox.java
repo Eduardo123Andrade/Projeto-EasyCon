@@ -1,16 +1,17 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
+import br.com.novaroma.easycon.controller.IControllerAdm;
 import br.com.novaroma.easycon.entities.Maneger;
 import br.com.novaroma.easycon.entities.Message;
 import br.com.novaroma.easycon.structures.Stack;
 import br.com.novaroma.easycon.structures.Structures;
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.table.DefaultTableModel;
 
 public class Inbox extends javax.swing.JInternalFrame {
 
-    private ControllerAdm conAdm = new ControllerAdm();
+    private IControllerAdm conAdm = new ControllerAdm();
 
     public Inbox() {
         initComponents();
@@ -66,6 +67,7 @@ public class Inbox extends javax.swing.JInternalFrame {
             }
         });
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
@@ -76,6 +78,8 @@ public class Inbox extends javax.swing.JInternalFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jTextField1.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

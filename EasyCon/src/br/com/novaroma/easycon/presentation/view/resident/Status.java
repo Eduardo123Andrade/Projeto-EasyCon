@@ -1,12 +1,22 @@
 package br.com.novaroma.easycon.presentation.view.resident;
 
 import br.com.novaroma.easycon.entities.Resident;
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
+import javax.swing.JDesktopPane;
 public class Status extends javax.swing.JInternalFrame {
-
+    
+    private JDesktopPane desktop;
+    
     public Status() {
         initComponents();
         showStatus();
+    }
+
+    public Status(JDesktopPane jDesktopPane1) {
+       desktop = jDesktopPane1;
+       initComponents();
+       showStatus();
+       
     }
 
     @SuppressWarnings("unchecked")
@@ -224,6 +234,7 @@ public class Status extends javax.swing.JInternalFrame {
 
     private void update() {
         Update up = new Update();
+        desktop.add(up);
         up.setVisible(true);
     }
 }

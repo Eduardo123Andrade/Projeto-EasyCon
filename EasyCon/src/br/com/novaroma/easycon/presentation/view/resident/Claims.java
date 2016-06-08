@@ -2,11 +2,13 @@
 package br.com.novaroma.easycon.presentation.view.resident;
 
 import br.com.novaroma.easycon.controller.ControllerResident;
+import br.com.novaroma.easycon.controller.IControllerResident;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class Claims extends javax.swing.JInternalFrame {
     
-    private ControllerResident conRes = new ControllerResident();
+    private IControllerResident conRes = new ControllerResident();
     
     public Claims() {
         initComponents();
@@ -17,7 +19,7 @@ public class Claims extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -25,11 +27,11 @@ public class Claims extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setTitle("Reclameções");
+        setTitle("Reclamações");
 
         jLabel1.setText("Selecione a categoria");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Urgente", "Intermediario", "Trivial" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Urgente", "Intermediario", "Trivial" }));
 
         jLabel2.setText("Titulo");
 

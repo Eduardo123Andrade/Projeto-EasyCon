@@ -1,12 +1,13 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
+import br.com.novaroma.easycon.controller.IControllerAdm;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class Polls extends javax.swing.JInternalFrame {
 
-    private ControllerAdm conAdm = new ControllerAdm();
+    private IControllerAdm conAdm = new ControllerAdm();
     
     public Polls() {
         initComponents();
@@ -212,7 +213,16 @@ public class Polls extends javax.swing.JInternalFrame {
         String[] alternatives = {jTextFieldAlternative.getText(), jTextField1.getText(), jTextField2.getText(),jTextField3.getText(), jTextField4.getText()};
         
         conAdm.registerSurvey(question, alternatives);
-        
+        setNull();
         JOptionPane.showMessageDialog(null, "Enquete publicada com sucesso!");
+    }
+
+    private void setNull() {
+        jTextField1.setText(null);
+        jTextField2.setText(null);
+        jTextField3.setText(null);
+        jTextField4.setText(null);
+        jTextFieldAlternative.setText(null);
+        jTextFieldAsk.setText(null);
     }
 }

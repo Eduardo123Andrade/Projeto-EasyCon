@@ -1,9 +1,11 @@
+
 package br.com.novaroma.easycon.presentation.view.login;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
 import br.com.novaroma.easycon.presentation.view.resident.DesktopDweller;
 import br.com.novaroma.easycon.presentation.view.syndic.DesktopSyndic;
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
+
 
 public class Login extends javax.swing.JFrame {
 

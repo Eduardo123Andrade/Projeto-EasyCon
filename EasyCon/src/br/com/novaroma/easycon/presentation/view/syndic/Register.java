@@ -1,12 +1,13 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
+import br.com.novaroma.easycon.controller.IControllerAdm;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class Register extends javax.swing.JInternalFrame {
 
-    private ControllerAdm conAdm = new ControllerAdm();
+    private IControllerAdm conAdm = new ControllerAdm();
     
     public Register() {
         initComponents();
@@ -24,11 +25,11 @@ public class Register extends javax.swing.JInternalFrame {
         jTextFieldAge = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBoxGener = new javax.swing.JComboBox<>();
+        jComboBoxGener = new javax.swing.JComboBox<String>();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jFormattedTextFieldCellNumber = new javax.swing.JFormattedTextField();
-        cpfField = new javax.swing.JTextField();
+        jTextFieldCpf = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPasswordFieldPassword = new javax.swing.JPasswordField();
@@ -56,7 +57,7 @@ public class Register extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Genero");
 
-        jComboBoxGener.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Masculino", "Feminino" }));
+        jComboBoxGener.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Masculino", "Feminino" }));
 
         jLabel1.setText("Nome");
 
@@ -85,7 +86,7 @@ public class Register extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cpfField))))
+                            .addComponent(jTextFieldCpf))))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -128,7 +129,7 @@ public class Register extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel4))
-                    .addComponent(cpfField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -295,7 +296,6 @@ public class Register extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField cpfField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBoxGener;
@@ -319,6 +319,7 @@ public class Register extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldAge;
     private javax.swing.JTextField jTextFieldBloc;
     private javax.swing.JTextField jTextFieldBuilding;
+    private javax.swing.JTextField jTextFieldCpf;
     private javax.swing.JTextField jTextFieldLastName;
     private javax.swing.JTextField jTextFieldName;
     private javax.swing.JTextField jTextFieldNumber;
@@ -326,7 +327,7 @@ public class Register extends javax.swing.JInternalFrame {
 
        private void save(){
            
-           String cpf = cpfField.getText();
+           String cpf = jTextFieldCpf.getText();
            String phone = jFormattedTextFieldCellNumber.getText();
            String gender = jComboBoxGener.getSelectedItem().toString();
            String password = jPasswordFieldPassword.getText();
@@ -359,6 +360,10 @@ public class Register extends javax.swing.JInternalFrame {
         jTextFieldLastName.setText(null);
         jTextFieldName.setText(null);
         jTextFieldNumber.setText(null);
+        jTextFieldCpf.setText(null);
+        jFormattedTextFieldCellNumber.setText(null);
+        jPasswordField1.setText(null);
+        jPasswordFieldPassword.setText(null);
     }
        
 }

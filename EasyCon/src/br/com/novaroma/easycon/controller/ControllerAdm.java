@@ -6,10 +6,11 @@ import br.com.novaroma.easycon.factories.Factory;
 import br.com.novaroma.easycon.structures.*;
 import java.util.Date;
 
-public class ControllerAdm { //COLOCAR TODAS AS EXCECOES DEPOIS!
+public class ControllerAdm implements IControllerAdm{ //COLOCAR TODAS AS EXCECOES DEPOIS!
 
     private IDao dao = Factory.getDao();
 
+    @Override
     public boolean verifySingInAdm(String login, String password) { //OK
 
         /* boolean permition = false;
@@ -20,6 +21,7 @@ public class ControllerAdm { //COLOCAR TODAS AS EXCECOES DEPOIS!
         return true;
     }
 
+    @Override
     public boolean verifySingInResident(String id, String password) { //OK
 
         boolean permition = false;
@@ -33,6 +35,7 @@ public class ControllerAdm { //COLOCAR TODAS AS EXCECOES DEPOIS!
         return permition;
     }
 
+    @Override
     public void registerResident(String block, String building, String number, String gender, String login, String password, String phoneNumber, String name, String lastName, String age, String cpf) { //OK
 
         Address address = new Address(block, building, number);
@@ -41,10 +44,12 @@ public class ControllerAdm { //COLOCAR TODAS AS EXCECOES DEPOIS!
         dao.insert(resident, Structures.getTree());
     }
 
+    @Override
     public void removeResident(String id) { //OK
         dao.remove(id, Structures.getTree());
     }
 
+    @Override
     public void sendMessage(String cpf, String title, String text) { //TRAVANDO
 
         Resident tempResident = (Resident) dao.search(cpf, Structures.getTree());
@@ -53,6 +58,7 @@ public class ControllerAdm { //COLOCAR TODAS AS EXCECOES DEPOIS!
         dao.insert(message, Structures.getStack());
     }
 
+    @Override
     public void sendMessageToAll(AvlLink temp, String title, String text) { //TESTAR
 
         int code = Structures.generateCodeOnStack(); //CONSERTAR PRA TER APENAS UM CODIGO
@@ -68,24 +74,29 @@ public class ControllerAdm { //COLOCAR TODAS AS EXCECOES DEPOIS!
         }
     }
 
+    @Override
     public void registerSurvey(String question,String[] alternatives) {
 
         Survey survey = new Survey(question, Structures.generateCodeOnList(), alternatives);
         dao.insert(survey, Structures.getList());
     }
     
+    @Override
     public Entity returnEntityTree(String id, AvlTree tree) {
         return dao.search(id, tree);
     }
     
+    @Override
     public Entity returnEntityStack(String id, Stack stack) {
         return dao.search(id, stack);
     }
     
+    @Override
     public Entity returnEntityList(String id, LinkedList list) {
         return dao.search(id, list);
     }
     
+    @Override
     public Entity returnEntityHash(String id, Hash hash, int index) {
         return dao.search(id, hash, index);
     }

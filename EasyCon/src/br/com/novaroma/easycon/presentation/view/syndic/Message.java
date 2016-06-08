@@ -1,6 +1,7 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
+import br.com.novaroma.easycon.controller.IControllerAdm;
 import br.com.novaroma.easycon.entities.Resident;
 import br.com.novaroma.easycon.structures.AvlLink;
 import br.com.novaroma.easycon.structures.Structures;
@@ -10,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class Message extends javax.swing.JInternalFrame {
 
-    private ControllerAdm conAdm = new ControllerAdm();
+    private IControllerAdm conAdm = new ControllerAdm();
     
     public Message() {
         initComponents();
@@ -171,7 +172,7 @@ public class Message extends javax.swing.JInternalFrame {
         String text = jTextArea1.getText();
         
         conAdm.sendMessage(cpf, title, text);
-        
+        setNull();
         JOptionPane.showMessageDialog(null, "Mensagem enviada com sucesso!");
     }
 
@@ -180,7 +181,12 @@ public class Message extends javax.swing.JInternalFrame {
         String text = jTextArea1.getText();
         
         conAdm.sendMessageToAll(Structures.getTree().getRoot(), title, text);
-        
+        setNull();
         JOptionPane.showMessageDialog(null, "Mensagem enviada para todos os usuarios com sucesso!");
+    }
+
+    private void setNull() {
+        jTextArea1.setText(null);
+        jTextFieldReceiver.setText(null);
     }
 }

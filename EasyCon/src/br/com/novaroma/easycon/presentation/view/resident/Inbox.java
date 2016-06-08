@@ -1,6 +1,7 @@
 package br.com.novaroma.easycon.presentation.view.resident;
 
 import br.com.novaroma.easycon.controller.ControllerResident;
+import br.com.novaroma.easycon.controller.IControllerResident;
 import br.com.novaroma.easycon.entities.Message;
 import br.com.novaroma.easycon.entities.Resident;
 import br.com.novaroma.easycon.structures.Stack;
@@ -10,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class Inbox extends javax.swing.JInternalFrame {
 
-    private ControllerResident conRes = new ControllerResident();
+    private IControllerResident conRes = new ControllerResident();
     
     public Inbox() {
         initComponents();
@@ -54,6 +55,9 @@ public class Inbox extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jTextField1.setEditable(false);
+
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
@@ -88,10 +92,10 @@ public class Inbox extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTextField1)
-                                .addGap(65, 65, 65))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)))
+                                .addContainerGap())))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

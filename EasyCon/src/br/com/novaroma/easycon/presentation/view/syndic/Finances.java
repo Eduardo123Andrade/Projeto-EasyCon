@@ -1,7 +1,7 @@
 
 package br.com.novaroma.easycon.presentation.view.syndic;
 
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
 
 public class Finances extends javax.swing.JInternalFrame {
 

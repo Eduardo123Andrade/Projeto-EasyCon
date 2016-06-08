@@ -1,6 +1,7 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
+import br.com.novaroma.easycon.controller.IControllerAdm;
 import br.com.novaroma.easycon.entities.Survey;
 import br.com.novaroma.easycon.structures.Link;
 import br.com.novaroma.easycon.structures.Structures;
@@ -10,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class PollsList extends javax.swing.JInternalFrame {
 
-    private ControllerAdm conAdm = new ControllerAdm();
+    private IControllerAdm conAdm = new ControllerAdm();
     
     public PollsList() {
         initComponents();

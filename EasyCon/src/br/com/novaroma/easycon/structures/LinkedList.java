@@ -3,7 +3,7 @@ package br.com.novaroma.easycon.structures;
 import br.com.novaroma.easycon.entities.Entity;
 import br.com.novaroma.easycon.entities.Person;
 import br.com.novaroma.easycon.entities.Resident;
-import javax.swing.JOptionPane;
+
 
 public class LinkedList { //90% TESTADO
     
@@ -197,7 +197,7 @@ public class LinkedList { //90% TESTADO
         Link temp = first;
         int position = 0;
         int cont = 0;
-         JOptionPane.showMessageDialog(null, "sdigjdsogs");
+
         if (contains(id)) {
             while (temp != null) {      
                 if (temp.getEntity().getId().equalsIgnoreCase(id)) {
@@ -228,29 +228,5 @@ public class LinkedList { //90% TESTADO
     
     public Link getFirst() {
         return first;
-    }
-    
-    public static void main(String[] args) {
-        
-        LinkedList list = new LinkedList();
-        
-        Resident a = new Resident(null, null, null, null, null, "Felipe", null, null, "1", true);
-        Resident b = new Resident(null, null, null, null, null, "Catarina", null, null, "2", true);
-        Resident c = new Resident(null, null, null, null, null, "Lucas", null, null, "3", true);
-        Resident d = new Resident(null, null, null, null, null, "Marina", null, null, "4", true);
-       
-        list.addFirst(a);
-        list.addFirst(b);
-        list.addLast(c);
-        list.addBetween(d, 2);
-        System.out.println(list.showList());
-        System.out.println(list.showReverseList());
-        System.out.println(list.showQuantity());
-       
-        
-        Resident x = new Resident(null, null, null, null, null, "Tiao Bocapreta", null, null, "1", true);
-        list.update(x);
-        System.out.println(list.showList());
-        
     }
 }

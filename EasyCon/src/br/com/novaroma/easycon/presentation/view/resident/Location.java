@@ -1,6 +1,5 @@
 package br.com.novaroma.easycon.presentation.view.resident;
-
-import com.sun.glass.events.KeyEvent;
+import java.awt.event.KeyEvent;
 
 public class Location extends javax.swing.JInternalFrame {
 
