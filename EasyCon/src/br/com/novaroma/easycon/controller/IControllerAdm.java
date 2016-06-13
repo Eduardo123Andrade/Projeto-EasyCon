@@ -30,5 +30,5 @@ public interface IControllerAdm {
     
     Entity returnEntityList(String id, LinkedList list);
     
-    Entity returnEntityHash(String id, Hash hash, int index);  
+    Entity returnEntityHash(String id, Hash hash);  
 }

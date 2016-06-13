@@ -31,10 +31,10 @@ public class ControllerResident implements IControllerResident{
     }
     
     @Override
-    public void makeComplaint(String category, String title, String text, int index) {
+    public void makeComplaint(String category, String title, String text) {
         
         Complaint complaint = new Complaint(Structures.generateCodeOnHash(), category, title, text, Resident.getCurrentResident());
-        dao.insert(complaint, Structures.getHash(), index);
+        dao.insert(complaint, Structures.getHash());
     }
     
     @Override
@@ -53,7 +53,7 @@ public class ControllerResident implements IControllerResident{
     }
     
     @Override
-    public Entity returnEntityHash(String id, Hash hash, int index) {
-        return dao.search(id, hash, index);
+    public Entity returnEntityHash(String id, Hash hash) {
+        return dao.search(id, hash);
     }
 }

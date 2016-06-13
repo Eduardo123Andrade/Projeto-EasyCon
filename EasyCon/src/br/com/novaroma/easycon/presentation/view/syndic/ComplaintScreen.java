@@ -1,4 +1,3 @@
-
 package br.com.novaroma.easycon.presentation.view.syndic;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
@@ -13,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 public class ComplaintScreen extends javax.swing.JInternalFrame {
 
     private IControllerAdm conAdm = new ControllerAdm();
-    
+
     public ComplaintScreen() {
         initComponents();
     }
@@ -25,7 +24,7 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -40,7 +39,7 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
 
         jScrollPane3.setViewportView(jEditorPane1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Urgente", "Intermediario", "Trivial" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Urgente", "Intermediario", "Trivial" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -104,7 +103,12 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
         });
 
         buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Andamento");
+        jRadioButton1.setText("Em andamento");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Planejamento futuro");
@@ -179,8 +183,8 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-         exit();   
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            exit();
         }
     }//GEN-LAST:event_jButton1KeyPressed
 
@@ -189,7 +193,7 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             status();
         }
     }//GEN-LAST:event_jButton2KeyPressed
@@ -202,9 +206,13 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         ((DefaultTableModel) jTable1.getModel()).setNumRows(0);
         complaintList(Structures.getHash());
-        
-        
+
+
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -225,46 +233,43 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-    private void exit(){
+    private void exit() {
         this.dispose();
     }
-    
-    private void complaintList(Hash hash) { //REINICIAR A LISTA APOS MUDAR O COMBOBOX!
-        int index = jComboBox1.getSelectedIndex() - 1;
-      
-        if (index >= 0) {
-          Link temp = hash.getHashOnIndex(index).getFirst();
 
-            while (temp != null) { 
-                Complaint complaintX = (Complaint)temp.getEntity();
-                DefaultTableModel complaintList = (DefaultTableModel) jTable1.getModel();
-                String date[] = complaintX.getDate().toString().split(" ");
-                
-                complaintList.addRow(new String[] {complaintX.getId(), complaintX.getTitle(), complaintX.getResident().getName(), date[2] + "/" + date[1] + "/" + date[5]});
-                
+    private void complaintList(Hash hash) { 
+
+        String category = jComboBox1.getSelectedItem().toString();
+
+        for (int i = 0; i < hash.getHash().length; i++) {
+            Link temp = hash.getHashOnIndex(i).getFirst();
+
+            while (temp != null) {
+                Complaint complaintX = (Complaint) temp.getEntity();
+
+                if (complaintX.getCategory().equals(category)) {
+
+                    DefaultTableModel complaintList = (DefaultTableModel) jTable1.getModel();
+                    String date[] = complaintX.getDate().toString().split(" ");
+
+                    complaintList.addRow(new String[]{complaintX.getId(), complaintX.getTitle(), complaintX.getResident().getName(), date[2] + "/" + date[1] + "/" + date[5]});
+                }
+
                 temp = temp.getNext();
             }
         }
     }
-    
-    private void openComplaint() { 
+
+    private void openComplaint() {
         String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        Complaint complaintX = (Complaint)conAdm.returnEntityHash(id, Structures.getHash(), jComboBox1.getSelectedIndex() - 1);
-        
+        Complaint complaintX = (Complaint) conAdm.returnEntityHash(id, Structures.getHash());
+
         jTextField1.setText(complaintX.getTitle());
         jTextArea1.setText(complaintX.getText());
     }
-   
-    private void status(){
-        
+
+    private void status() {
         
     }
-    
-  
-
-
-
-
-
 
 }

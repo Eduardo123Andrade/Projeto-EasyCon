@@ -113,9 +113,8 @@ public class Claims extends javax.swing.JInternalFrame {
         String category = jComboBox1.getSelectedItem().toString();
         String title = jTextField1.getText();
         String text = jTextArea1.getText();
-        int index = jComboBox1.getSelectedIndex() - 1;
         
-        conRes.makeComplaint(category, title, text, index);
+        conRes.makeComplaint(category, title, text);
         
         JOptionPane.showMessageDialog(null, "Denuncia efetuada com sucesso!");
     }

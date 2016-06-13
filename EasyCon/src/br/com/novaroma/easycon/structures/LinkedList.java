@@ -2,7 +2,6 @@ package br.com.novaroma.easycon.structures;
 
 import br.com.novaroma.easycon.entities.Entity;
 import br.com.novaroma.easycon.entities.Person;
-import br.com.novaroma.easycon.entities.Resident;
 
 
 public class LinkedList { //90% TESTADO
@@ -211,6 +210,10 @@ public class LinkedList { //90% TESTADO
         }
        
         return position;
+    }
+    
+    public Entity search(String id) {
+        return returnLink(searchPosition(id)).getEntity();
     }
     
     public void update(Entity entity) {

@@ -97,7 +97,7 @@ public class ControllerAdm implements IControllerAdm{ //COLOCAR TODAS AS EXCECOE
     }
     
     @Override
-    public Entity returnEntityHash(String id, Hash hash, int index) {
-        return dao.search(id, hash, index);
+    public Entity returnEntityHash(String id, Hash hash) {
+        return dao.search(id, hash);
     }
 }

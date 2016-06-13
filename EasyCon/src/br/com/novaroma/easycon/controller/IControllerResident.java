@@ -14,7 +14,7 @@ public interface IControllerResident {
     
     void answerSurvey();
     
-    void makeComplaint(String category, String title, String text, int index);
+    void makeComplaint(String category, String title, String text);
     
     Entity returnEntityTree(String id, AvlTree tree);
     
@@ -22,5 +22,5 @@ public interface IControllerResident {
     
     Entity returnEntityList(String id, LinkedList list);
     
-    Entity returnEntityHash(String id, Hash hash, int index);
+    Entity returnEntityHash(String id, Hash hash);
 }

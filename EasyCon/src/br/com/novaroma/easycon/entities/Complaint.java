@@ -12,6 +12,7 @@ public class Complaint extends Entity implements Serializable {
     private String text;
     private Date date;
     private Resident resident;
+    private String status;
     private boolean solved;
     
     @Override
@@ -29,6 +30,7 @@ public class Complaint extends Entity implements Serializable {
         this.text = text;
         this.date = new Date();
         this.resident = resident;
+        this.status = "Nao resolvido";
         this.solved = false;
     }
 
@@ -86,5 +88,13 @@ public class Complaint extends Entity implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
