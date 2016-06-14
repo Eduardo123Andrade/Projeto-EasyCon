@@ -1,20 +1,32 @@
 package br.com.novaroma.easycon.presentation.view.resident;
 
 import br.com.novaroma.easycon.presentation.view.syndic.PollsList;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 public class DesktopDweller extends javax.swing.JFrame {
 
     public DesktopDweller() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+       
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            ImageIcon ii = new ImageIcon(getClass().getResource("/br/com/novaroma/easycon/presentation/view/images/Sem título.png"));
+            Image i = ii.getImage();
+            public void paintComponent(Graphics g){
+                g.drawImage(i, 0, 0, getWidth(), getHeight(), this);
+            }
+        }
+        ;
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -25,6 +37,7 @@ public class DesktopDweller extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
@@ -39,15 +52,28 @@ public class DesktopDweller extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setMaximizedBounds(getMaximizedBounds());
 
+        jDesktopPane1.setBackground(java.awt.Color.white);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/novaroma/easycon/presentation/view/images/logo.jpg"))); // NOI18N
+
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(137, 137, 137))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(113, 113, 113))
         );
 
         jMenu1.setText("Perfil");
@@ -138,6 +164,14 @@ public class DesktopDweller extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem7);
 
+        jMenuItem11.setText("Votar");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem11);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Alocações");
@@ -177,6 +211,11 @@ public class DesktopDweller extends javax.swing.JFrame {
         jMenu7.setText("Finanças");
 
         jMenuItem9.setText("Finanças");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenuItem9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jMenuItem9KeyPressed(evt);
@@ -324,8 +363,18 @@ public class DesktopDweller extends javax.swing.JFrame {
        exitBox();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        vote();
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        finances();
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -336,6 +385,7 @@ public class DesktopDweller extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -402,6 +452,12 @@ public class DesktopDweller extends javax.swing.JFrame {
         ExitBox eb = new ExitBox();
         jDesktopPane1.add(eb);
         eb.setVisible(true);
+    }
+    
+    private void vote() {
+        VoteSurvey vs = new VoteSurvey();
+        jDesktopPane1.add(vs);
+        vs.setVisible(true);
     }
 
 }

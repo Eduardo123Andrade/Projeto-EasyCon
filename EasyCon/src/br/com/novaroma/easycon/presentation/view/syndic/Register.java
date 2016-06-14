@@ -2,6 +2,7 @@ package br.com.novaroma.easycon.presentation.view.syndic;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
 import br.com.novaroma.easycon.controller.IControllerAdm;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -11,6 +12,7 @@ public class Register extends javax.swing.JInternalFrame {
     
     public Register() {
         initComponents();
+        setColor();
     }
 
     @SuppressWarnings("unchecked")
@@ -25,7 +27,7 @@ public class Register extends javax.swing.JInternalFrame {
         jTextFieldAge = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBoxGener = new javax.swing.JComboBox<String>();
+        jComboBoxGener = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jFormattedTextFieldCellNumber = new javax.swing.JFormattedTextField();
@@ -46,6 +48,7 @@ public class Register extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
 
         setTitle("Cadastro");
+        setVisible(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados pessoais"));
 
@@ -57,7 +60,7 @@ public class Register extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Genero");
 
-        jComboBoxGener.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Masculino", "Feminino" }));
+        jComboBoxGener.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Masculino", "Feminino" }));
 
         jLabel1.setText("Nome");
 
@@ -133,6 +136,7 @@ public class Register extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel2.setBackground(java.awt.Color.white);
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do condominio"));
 
         jLabel8.setText("Senha");
@@ -152,7 +156,7 @@ public class Register extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
                     .addComponent(jPasswordField1))
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,6 +172,7 @@ public class Register extends javax.swing.JInternalFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
+        jPanel3.setBackground(Color.white);
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
         jLabel12.setText("Edificio");
@@ -364,6 +369,14 @@ public class Register extends javax.swing.JInternalFrame {
         jFormattedTextFieldCellNumber.setText(null);
         jPasswordField1.setText(null);
         jPasswordFieldPassword.setText(null);
+    }
+    
+    private void setColor(){
+        getContentPane().setBackground(Color.white);
+        jPanel1.setBackground(Color.white);
+        jPanel2.setForeground(Color.white);
+        jPanel3.setBackground(Color.white);
+        
     }
        
 }

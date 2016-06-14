@@ -5,6 +5,7 @@ import br.com.novaroma.easycon.controller.IControllerAdm;
 import br.com.novaroma.easycon.entities.Survey;
 import br.com.novaroma.easycon.structures.Link;
 import br.com.novaroma.easycon.structures.Structures;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,6 +17,7 @@ public class PollsList extends javax.swing.JInternalFrame {
     public PollsList() {
         initComponents();
         surveyList(Structures.getList().getFirst());
+        getContentPane().setBackground(Color.white);
     }
 
     @SuppressWarnings("unchecked")
@@ -234,7 +236,6 @@ public class PollsList extends javax.swing.JInternalFrame {
         String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
         Survey surveyX = (Survey)conAdm.returnEntityList(id, Structures.getList());
         
-        JOptionPane.showMessageDialog(null, "disgods");
         double[] percents = surveyX.returnPercent();
         
         jLabel1.setText(jLabel1.getText() + surveyX.getQuestion());

@@ -1,15 +1,22 @@
-
 package br.com.novaroma.easycon.presentation.view.syndic;
 
+import br.com.novaroma.easycon.controller.ControllerAdm;
+import br.com.novaroma.easycon.controller.IControllerAdm;
+import br.com.novaroma.easycon.entities.Complaint;
 import br.com.novaroma.easycon.structures.Hash;
+import br.com.novaroma.easycon.structures.Link;
 import br.com.novaroma.easycon.structures.Structures;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.table.DefaultTableModel;
 
 public class ComplaintList extends javax.swing.JInternalFrame {
 
+    private IControllerAdm conAdm = new ControllerAdm();
+
     public ComplaintList() {
         initComponents();
+        getContentPane().setBackground(Color.white);
     }
 
     @SuppressWarnings("unchecked")
@@ -18,7 +25,7 @@ public class ComplaintList extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -43,7 +50,7 @@ public class ComplaintList extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Resolvido", "Andamento", "Planejamento futuro" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Resolvido", "Em Andamento", "Planejamento futuro" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -142,7 +149,7 @@ public class ComplaintList extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             exit();
         }
     }//GEN-LAST:event_jButton1KeyPressed
@@ -159,15 +166,38 @@ public class ComplaintList extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-    private void openComplaint() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void exit() {
-       this.dispose();
-    }
-
     private void complaintList(Hash hash) {
-        
+
+        String category = jComboBox1.getSelectedItem().toString();
+
+        for (int i = 0; i < hash.getHash().length; i++) {
+            Link temp = hash.getHashOnIndex(i).getFirst();
+
+            while (temp != null) {
+                Complaint complaintX = (Complaint) temp.getEntity();
+
+                if (complaintX.getStatus().equals(category)) {
+
+                    DefaultTableModel complaintList = (DefaultTableModel) jTable1.getModel();
+                    String date[] = complaintX.getDate().toString().split(" ");
+
+                    complaintList.addRow(new String[]{complaintX.getId(), complaintX.getTitle(), complaintX.getResident().getName(), date[2] + "/" + date[1] + "/" + date[5], complaintX.getStatus()});
+                }
+
+                temp = temp.getNext();
+            }
+        }
+    }
+
+    private void openComplaint() {
+        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        Complaint complaintX = (Complaint) conAdm.returnEntityHash(id, Structures.getHash());
+
+        jTextField1.setText(complaintX.getTitle());
+        jTextArea1.setText(complaintX.getText());
+    }
+    
+    private void exit() {
+        this.dispose();
     }
 }

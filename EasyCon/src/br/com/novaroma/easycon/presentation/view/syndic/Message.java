@@ -5,6 +5,7 @@ import br.com.novaroma.easycon.controller.IControllerAdm;
 import br.com.novaroma.easycon.entities.Resident;
 import br.com.novaroma.easycon.structures.AvlLink;
 import br.com.novaroma.easycon.structures.Structures;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,6 +17,7 @@ public class Message extends javax.swing.JInternalFrame {
     public Message() {
         initComponents();
         residentList(Structures.getTree().getRoot());
+        getContentPane().setBackground(Color.white);
     }
 
     @SuppressWarnings("unchecked")

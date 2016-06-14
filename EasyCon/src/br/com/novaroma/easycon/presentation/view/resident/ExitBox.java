@@ -6,6 +6,7 @@ import br.com.novaroma.easycon.controller.IControllerResident;
 import br.com.novaroma.easycon.entities.Message;
 import br.com.novaroma.easycon.entities.Resident;
 import br.com.novaroma.easycon.structures.Structures;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,6 +17,7 @@ public class ExitBox extends javax.swing.JInternalFrame {
     public ExitBox() {
         initComponents();
         messageList();
+        getContentPane().setBackground(Color.white);
     }
 
     @SuppressWarnings("unchecked")

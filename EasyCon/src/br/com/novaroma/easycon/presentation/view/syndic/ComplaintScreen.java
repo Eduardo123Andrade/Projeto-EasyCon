@@ -6,7 +6,9 @@ import br.com.novaroma.easycon.entities.Complaint;
 import br.com.novaroma.easycon.structures.Hash;
 import br.com.novaroma.easycon.structures.Link;
 import br.com.novaroma.easycon.structures.Structures;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ComplaintScreen extends javax.swing.JInternalFrame {
@@ -15,6 +17,7 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
 
     public ComplaintScreen() {
         initComponents();
+        getContentPane().setBackground(Color.white);
     }
 
     @SuppressWarnings("unchecked")
@@ -23,7 +26,7 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
 
         jScrollPane3 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -33,9 +36,9 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        buttonOne = new javax.swing.JRadioButton();
+        buttonTwo = new javax.swing.JRadioButton();
+        buttonThree = new javax.swing.JRadioButton();
 
         jScrollPane3.setViewportView(jEditorPane1);
 
@@ -51,11 +54,11 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Codigo", "Titulo", "Morador", "Data"
+                "Codigo", "Titulo", "Morador", "Data", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -102,19 +105,14 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
             }
         });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Em andamento");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
+        buttonGroup2.add(buttonOne);
+        buttonOne.setText("Resolvido");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Planejamento futuro");
+        buttonGroup2.add(buttonTwo);
+        buttonTwo.setText("Em andamento");
 
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setText("Resolvido");
+        buttonGroup2.add(buttonThree);
+        buttonThree.setText("Planejamento futuro");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,28 +123,22 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton3)
                             .addComponent(jButton2)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jButton1))
-                                    .addComponent(jTextField1)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
-                                .addGap(30, 30, 30))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton3)
-                                    .addComponent(jRadioButton2)
-                                    .addComponent(jRadioButton1))
-                                .addGap(0, 0, Short.MAX_VALUE))))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextField1)
+                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE))
+                            .addComponent(buttonOne)
+                            .addComponent(buttonTwo)
+                            .addComponent(buttonThree))
+                        .addGap(30, 30, 30))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,13 +154,13 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton2)
-                .addGap(47, 47, 47)
+                    .addComponent(jButton3)
+                    .addComponent(buttonOne))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonTwo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonThree)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
@@ -189,12 +181,14 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1KeyPressed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        status();
+        toSolve();
+        ((DefaultTableModel) jTable1.getModel()).setNumRows(0);
+        complaintList(Structures.getHash());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            status();
+            toSolve();
         }
     }//GEN-LAST:event_jButton2KeyPressed
 
@@ -210,21 +204,17 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JRadioButton buttonOne;
+    private javax.swing.JRadioButton buttonThree;
+    private javax.swing.JRadioButton buttonTwo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JEditorPane jEditorPane1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -237,7 +227,7 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
         this.dispose();
     }
 
-    private void complaintList(Hash hash) { 
+    private void complaintList(Hash hash) {
 
         String category = jComboBox1.getSelectedItem().toString();
 
@@ -247,12 +237,12 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
             while (temp != null) {
                 Complaint complaintX = (Complaint) temp.getEntity();
 
-                if (complaintX.getCategory().equals(category)) {
+                if (complaintX.getCategory().equals(category) && !complaintX.getStatus().equals("Resolvido")) {
 
                     DefaultTableModel complaintList = (DefaultTableModel) jTable1.getModel();
                     String date[] = complaintX.getDate().toString().split(" ");
 
-                    complaintList.addRow(new String[]{complaintX.getId(), complaintX.getTitle(), complaintX.getResident().getName(), date[2] + "/" + date[1] + "/" + date[5]});
+                    complaintList.addRow(new String[]{complaintX.getId(), complaintX.getTitle(), complaintX.getResident().getName(), date[2] + "/" + date[1] + "/" + date[5], complaintX.getStatus()});
                 }
 
                 temp = temp.getNext();
@@ -268,8 +258,21 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
         jTextArea1.setText(complaintX.getText());
     }
 
-    private void status() {
+    private void toSolve() { //AJEITAR BUTTON
+
+        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        Complaint complaintX = (Complaint) conAdm.returnEntityHash(id, Structures.getHash());
         
+      
+        if (buttonOne.isSelected()) {
+            complaintX.setStatus("Resolvido");
+        } else if (buttonTwo.isSelected()) {
+            complaintX.setStatus("Em andamento");
+        }else if (buttonThree.isSelected()) {
+            complaintX.setStatus("Planejamento futuro");
+        }
+        
+        JOptionPane.showMessageDialog(null, "Reclamacao atualizada com sucesso!");
     }
 
 }

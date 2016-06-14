@@ -1,10 +1,12 @@
 package br.com.novaroma.easycon.presentation.view.resident;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 public class Location extends javax.swing.JInternalFrame {
 
     public Location() {
         initComponents();
+        getContentPane().setBackground(Color.white);
     }
 
     @SuppressWarnings("unchecked")

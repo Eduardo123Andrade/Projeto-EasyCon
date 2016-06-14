@@ -1,5 +1,8 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
 
 public class DesktopSyndic extends javax.swing.JFrame {
@@ -7,13 +10,24 @@ public class DesktopSyndic extends javax.swing.JFrame {
     public DesktopSyndic() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+        //jDesktopPane1.setBackground(Color.red);
+        //jDesktopPane1.setForeground(Color.red);
+        
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            ImageIcon ii = new ImageIcon(getClass().getResource("/br/com/novaroma/easycon/presentation/view/images/Sem título.png"));
+            Image i = ii.getImage();
+            public void paintComponent(Graphics g){
+                g.drawImage(i, 0, 0, getWidth(), getHeight(), this);
+            }
+        }
+        ;
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -39,15 +53,28 @@ public class DesktopSyndic extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Area de trabalho");
 
+        jDesktopPane1.setBackground(java.awt.Color.white);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/novaroma/easycon/presentation/view/images/logo.jpg"))); // NOI18N
+
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(137, 137, 137))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(113, 113, 113))
         );
 
         jMenu1.setText("Morador");
@@ -166,7 +193,7 @@ public class DesktopSyndic extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Alocações");
+        jMenu4.setText("Locações");
 
         jMenuItem9.setText("Editar locação");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
@@ -405,6 +432,7 @@ public class DesktopSyndic extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -503,4 +531,6 @@ public class DesktopSyndic extends javax.swing.JFrame {
         jDesktopPane1.add(cl);
         cl.setVisible(true);
     }
+
+   
 }

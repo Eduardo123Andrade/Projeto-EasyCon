@@ -3,6 +3,7 @@ package br.com.novaroma.easycon.presentation.view.resident;
 import br.com.novaroma.easycon.controller.ControllerAdm;
 import br.com.novaroma.easycon.controller.IControllerAdm;
 import br.com.novaroma.easycon.entities.Resident;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 public class Update extends javax.swing.JInternalFrame {
@@ -12,6 +13,7 @@ public class Update extends javax.swing.JInternalFrame {
     public Update() {
         initComponents();
         setLables();
+        setColor();
     }
 
     @SuppressWarnings("unchecked")
@@ -265,5 +267,11 @@ public class Update extends javax.swing.JInternalFrame {
         jLabelStatus.setText("Inadimplente: " + Resident.getCurrentResident().getOwe());
         jLabelNumber.setText("Telefone: " + Resident.getCurrentResident().getPhoneNumber());
         jLabelSenha.setText("Senha: " + Resident.getCurrentResident().getPassword());
+    }
+    
+    private void setColor(){
+        getContentPane().setBackground(Color.white);
+        jPanel5.setBackground(Color.white);
+        jPanel6.setBackground(Color.white);
     }
 }

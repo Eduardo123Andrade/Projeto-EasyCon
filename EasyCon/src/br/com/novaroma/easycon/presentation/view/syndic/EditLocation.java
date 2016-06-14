@@ -1,5 +1,6 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
@@ -8,6 +9,7 @@ public class EditLocation extends javax.swing.JInternalFrame {
     public EditLocation() {
         initComponents();
         setIcon();
+        getContentPane().setBackground(Color.white);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

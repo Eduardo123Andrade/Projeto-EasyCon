@@ -1,11 +1,22 @@
-
 package br.com.novaroma.easycon.presentation.view.resident;
+
+import br.com.novaroma.easycon.controller.ControllerResident;
+import br.com.novaroma.easycon.controller.IControllerResident;
+import br.com.novaroma.easycon.entities.Survey;
+import br.com.novaroma.easycon.structures.Link;
+import br.com.novaroma.easycon.structures.Structures;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class VoteSurvey extends javax.swing.JInternalFrame {
 
+    IControllerResident conRes = new ControllerResident();
+
     public VoteSurvey() {
         initComponents();
-        surveyList();
+        surveyList(Structures.getList().getFirst());
+        getContentPane().setBackground(Color.white);
     }
 
     @SuppressWarnings("unchecked")
@@ -51,40 +62,42 @@ public class VoteSurvey extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("Sair");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Votar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Pergunta: ");
 
         buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("jRadioButton1");
+        jRadioButton1.setText("a)");
 
         buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("jRadioButton2");
+        jRadioButton2.setText("b)");
 
         buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setText("jRadioButton3");
+        jRadioButton3.setText("c)");
 
         buttonGroup1.add(jRadioButton4);
-        jRadioButton4.setText("jRadioButton4");
+        jRadioButton4.setText("d)");
 
         buttonGroup1.add(jRadioButton5);
-        jRadioButton5.setText("jRadioButton5");
+        jRadioButton5.setText("e)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(196, 196, 196)
-                                .addComponent(jButton1))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,12 +108,20 @@ public class VoteSurvey extends javax.swing.JInternalFrame {
                                     .addComponent(jRadioButton3)
                                     .addComponent(jRadioButton2)
                                     .addComponent(jRadioButton1))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 477, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                                .addComponent(jButton2))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1)))))
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +154,20 @@ public class VoteSurvey extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        openSurvey();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        exit();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        vote();
+        ((DefaultTableModel) jTable1.getModel()).setNumRows(0);
+        surveyList(Structures.getList().getFirst());
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -151,8 +185,64 @@ public class VoteSurvey extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
-    private void surveyList() {
-       
-       
+    private void surveyList(Link temp) {
+
+        while (temp != null) {
+
+            Survey surveyTemp = (Survey) temp.getEntity();
+
+            if (conRes.verifyVote(surveyTemp, Structures.getListVotes())) {
+                DefaultTableModel surveyList = (DefaultTableModel) jTable1.getModel();
+                String[] date = surveyTemp.getDate().toString().split(" ");
+
+                surveyList.addRow(new String[]{surveyTemp.getId(), surveyTemp.getQuestion(), date[2] + "/" + date[1] + "/" + date[5]});
+            }
+
+            temp = temp.getNext();
+        }
+    }
+
+    private void openSurvey() {
+        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        Survey surveyX = (Survey) conRes.returnEntityList(id, Structures.getList());
+
+        jLabel1.setText(jLabel1.getText() + surveyX.getQuestion());
+        jRadioButton1.setText(jRadioButton1.getText() + surveyX.getAlternative(0));
+        jRadioButton2.setText(jRadioButton2.getText() + surveyX.getAlternative(1));
+        jRadioButton3.setText(jRadioButton3.getText() + surveyX.getAlternative(2));
+        jRadioButton4.setText(jRadioButton4.getText() + surveyX.getAlternative(3));
+        jRadioButton5.setText(jRadioButton5.getText() + surveyX.getAlternative(4));
+    }
+
+    private void vote() {
+        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        Survey surveyX = (Survey) conRes.returnEntityList(id, Structures.getList());
+        int alternative = 0;
+
+        if (jRadioButton1.isSelected()) {
+            surveyX.setAlternativeScore(0);
+        } else if (jRadioButton2.isSelected()) {
+            surveyX.setAlternativeScore(1);
+            alternative = 1;
+        } else if (jRadioButton3.isSelected()) {
+            surveyX.setAlternativeScore(2);
+            alternative = 2;
+        } else if (jRadioButton4.isSelected()) {
+            surveyX.setAlternativeScore(3);
+            alternative = 3;
+        } else if (jRadioButton5.isSelected()) {
+            surveyX.setAlternativeScore(4);
+            alternative = 4;
+        } else {
+            //lanca excecao!
+        }
+
+        conRes.registerVote(alternative, surveyX);
+        
+        JOptionPane.showMessageDialog(null, "Voto computado com sucesso!");
+    }
+
+    private void exit() {
+        this.dispose();
     }
 }

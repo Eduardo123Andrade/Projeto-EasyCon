@@ -1,13 +1,14 @@
-
 package br.com.novaroma.easycon.structures;
 
 import java.util.Random;
 
 public class Structures {
-   
+
     private static AvlTree tree = new AvlTree();
     private static Hash hash = new Hash();
+    private static Hash hashReceipt = new Hash();
     private static LinkedList list = new LinkedList();
+    private static LinkedList listVotes = new LinkedList();
     private static Queue queue = new Queue();
     private static Stack stack = new Stack();
 
@@ -50,9 +51,25 @@ public class Structures {
     public static void setStack(Stack aStack) {
         stack = aStack;
     }
-    
-    public static int generateCodeOnStack() {
-        
+
+    public static LinkedList getListVotes() {
+        return listVotes;
+    }
+
+    public static void setListVotes(LinkedList aListVotes) {
+        listVotes = aListVotes;
+    }
+
+    public static Hash getHashReceipt() {
+        return hashReceipt;
+    }
+
+    public static void setHashReceipt(Hash aHashReceipt) {
+        hashReceipt = aHashReceipt;
+    }
+
+    public static int generateCodeOnStack(Stack stack) {
+
         Random random = new Random();
 
         int codeRandom;
@@ -65,13 +82,13 @@ public class Structures {
 
         return codeRandom;
     }
-    
+
     private static boolean verifyCodeOnStack(int code, Stack stack) {
         return stack.contanis(String.valueOf(code));
     }
-    
-    public static int generateCodeOnList() {
-        
+
+    public static int generateCodeOnList(LinkedList list) {
+
         Random random = new Random();
 
         int codeRandom;
@@ -84,13 +101,13 @@ public class Structures {
 
         return codeRandom;
     }
-    
+
     private static boolean verifyCodeOnList(int code, LinkedList list) {
         return list.contains(String.valueOf(code));
     }
-    
-    public static int generateCodeOnHash() {
-        
+
+    public static int generateCodeOnHash(Hash hash) {
+
         Random random = new Random();
 
         int codeRandom;
@@ -103,7 +120,7 @@ public class Structures {
 
         return codeRandom;
     }
-    
+
     private static boolean verifyCodeOnHash(int code, Hash hash) {
         return hash.contains(String.valueOf(code));
     }

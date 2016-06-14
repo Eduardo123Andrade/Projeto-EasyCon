@@ -3,6 +3,7 @@ package br.com.novaroma.easycon.presentation.view.resident;
 import br.com.novaroma.easycon.controller.ControllerResident;
 import br.com.novaroma.easycon.controller.IControllerResident;
 import br.com.novaroma.easycon.entities.Resident;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -12,6 +13,7 @@ public class Send extends javax.swing.JInternalFrame {
     
     public Send() {
         initComponents();
+        getContentPane().setBackground(Color.white);
     }
 
     @SuppressWarnings("unchecked")

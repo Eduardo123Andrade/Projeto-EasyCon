@@ -43,6 +43,7 @@ public class Survey extends Entity implements Serializable {
 
     public void setAlternativeScore(int position) {
         alternativeScore[position]++;
+        total++;
     }
 
     public double getAlternativeScore(int position) {
@@ -75,6 +76,7 @@ public class Survey extends Entity implements Serializable {
 
     public void setAlternativeScore(double[] alternativeScore) {
         this.alternativeScore = alternativeScore;
+        
     }
 
     public Date getDate() {

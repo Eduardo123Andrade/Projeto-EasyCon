@@ -2,6 +2,7 @@ package br.com.novaroma.easycon.presentation.view.syndic;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
 import br.com.novaroma.easycon.controller.IControllerAdm;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -11,6 +12,7 @@ public class Polls extends javax.swing.JInternalFrame {
     
     public Polls() {
         initComponents();
+        setColor();
     }
 
     @SuppressWarnings("unchecked")
@@ -224,5 +226,10 @@ public class Polls extends javax.swing.JInternalFrame {
         jTextField4.setText(null);
         jTextFieldAlternative.setText(null);
         jTextFieldAsk.setText(null);
+    }
+    
+    private void setColor(){
+        getContentPane().setBackground(Color.white);
+        jPanel1.setBackground(Color.white);
     }
 }

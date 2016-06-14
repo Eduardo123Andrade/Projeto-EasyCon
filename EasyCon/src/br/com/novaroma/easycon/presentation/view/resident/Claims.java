@@ -3,6 +3,7 @@ package br.com.novaroma.easycon.presentation.view.resident;
 
 import br.com.novaroma.easycon.controller.ControllerResident;
 import br.com.novaroma.easycon.controller.IControllerResident;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -12,6 +13,7 @@ public class Claims extends javax.swing.JInternalFrame {
     
     public Claims() {
         initComponents();
+        getContentPane().setBackground(Color.white);
     }
 
     @SuppressWarnings("unchecked")
@@ -19,7 +21,7 @@ public class Claims extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -31,7 +33,7 @@ public class Claims extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Selecione a categoria");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Urgente", "Intermediario", "Trivial" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Urgente", "Intermediario", "Trivial" }));
 
         jLabel2.setText("Titulo");
 
@@ -45,11 +47,21 @@ public class Claims extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
 
         jButton2.setText("Sair");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
             }
         });
 
@@ -108,6 +120,18 @@ public class Claims extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         exit();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            make();
+        }
+    }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            exit();
+        }
+    }//GEN-LAST:event_jButton2KeyPressed
 
     private void make() {
         String category = jComboBox1.getSelectedItem().toString();

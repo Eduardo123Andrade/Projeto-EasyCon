@@ -5,6 +5,7 @@ import br.com.novaroma.easycon.controller.IControllerAdm;
 import br.com.novaroma.easycon.entities.Resident;
 import br.com.novaroma.easycon.structures.AvlLink;
 import br.com.novaroma.easycon.structures.Structures;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,6 +17,7 @@ public class Remove extends javax.swing.JInternalFrame {
     public Remove() {
         initComponents();
         residentList(Structures.getTree().getRoot());
+        getContentPane().setBackground(Color.white);
     }
 
     @SuppressWarnings("unchecked")
@@ -73,6 +75,7 @@ public class Remove extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setToolTipText("");
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

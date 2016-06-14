@@ -1,6 +1,7 @@
 package br.com.novaroma.easycon.presentation.view.resident;
 
 import br.com.novaroma.easycon.entities.Resident;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JDesktopPane;
 public class Status extends javax.swing.JInternalFrame {
@@ -10,6 +11,7 @@ public class Status extends javax.swing.JInternalFrame {
     public Status() {
         initComponents();
         showStatus();
+        setColor();
     }
 
     public Status(JDesktopPane jDesktopPane1) {
@@ -236,5 +238,11 @@ public class Status extends javax.swing.JInternalFrame {
         Update up = new Update();
         desktop.add(up);
         up.setVisible(true);
+    }
+    
+    private void setColor(){
+        getContentPane().setBackground(Color.white);
+        jPanel1.setBackground(Color.white);
+        jPanel2.setBackground(Color.white);
     }
 }

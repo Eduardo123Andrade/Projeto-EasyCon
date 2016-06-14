@@ -1,9 +1,12 @@
 package br.com.novaroma.easycon.presentation.view.syndic;
 
+import java.awt.Color;
+
 public class Finance extends javax.swing.JInternalFrame {
 
     public Finance() {
         initComponents();
+        getContentPane().setBackground(Color.white);
     }
 
     @SuppressWarnings("unchecked")

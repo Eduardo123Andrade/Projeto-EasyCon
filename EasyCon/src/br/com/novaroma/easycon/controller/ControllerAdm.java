@@ -42,6 +42,7 @@ public class ControllerAdm implements IControllerAdm{ //COLOCAR TODAS AS EXCECOE
         Resident resident = new Resident(address, gender, login, password, phoneNumber, name, lastName, age, cpf, false);
 
         dao.insert(resident, Structures.getTree());
+        createReceipt(resident, "Mensalidade do condominio", 880.0);
     }
 
     @Override
@@ -53,7 +54,7 @@ public class ControllerAdm implements IControllerAdm{ //COLOCAR TODAS AS EXCECOE
     public void sendMessage(String cpf, String title, String text) { //TRAVANDO
 
         Resident tempResident = (Resident) dao.search(cpf, Structures.getTree());
-        Message message = new Message(Maneger.getCurrentManeger(), tempResident, new Date(), Structures.generateCodeOnStack(), title, text);
+        Message message = new Message(Maneger.getCurrentManeger(), tempResident, new Date(), Structures.generateCodeOnStack(Structures.getStack()), title, text);
 
         dao.insert(message, Structures.getStack());
     }
@@ -61,7 +62,7 @@ public class ControllerAdm implements IControllerAdm{ //COLOCAR TODAS AS EXCECOE
     @Override
     public void sendMessageToAll(AvlLink temp, String title, String text) { //TESTAR
 
-        int code = Structures.generateCodeOnStack(); //CONSERTAR PRA TER APENAS UM CODIGO
+        int code = Structures.generateCodeOnStack(Structures.getStack()); //CONSERTAR PRA TER APENAS UM CODIGO
 
         if (temp != null) {
             sendMessageToAll(temp.getLeft(), title, text);
@@ -76,9 +77,14 @@ public class ControllerAdm implements IControllerAdm{ //COLOCAR TODAS AS EXCECOE
 
     @Override
     public void registerSurvey(String question,String[] alternatives) {
-
-        Survey survey = new Survey(question, Structures.generateCodeOnList(), alternatives);
+        Survey survey = new Survey(question, Structures.generateCodeOnList(Structures.getList()), alternatives);
         dao.insert(survey, Structures.getList());
+    }
+    
+    @Override
+    public void createReceipt(Resident resident, String description, double value) {
+        Receipt receipt = new Receipt(Structures.generateCodeOnHash(Structures.getHashReceipt()), resident, description, value);
+        dao.insert(receipt, Structures.getHashReceipt());
     }
     
     @Override

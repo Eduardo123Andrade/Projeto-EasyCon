@@ -6,6 +6,7 @@ import br.com.novaroma.easycon.entities.Message;
 import br.com.novaroma.easycon.entities.Resident;
 import br.com.novaroma.easycon.structures.Stack;
 import br.com.novaroma.easycon.structures.Structures;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,6 +17,7 @@ public class Inbox extends javax.swing.JInternalFrame {
     public Inbox() {
         initComponents();
         messageList(Structures.getStack());
+        getContentPane().setBackground(Color.white);
     }
 
     @SuppressWarnings("unchecked")
