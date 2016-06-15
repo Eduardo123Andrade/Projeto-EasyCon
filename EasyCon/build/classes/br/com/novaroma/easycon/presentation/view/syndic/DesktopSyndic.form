@@ -97,22 +97,6 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Loca&#xe7;&#xf5;es"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Editar loca&#xe7;&#xe3;o"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem9ActionPerformed"/>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jMenuItem9KeyPressed"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu6">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reclama&#xe7;&#xe3;o"/>

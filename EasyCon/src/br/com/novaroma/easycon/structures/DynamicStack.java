@@ -1,9 +1,8 @@
 package br.com.novaroma.easycon.structures;
 
 import br.com.novaroma.easycon.entities.Entity;
-import br.com.novaroma.easycon.entities.Resident;
 
-public class DynamicStack { //90% TESTADO!
+public class DynamicStack {
 
     private LinkedList stack;
 

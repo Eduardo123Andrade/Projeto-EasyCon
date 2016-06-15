@@ -3,8 +3,6 @@ package br.com.novaroma.easycon.dao;
 import br.com.novaroma.easycon.entities.*;
 import br.com.novaroma.easycon.structures.*;
 
-//EU PODERIA TRANSFORMAR TODAS AS ESTRUTURAS EM UM ARRAY E ASSIM UTILIZAR APENAS UM METODO PARA A PERSISTENCIA.
-
 public class Dao implements IDao {
 
     @Override

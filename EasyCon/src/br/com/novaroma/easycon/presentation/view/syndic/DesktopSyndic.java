@@ -40,8 +40,6 @@ public class DesktopSyndic extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
@@ -192,23 +190,6 @@ public class DesktopSyndic extends javax.swing.JFrame {
         jMenu3.add(jMenuItem7);
 
         jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Locações");
-
-        jMenuItem9.setText("Editar locação");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenuItem9.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jMenuItem9KeyPressed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem9);
-
-        jMenuBar1.add(jMenu4);
 
         jMenu6.setText("Reclamação");
 
@@ -365,16 +346,6 @@ public class DesktopSyndic extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem7KeyPressed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        editLocation();
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
-
-    private void jMenuItem9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem9KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            editLocation();
-        }
-    }//GEN-LAST:event_jMenuItem9KeyPressed
-
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         exit();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
@@ -436,7 +407,6 @@ public class DesktopSyndic extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
@@ -453,61 +423,54 @@ public class DesktopSyndic extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 
-    private void register() { //OK
+    private void register() { 
         Register r = new Register();
         jDesktopPane1.add(r);
         r.setVisible(true);
     }
 
-    private void roster() { //OK
+    private void roster() { 
         DwellerList dl = new DwellerList();
         jDesktopPane1.add(dl);
         dl.setVisible(true);
     }
 
-    private void remove() { //OK
+    private void remove() { 
         Remove r = new Remove();
         jDesktopPane1.add(r);
         r.setVisible(true);
     }
 
-    private void send() { //OK
+    private void send() { 
         Message m = new Message();
         jDesktopPane1.add(m);
         m.setVisible(true);
     }
 
-    private void inbox() { //OK
+    private void inbox() { 
         Inbox i = new Inbox();
         jDesktopPane1.add(i);
         i.setVisible(true);
     }
 
-    private void exitBox() { //OK
+    private void exitBox() {
         ExitBox eb = new ExitBox();
         jDesktopPane1.add(eb);
         eb.setVisible(true);
     }
 
-    private void polls() { //OK
+    private void polls() { 
         Polls p = new Polls();
         jDesktopPane1.add(p);
         p.setVisible(true);
     }
 
-    private void pollslist() { //OK
+    private void pollslist() { 
         PollsList pl = new PollsList();
         jDesktopPane1.add(pl);
         pl.setVisible(true);
-    }
-
-    private void editLocation() {
-        EditLocation el = new EditLocation();
-        jDesktopPane1.add(el);
-        el.setVisible(true);
     }
 
     private void complaint() {

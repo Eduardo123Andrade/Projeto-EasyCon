@@ -8,6 +8,7 @@ import br.com.novaroma.easycon.structures.Link;
 import br.com.novaroma.easycon.structures.Structures;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ComplaintList extends javax.swing.JInternalFrame {
@@ -50,7 +51,7 @@ public class ComplaintList extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Resolvido", "Em Andamento", "Planejamento futuro" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Resolvido", "Em andamento", "Planejamento futuro" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -190,13 +191,18 @@ public class ComplaintList extends javax.swing.JInternalFrame {
     }
 
     private void openComplaint() {
-        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        Complaint complaintX = (Complaint) conAdm.returnEntityHash(id, Structures.getHash());
 
-        jTextField1.setText(complaintX.getTitle());
-        jTextArea1.setText(complaintX.getText());
+        try {
+            String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            Complaint complaintX = (Complaint) conAdm.returnEntityHash(id, Structures.getHash());
+
+            jTextField1.setText(complaintX.getTitle());
+            jTextArea1.setText(complaintX.getText());
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Para visualizar uma reclamação, deve-se primeiro selecionar uma das reclamações exibidas na tabela.");
+        }
     }
-    
+
     private void exit() {
         this.dispose();
     }

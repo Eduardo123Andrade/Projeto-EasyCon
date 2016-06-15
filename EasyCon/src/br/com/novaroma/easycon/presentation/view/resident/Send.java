@@ -3,8 +3,11 @@ package br.com.novaroma.easycon.presentation.view.resident;
 import br.com.novaroma.easycon.controller.ControllerResident;
 import br.com.novaroma.easycon.controller.IControllerResident;
 import br.com.novaroma.easycon.entities.Resident;
+import br.com.novaroma.easycon.exception.BlankSpacesException;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Send extends javax.swing.JInternalFrame {
@@ -29,7 +32,7 @@ public class Send extends javax.swing.JInternalFrame {
 
         setTitle("Enviar mensagem");
 
-        jLabelSyndic.setText("jLabel1");
+        jLabelSyndic.setText("Título");
 
         jButtonSend.setText("Enviar");
         jButtonSend.addActionListener(new java.awt.event.ActionListener() {
@@ -66,25 +69,26 @@ public class Send extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelSyndic)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonSend)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelSyndic)
+                            .addComponent(jButtonSend))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
-                    .addComponent(jScrollPane1)
                     .addComponent(jTextFieldSubject))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabelSyndic)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jTextFieldSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSend)
                     .addComponent(jButton1))
@@ -128,14 +132,18 @@ public class Send extends javax.swing.JInternalFrame {
         this.dispose();
     }
     
-    private void send(){
+    private void send(){ 
+        try {
+            String title = jTextFieldSubject.getText();
+            String text = jTextArea1.getText();
+            
+            conRes.sendMessage(title, text, Resident.getCurrentResident());
+            setNull();
+            JOptionPane.showMessageDialog(null, "Mensagem enviada com sucesso!");
         
-        String title = jTextFieldSubject.getText();
-        String text = jTextArea1.getText();
-        
-        conRes.sendMessage(title, text, Resident.getCurrentResident());
-        setNull();
-        JOptionPane.showMessageDialog(null, "Mensagem enviada com sucesso!");
+        } catch (BlankSpacesException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
     }
     
     private void setNull(){

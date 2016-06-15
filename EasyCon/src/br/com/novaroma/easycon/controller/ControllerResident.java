@@ -9,6 +9,7 @@ import br.com.novaroma.easycon.entities.Complaint;
 import br.com.novaroma.easycon.entities.Entity;
 import br.com.novaroma.easycon.entities.Survey;
 import br.com.novaroma.easycon.entities.Vote;
+import br.com.novaroma.easycon.exception.BlankSpacesException;
 import br.com.novaroma.easycon.structures.AvlTree;
 import br.com.novaroma.easycon.structures.Hash;
 import br.com.novaroma.easycon.structures.Link;
@@ -21,8 +22,12 @@ public class ControllerResident implements IControllerResident {
     
     private IDao dao = Factory.getDao();
     
-    @Override
-    public void sendMessage(String title, String text, Resident currentResident) {
+    @Override //AJEITAR
+    public void sendMessage(String title, String text, Resident currentResident) throws BlankSpacesException{
+        
+        if (title.equals("") || text.equals("")) {
+            throw new BlankSpacesException();
+        }
         Message message = new Message(currentResident, Maneger.getCurrentManeger(), new Date(), Structures.generateCodeOnStack(Structures.getStack()), title, text);
         dao.insert(message, Structures.getStack());
     }

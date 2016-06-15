@@ -1,4 +1,3 @@
-
 package br.com.novaroma.easycon.presentation.view.syndic;
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
@@ -8,10 +7,11 @@ import br.com.novaroma.easycon.structures.Structures;
 import br.com.novaroma.easycon.entities.Message;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ExitBox extends javax.swing.JInternalFrame {
-
+    
     private IControllerAdm conAdm = new ControllerAdm();
     
     public ExitBox() {
@@ -19,7 +19,7 @@ public class ExitBox extends javax.swing.JInternalFrame {
         messageList();
         getContentPane().setBackground(Color.white);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -154,30 +154,34 @@ public class ExitBox extends javax.swing.JInternalFrame {
     private void exit() {
         this.dispose();
     }
-
+    
     private void openMenssege() {
-
-        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        Message messageX = (Message)conAdm.returnEntityStack(id, Structures.getStack());
         
-        jTextFieldSubject.setText(messageX.getTitle());
-        jTextArea1.setText(messageX.getText());
+        try {
+            String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            Message messageX = (Message) conAdm.returnEntityStack(id, Structures.getStack());
+            
+            jTextFieldSubject.setText(messageX.getTitle());
+            jTextArea1.setText(messageX.getText());
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Para visualizar uma mensagem, deve-se primeiro selecionar uma das mensagens exibidas na tabela.");
+        }
     }
     
     private void messageList() {
-
+        
         for (int i = Structures.getStack().getTop(); i >= 0; i--) {
-
+            
             Message messageX = (Message) Structures.getStack().returnInIndex(i);
-
+            
             if (messageX.getSender().equals(Maneger.getCurrentManeger())) {
                 
                 String date[] = messageX.getDate().toString().split(" ");
-
+                
                 DefaultTableModel residentList = (DefaultTableModel) jTable1.getModel();
-                residentList.addRow(new String[]{messageX.getId(), messageX.getTitle(),messageX.getReceptor().getName(), date[2] + "/" + date[1] + "/" + date[5]});
+                residentList.addRow(new String[]{messageX.getId(), messageX.getTitle(), messageX.getReceptor().getName(), date[2] + "/" + date[1] + "/" + date[5]});
             }
-
+            
         }
     }
 }

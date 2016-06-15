@@ -217,23 +217,27 @@ public class Finance extends javax.swing.JInternalFrame {
     }
 
     private void setLabels(double total) {
-        jLabelTotal.setText("Total:" +  String.valueOf(total));
+        jLabelTotal.setText("Total:" + String.valueOf(total));
         jLabelStatus.setText("Status: " + Resident.getCurrentResident().getOwe());
 
     }
 
     private void openReceipt() {
 
-        String id = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
-        Receipt receiptX = (Receipt) conRes.returnEntityHash(id, Structures.getHashReceipt());
-        String date[] = receiptX.getDate().toString().split(" ");
+        try {
+            String id = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
+            Receipt receiptX = (Receipt) conRes.returnEntityHash(id, Structures.getHashReceipt());
+            String date[] = receiptX.getDate().toString().split(" ");
 
-        JOptionPane.showMessageDialog(null, "RECIBO DE PAGAMENTO"
-                + "\nCodigo: " + receiptX.getId() + "\n"
-                + "\nData: " + date[2] + "/" + date[1] + "/" + date[5]
-                + "\nMorador: " + receiptX.getResident().getName() + " " + receiptX.getResident().getLastName()
-                + "\nValor: " + receiptX.getValue()
-                + "\nDescricao: " + receiptX.getDescription());
+            JOptionPane.showMessageDialog(null, "RECIBO DE PAGAMENTO"
+                    + "\nCodigo: " + receiptX.getId() + "\n"
+                    + "\nData: " + date[2] + "/" + date[1] + "/" + date[5]
+                    + "\nMorador: " + receiptX.getResident().getName() + " " + receiptX.getResident().getLastName()
+                    + "\nValor: " + receiptX.getValue()
+                    + "\nDescricao: " + receiptX.getDescription());
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Para visualizar uma mensagem, deve-se primeiro selecionar uma das mensagens exibidas na tabela.");
+        }
     }
 
     private void pay(Hash hash) {

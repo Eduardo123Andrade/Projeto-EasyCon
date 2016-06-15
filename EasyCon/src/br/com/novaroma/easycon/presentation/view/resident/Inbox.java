@@ -8,12 +8,13 @@ import br.com.novaroma.easycon.structures.Stack;
 import br.com.novaroma.easycon.structures.Structures;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Inbox extends javax.swing.JInternalFrame {
 
     private IControllerResident conRes = new ControllerResident();
-    
+
     public Inbox() {
         initComponents();
         messageList(Structures.getStack());
@@ -166,11 +167,15 @@ public class Inbox extends javax.swing.JInternalFrame {
 
     private void openMenssege() {
 
-        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        Message messageX = (Message)conRes.returnEntityStack(id, Structures.getStack());
-        
-        jTextField1.setText(messageX.getTitle());
-        jTextArea1.setText(messageX.getText());
+        try {
+            String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            Message messageX = (Message) conRes.returnEntityStack(id, Structures.getStack());
+
+            jTextField1.setText(messageX.getTitle());
+            jTextArea1.setText(messageX.getText());
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Para visualizar uma mensagem, deve-se primeiro selecionar uma das mensagens exibidas na tabela.");
+        }
     }
 
     private void messageList(Stack stack) {
@@ -180,7 +185,7 @@ public class Inbox extends javax.swing.JInternalFrame {
             Message messageX = (Message) Structures.getStack().returnInIndex(i);
 
             if (messageX.getReceptor().getCpf().equals(Resident.getCurrentResident().getCpf())) {
-                
+
                 String date[] = messageX.getDate().toString().split(" ");
 
                 DefaultTableModel residentList = (DefaultTableModel) jTable1.getModel();

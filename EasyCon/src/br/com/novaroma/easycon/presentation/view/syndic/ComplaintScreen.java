@@ -251,28 +251,35 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
     }
 
     private void openComplaint() {
-        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        Complaint complaintX = (Complaint) conAdm.returnEntityHash(id, Structures.getHash());
 
-        jTextField1.setText(complaintX.getTitle());
-        jTextArea1.setText(complaintX.getText());
+        try {
+            String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            Complaint complaintX = (Complaint) conAdm.returnEntityHash(id, Structures.getHash());
+
+            jTextField1.setText(complaintX.getTitle());
+            jTextArea1.setText(complaintX.getText());
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Para visualizar uma reclamação, deve-se primeiro selecionar uma das reclamações exibidas na tabela.");
+        }
     }
 
-    private void toSolve() { //AJEITAR BUTTON
+    private void toSolve() {
+        try {
+            String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            Complaint complaintX = (Complaint) conAdm.returnEntityHash(id, Structures.getHash());
 
-        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        Complaint complaintX = (Complaint) conAdm.returnEntityHash(id, Structures.getHash());
-        
-      
-        if (buttonOne.isSelected()) {
-            complaintX.setStatus("Resolvido");
-        } else if (buttonTwo.isSelected()) {
-            complaintX.setStatus("Em andamento");
-        }else if (buttonThree.isSelected()) {
-            complaintX.setStatus("Planejamento futuro");
+            if (buttonOne.isSelected()) {
+                complaintX.setStatus("Resolvido");
+            } else if (buttonTwo.isSelected()) {
+                complaintX.setStatus("Em andamento");
+            } else if (buttonThree.isSelected()) {
+                complaintX.setStatus("Planejamento futuro");
+            }
+
+            JOptionPane.showMessageDialog(null, "Reclamacao atualizada com sucesso!");
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Para visualizar uma reclamação, deve-se primeiro selecionar uma das reclamações exibidas na tabela.");
         }
-        
-        JOptionPane.showMessageDialog(null, "Reclamacao atualizada com sucesso!");
     }
 
 }

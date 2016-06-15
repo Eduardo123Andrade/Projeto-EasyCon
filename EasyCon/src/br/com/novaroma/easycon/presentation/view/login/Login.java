@@ -2,10 +2,15 @@ package br.com.novaroma.easycon.presentation.view.login;
 
 
 import br.com.novaroma.easycon.controller.ControllerAdm;
+import br.com.novaroma.easycon.exception.BlankSpacesException;
+import br.com.novaroma.easycon.exception.DontExistException;
+import br.com.novaroma.easycon.exception.InvalidUserExveption;
 import br.com.novaroma.easycon.presentation.view.resident.DesktopDweller;
 import br.com.novaroma.easycon.presentation.view.syndic.DesktopSyndic;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -52,7 +57,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecione", "Sindico", "Morador" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Sindico", "Morador" }));
 
         jButton2.setText("Login");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -83,14 +88,14 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                             .addComponent(jPasswordFieldPassword))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(97, Short.MAX_VALUE))
+                            .addComponent(jButton2))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 91, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,14 +185,20 @@ public class Login extends javax.swing.JFrame {
 
     
    private void login() {
-        if(jComboBox1.getSelectedIndex() == 1 && conAdm.verifySingInAdm(jTextFieldLogin.getText(), jPasswordFieldPassword.getText())){
-            DesktopSyndic ds = new DesktopSyndic();
-            ds.setVisible(true);
-        }else if(jComboBox1.getSelectedIndex() == 2 && conAdm.verifySingInResident(jTextFieldLogin.getText(), jPasswordFieldPassword.getText())){
-            DesktopDweller dd = new DesktopDweller();
-            dd.setVisible(true);
-        }else{
-           
-        } 
+        try {
+            if(jComboBox1.getSelectedIndex() == 1 && conAdm.verifySingInAdm(jTextFieldLogin.getText(), jPasswordFieldPassword.getText())){
+                DesktopSyndic ds = new DesktopSyndic();
+                ds.setVisible(true);
+            }else if(jComboBox1.getSelectedIndex() == 2 && conAdm.verifySingInResident(jTextFieldLogin.getText(), jPasswordFieldPassword.getText())){
+                DesktopDweller dd = new DesktopDweller();
+                dd.setVisible(true);
+            }
+        } catch (BlankSpacesException ex ) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        } catch (InvalidUserExveption ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Usuário não cadastrado no sistema.");
+        }
     }
 }

@@ -42,7 +42,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -84,10 +84,10 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="jTextFieldName4" min="-2" pref="88" max="-2" attributes="0"/>
+                          <Component id="jTextFieldName4" min="-2" pref="216" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="138" max="32767" attributes="0"/>
+                  <EmptySpace pref="348" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -105,7 +105,7 @@
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldName4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="60" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="48" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -135,7 +135,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nome"/>
+            <Property name="text" type="java.lang.String" value="Nome: "/>
           </Properties>
         </Component>
       </SubComponents>
@@ -156,30 +156,28 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabelStatus" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="jLabelNumber" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="jLabelSenha" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldPassword" min="-2" pref="108" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="jLabelStatus" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="jLabelNumber" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="jLabelSenha" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTextFieldPassword2" min="-2" pref="108" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jTextFieldPassword2" pref="194" max="32767" attributes="0"/>
+                              <Component id="jTextFieldPassword" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="210" pref="373" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -225,14 +223,14 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Senha"/>
+            <Property name="text" type="java.lang.String" value="Senha: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldPassword">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Confirmar senha"/>
+            <Property name="text" type="java.lang.String" value="Confirmar senha: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldPassword2">

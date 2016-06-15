@@ -2,8 +2,6 @@ package br.com.novaroma.easycon.structures;
 
 import br.com.novaroma.easycon.entities.Entity;
 
-//VER HERANCA DEPOIS!
-
 public class AvlLink {
 
     private AvlLink left;

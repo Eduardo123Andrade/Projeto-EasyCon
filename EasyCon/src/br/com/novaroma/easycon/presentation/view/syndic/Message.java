@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 public class Message extends javax.swing.JInternalFrame {
 
     private IControllerAdm conAdm = new ControllerAdm();
-    
+
     public Message() {
         initComponents();
         residentList(Structures.getTree().getRoot());
@@ -125,13 +125,13 @@ public class Message extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
-         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             exit();
         }
     }//GEN-LAST:event_jButton3KeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        send();   
+        send();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -153,7 +153,7 @@ public class Message extends javax.swing.JInternalFrame {
     private void exit() {
         this.dispose();
     }
-    
+
     private void residentList(AvlLink temp) {
 
         if (temp != null) {
@@ -167,24 +167,38 @@ public class Message extends javax.swing.JInternalFrame {
             residentList(temp.getRight());
         }
     }
-    
-    public void send() {       
-        String cpf = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        String title = jTextFieldReceiver.getText();
-        String text = jTextArea1.getText();
-        
-        conAdm.sendMessage(cpf, title, text);
-        setNull();
-        JOptionPane.showMessageDialog(null, "Mensagem enviada com sucesso!");
+
+    public void send() {
+        try {
+            if (jTable1.getRowCount() > 0) {
+                String cpf = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+                String title = jTextFieldReceiver.getText();
+                String text = jTextArea1.getText();
+
+                conAdm.sendMessage(cpf, title, text);
+                setNull();
+                JOptionPane.showMessageDialog(null, "Mensagem enviada com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Não há moradores cadastrados no sistema.");
+            }
+            
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Para enviar uma mensagem, deve-se primeiro selecionar um morador na tabela exibida na tela.");
+        }
     }
 
     private void sendToAll() {
-        String title = jTextFieldReceiver.getText();
-        String text = jTextArea1.getText();
-        
-        conAdm.sendMessageToAll(Structures.getTree().getRoot(), title, text);
-        setNull();
-        JOptionPane.showMessageDialog(null, "Mensagem enviada para todos os usuarios com sucesso!");
+       
+        if(jTable1.getRowCount() > 0) {
+            String title = jTextFieldReceiver.getText();
+            String text = jTextArea1.getText();
+
+            conAdm.sendMessageToAll(Structures.getTree().getRoot(), title, text);
+            setNull();
+            JOptionPane.showMessageDialog(null, "Mensagem enviada para todos os usuarios com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Não há moradores cadastrados no sistema.");
+        }
     }
 
     private void setNull() {

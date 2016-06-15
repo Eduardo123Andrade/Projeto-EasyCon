@@ -1,4 +1,3 @@
-
 package br.com.novaroma.easycon.presentation.view.resident;
 
 import br.com.novaroma.easycon.controller.ControllerResident;
@@ -8,12 +7,13 @@ import br.com.novaroma.easycon.entities.Resident;
 import br.com.novaroma.easycon.structures.Structures;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ExitBox extends javax.swing.JInternalFrame {
 
     IControllerResident conRes = new ControllerResident();
-    
+
     public ExitBox() {
         initComponents();
         messageList();
@@ -152,20 +152,25 @@ public class ExitBox extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void openMenssege() {
-        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        Message messageX = (Message)conRes.returnEntityStack(id, Structures.getStack());
-        
-        jTextFieldSubject.setText(messageX.getTitle());
-        jTextArea1.setText(messageX.getText());
+
+        try {
+            String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            Message messageX = (Message) conRes.returnEntityStack(id, Structures.getStack());
+
+            jTextFieldSubject.setText(messageX.getTitle());
+            jTextArea1.setText(messageX.getText());
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Para visualizar uma mensagem, deve-se primeiro selecionar uma das mensagens exibidas na tabela.");
+        }
     }
-    
+
     private void messageList() {
         for (int i = Structures.getStack().getTop(); i >= 0; i--) {
 
             Message messageX = (Message) Structures.getStack().returnInIndex(i);
 
             if (messageX.getSender().equals(Resident.getCurrentResident())) {
-                
+
                 String date[] = messageX.getDate().toString().split(" ");
 
                 DefaultTableModel residentList = (DefaultTableModel) jTable1.getModel();

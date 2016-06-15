@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 public class PollsList extends javax.swing.JInternalFrame {
 
     private IControllerAdm conAdm = new ControllerAdm();
-    
+
     public PollsList() {
         initComponents();
         surveyList(Structures.getList().getFirst());
@@ -183,9 +183,9 @@ public class PollsList extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-       if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-           exit();
-       }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            exit();
+        }
     }//GEN-LAST:event_jButton1KeyPressed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -214,41 +214,45 @@ public class PollsList extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void exit() {
-     this.dispose();  
-    }    
-    
+        this.dispose();
+    }
+
     private void surveyList(Link temp) {
-        
+
         while (temp != null) {
-            
+
             Survey surveyTemp = (Survey) temp.getEntity();
             DefaultTableModel surveyList = (DefaultTableModel) jTable1.getModel();
             String[] date = surveyTemp.getDate().toString().split(" ");
-            
+
             surveyList.addRow(new String[]{surveyTemp.getId(), surveyTemp.getQuestion(), date[2] + "/" + date[1] + "/" + date[5], String.valueOf(surveyTemp.getTotal())});
-            
+
             temp = temp.getNext();
         }
     }
-    
+
     private void openSurvey() {
-        
-        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        Survey surveyX = (Survey)conAdm.returnEntityList(id, Structures.getList());
-        
-        double[] percents = surveyX.returnPercent();
-        
-        jLabel1.setText(jLabel1.getText() + surveyX.getQuestion());
-        jLabel2.setText(jLabel2.getText() + surveyX.getAlternative(0));
-        jLabel3.setText(jLabel3.getText() + surveyX.getAlternative(1));
-        jLabel4.setText(jLabel4.getText() + surveyX.getAlternative(2));
-        jLabel5.setText(jLabel5.getText() + surveyX.getAlternative(3));
-        jLabel6.setText(jLabel6.getText() + surveyX.getAlternative(4));
-        
-        jLabel8.setText(percents[0] + "%   (" + surveyX.getAlternativeScore(0) + " votos)");
-        jLabel10.setText(percents[1] + "%   (" + surveyX.getAlternativeScore(1) + " votos)");
-        jLabel11.setText(percents[2] + "%   (" + surveyX.getAlternativeScore(2) + " votos)");
-        jLabel12.setText(percents[3] + "%   (" + surveyX.getAlternativeScore(3) + " votos)");
-        jLabel13.setText(percents[4] + "%   (" + surveyX.getAlternativeScore(4) + " votos)");
+
+        try {
+            String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            Survey surveyX = (Survey) conAdm.returnEntityList(id, Structures.getList());
+
+            double[] percents = surveyX.returnPercent();
+
+            jLabel1.setText(jLabel1.getText() + surveyX.getQuestion());
+            jLabel2.setText(jLabel2.getText() + surveyX.getAlternative(0));
+            jLabel3.setText(jLabel3.getText() + surveyX.getAlternative(1));
+            jLabel4.setText(jLabel4.getText() + surveyX.getAlternative(2));
+            jLabel5.setText(jLabel5.getText() + surveyX.getAlternative(3));
+            jLabel6.setText(jLabel6.getText() + surveyX.getAlternative(4));
+
+            jLabel8.setText(percents[0] + "%   (" + surveyX.getAlternativeScore(0) + " votos)");
+            jLabel10.setText(percents[1] + "%   (" + surveyX.getAlternativeScore(1) + " votos)");
+            jLabel11.setText(percents[2] + "%   (" + surveyX.getAlternativeScore(2) + " votos)");
+            jLabel12.setText(percents[3] + "%   (" + surveyX.getAlternativeScore(3) + " votos)");
+            jLabel13.setText(percents[4] + "%   (" + surveyX.getAlternativeScore(4) + " votos)");
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Para visualizar uma enquete, deve-se primeiro selecionar uma das enquetes exibidas na tabela.");
+        }
     }
 }

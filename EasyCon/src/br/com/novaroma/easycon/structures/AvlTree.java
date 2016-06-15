@@ -1,6 +1,6 @@
 package br.com.novaroma.easycon.structures;
 
-import br.com.novaroma.easycon.entities.*; // <--- APENAS PARA TESTE
+import br.com.novaroma.easycon.entities.*;
 
 
 public class AvlTree {
@@ -238,10 +238,8 @@ public class AvlTree {
         else if (entity.getId().compareTo(root.getEntity().getId()) > 0) {
             root.setRight(deleteLink(root.getRight(), entity));
         } 
-         
-        //if key is same as root's key, then this is the node to be deleted
         else {
-            // node with only one child or no child
+            // Nó com apenas um filho.
             if ((root.getLeft() == null) || (root.getRight() == null)) {
                 AvlLink temp = null;
                 
@@ -252,7 +250,7 @@ public class AvlTree {
                     temp = root.getLeft();
                 }
  
-                // No child case
+                // Sem filhos.
                 if (temp == null) {
                     temp = root;
                     root = null;
@@ -264,8 +262,7 @@ public class AvlTree {
             } 
             else {
  
-                // node with two children: Get the inorder successor (smallest
-                // in the right subtree)
+                //Nó com dois filhos.
             	AvlLink temp = lowerValue(root.getRight());
  
                 // Copy the inorder successor's data to this node
@@ -277,36 +274,34 @@ public class AvlTree {
             quantity--;
         }
  
-        // If the tree had only one node then return
+       
         if (root == null) {
             return root;
         }
  
-        // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE
+        // Atualiza a altura do nó atual.
         root.setHeight(max(height(root.getLeft()), height(root.getRight())) + 1);
  
-        // STEP 3: GET THE BALANCE FACTOR OF THIS NODE (to check whether
-        //  this node became unbalanced)
+        // Verifica o fator de balanceamento.
         int balance = getFactor(root);
  
-        // If this node becomes unbalanced, then there are 4 cases
-        // Left Left Case
+        // Caso esquerda-esquerda.
         if (balance > 1 && getFactor(root.getLeft()) >= 0) {
             return doRightRotation(root);
         }
  
-        // Left Right Case
+        //Esquerda-direita.
         if (balance > 1 && getFactor(root.getLeft()) < 0) {
             root.setLeft(doLeftRotation(root.getLeft()));
             return doRightRotation(root);
         }
  
-        // Right Right Case
+        //Direita-direita.
         if (balance < -1 && getFactor(root.getRight()) <= 0) {
             return doLeftRotation(root);
         }
  
-        // Right Left Case
+        // Direita-esquerda.
         if (balance < -1 && getFactor(root.getRight()) > 0) {
             root.setRight(doRightRotation(root.getRight()));
             return doLeftRotation(root);
@@ -315,45 +310,14 @@ public class AvlTree {
         return root;
     }
 	
-	/* Given a non-empty binary search tree, return the node with minimum
-    key value found in that tree. Note that the entire tree does not
-    need to be searched. */
    private AvlLink lowerValue(AvlLink link) {
 	   AvlLink current = link;
 
-       /* loop down to find the leftmost leaf */
+       //Loop para achar a folha "mais baixa".
        while (current.getLeft() != null) {
            current = current.getLeft();
        }
 
        return current;
    }
-
-    public static void main(String[] args) {
-        AvlTree tree = new AvlTree();
-
-        Resident x = new Resident();
-        x.setCpf("1");
-        Resident y = new Resident();
-        y.setCpf("3");
-        Resident z = new Resident();
-        z.setCpf("2");
-        Resident w = new Resident();
-        w.setCpf("5");
-
-        Maneger man = new Maneger();
-        man.setCpf("dsgsd");
-
-        tree.insert(x);
-        tree.insert(y);
-        tree.insert(z);
-        tree.insert(w);
-        tree.insert(man);
-
-        //System.out.println(tree.getRootNode().getEntity().getId());
-        System.out.println(tree.inorder());
-        
-        tree.delete("dsgsd");
-        System.out.println("\n" + tree.inorder());
-    }
 }

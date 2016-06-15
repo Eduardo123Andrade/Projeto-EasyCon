@@ -203,43 +203,53 @@ public class VoteSurvey extends javax.swing.JInternalFrame {
     }
 
     private void openSurvey() {
-        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        Survey surveyX = (Survey) conRes.returnEntityList(id, Structures.getList());
 
-        jLabel1.setText(jLabel1.getText() + surveyX.getQuestion());
-        jRadioButton1.setText(jRadioButton1.getText() + surveyX.getAlternative(0));
-        jRadioButton2.setText(jRadioButton2.getText() + surveyX.getAlternative(1));
-        jRadioButton3.setText(jRadioButton3.getText() + surveyX.getAlternative(2));
-        jRadioButton4.setText(jRadioButton4.getText() + surveyX.getAlternative(3));
-        jRadioButton5.setText(jRadioButton5.getText() + surveyX.getAlternative(4));
+        try {
+            String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            Survey surveyX = (Survey) conRes.returnEntityList(id, Structures.getList());
+
+            jLabel1.setText(jLabel1.getText() + surveyX.getQuestion());
+            jRadioButton1.setText(jRadioButton1.getText() + surveyX.getAlternative(0));
+            jRadioButton2.setText(jRadioButton2.getText() + surveyX.getAlternative(1));
+            jRadioButton3.setText(jRadioButton3.getText() + surveyX.getAlternative(2));
+            jRadioButton4.setText(jRadioButton4.getText() + surveyX.getAlternative(3));
+            jRadioButton5.setText(jRadioButton5.getText() + surveyX.getAlternative(4));
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Para visualizar uma enquete, deve-se primeiro selecionar uma das enquetes exibidas na tabela.");
+        }
     }
 
     private void vote() {
-        String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        Survey surveyX = (Survey) conRes.returnEntityList(id, Structures.getList());
-        int alternative = 0;
 
-        if (jRadioButton1.isSelected()) {
-            surveyX.setAlternativeScore(0);
-        } else if (jRadioButton2.isSelected()) {
-            surveyX.setAlternativeScore(1);
-            alternative = 1;
-        } else if (jRadioButton3.isSelected()) {
-            surveyX.setAlternativeScore(2);
-            alternative = 2;
-        } else if (jRadioButton4.isSelected()) {
-            surveyX.setAlternativeScore(3);
-            alternative = 3;
-        } else if (jRadioButton5.isSelected()) {
-            surveyX.setAlternativeScore(4);
-            alternative = 4;
-        } else {
-            //lanca excecao!
+        try {
+            String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            Survey surveyX = (Survey) conRes.returnEntityList(id, Structures.getList());
+            int alternative = 0;
+
+            if (jRadioButton1.isSelected()) {
+                surveyX.setAlternativeScore(0);
+            } else if (jRadioButton2.isSelected()) {
+                surveyX.setAlternativeScore(1);
+                alternative = 1;
+            } else if (jRadioButton3.isSelected()) {
+                surveyX.setAlternativeScore(2);
+                alternative = 2;
+            } else if (jRadioButton4.isSelected()) {
+                surveyX.setAlternativeScore(3);
+                alternative = 3;
+            } else if (jRadioButton5.isSelected()) {
+                surveyX.setAlternativeScore(4);
+                alternative = 4;
+            } else {
+                //lanca excecao!
+            }
+            conRes.registerVote(alternative, surveyX);
+
+            JOptionPane.showMessageDialog(null, "Voto computado com sucesso!");
+            
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Para votar em uma enquete, deve-se primeiro selecionar uma das enquetes exibidas na tabela.");
         }
-
-        conRes.registerVote(alternative, surveyX);
-        
-        JOptionPane.showMessageDialog(null, "Voto computado com sucesso!");
     }
 
     private void exit() {

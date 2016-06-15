@@ -2,10 +2,9 @@
 package br.com.novaroma.easycon.structures;
 
 import br.com.novaroma.easycon.entities.Entity;
-import br.com.novaroma.easycon.entities.Resident;
 
 
-public class DynamicQueue { //90% TESTADO!
+public class DynamicQueue { 
     
     private LinkedList queue;
     

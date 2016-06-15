@@ -254,6 +254,7 @@ public class Finances extends javax.swing.JInternalFrame {
     
     private void openReceipt() {
         
+        try {
         String id = jTableCash.getValueAt(jTableCash.getSelectedRow(), 0).toString();
         Receipt receiptX = (Receipt) conAdm.returnEntityHash(id, Structures.getHashReceipt());
         String date[] = receiptX.getDate().toString().split(" ");
@@ -264,5 +265,9 @@ public class Finances extends javax.swing.JInternalFrame {
                     + "\nMorador: " + receiptX.getResident().getName() + " " + receiptX.getResident().getLastName()
                         + "\nValor: " + receiptX.getValue()
                             + "\nDescricao: " + receiptX.getDescription());
+        
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Para visualizar um recibo, deve-se primeiro selecionar um dos recibos exibidas na tabela de arrecadações mensais.");
+        }
     }
 }

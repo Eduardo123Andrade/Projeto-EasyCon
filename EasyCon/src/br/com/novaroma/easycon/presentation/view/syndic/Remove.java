@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 public class Remove extends javax.swing.JInternalFrame {
 
     private IControllerAdm conAdm = new ControllerAdm();
-    
+
     public Remove() {
         initComponents();
         residentList(Structures.getTree().getRoot());
@@ -147,15 +147,19 @@ public class Remove extends javax.swing.JInternalFrame {
     }
 
     private void remove() {
-        //APOS VERIFICACAO 
-        Resident x = (Resident)conAdm.returnEntityTree(jTextField1.getText(), Structures.getTree());
+        try {
+            Resident x = (Resident) conAdm.returnEntityTree(jTextField1.getText(), Structures.getTree());
 
-        conAdm.removeResident(jTextField1.getText());
-        ((DefaultTableModel) jTable1.getModel()).setNumRows(0);
-        residentList(Structures.getTree().getRoot());
-        jTextField1.setText(null);
-        JOptionPane.showMessageDialog(null, x.getName() + " foi removido com sucesso!");
-        
+            conAdm.removeResident(jTextField1.getText());
+            ((DefaultTableModel) jTable1.getModel()).setNumRows(0);
+            residentList(Structures.getTree().getRoot());
+            jTextField1.setText(null);
+            JOptionPane.showMessageDialog(null, x.getName() + " foi removido com sucesso!");
+            
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "O morador em questão não está registrado no sistema.");
+        }
+
     }
 
     private void residentList(AvlLink temp) {

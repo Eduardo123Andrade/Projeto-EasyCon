@@ -5,6 +5,7 @@ import br.com.novaroma.easycon.controller.IControllerAdm;
 import br.com.novaroma.easycon.entities.Resident;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class Update extends javax.swing.JInternalFrame {
 
@@ -50,7 +51,7 @@ public class Update extends javax.swing.JInternalFrame {
 
         jLabelFamily4.setText("Numero de moradores");
 
-        jLabel9.setText("Nome");
+        jLabel9.setText("Nome: ");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -71,8 +72,8 @@ public class Update extends javax.swing.JInternalFrame {
                         .addComponent(jLabelFamily4))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addComponent(jTextFieldName4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(138, Short.MAX_VALUE))
+                        .addComponent(jTextFieldName4, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(348, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,7 +87,7 @@ public class Update extends javax.swing.JInternalFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTextFieldName4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 60, Short.MAX_VALUE))
+                .addGap(0, 48, Short.MAX_VALUE))
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados de moradoror"));
@@ -97,9 +98,9 @@ public class Update extends javax.swing.JInternalFrame {
 
         jLabelSenha.setText("Senha");
 
-        jLabel11.setText("Senha");
+        jLabel11.setText("Senha: ");
 
-        jLabel12.setText("Confirmar senha");
+        jLabel12.setText("Confirmar senha: ");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -109,23 +110,22 @@ public class Update extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelStatus)
-                            .addComponent(jLabel11))
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabelNumber)
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabelSenha))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabelStatus)
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabelNumber)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabelSenha))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel11)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldPassword2, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(jTextFieldPassword))))
+                .addGap(210, 373, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +190,7 @@ public class Update extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -249,7 +249,7 @@ public class Update extends javax.swing.JInternalFrame {
         this.dispose();
     }
 
-    private void update() {
+    private void update() { //COLOCAR EXC
         String name = jTextFieldName4.getText();
         String password = jTextFieldPassword.getText();
         String confirmation = jTextFieldPassword2.getText();
@@ -257,6 +257,8 @@ public class Update extends javax.swing.JInternalFrame {
         if (password.equals(confirmation)) {
             Resident.getCurrentResident().setName(name);
             Resident.getCurrentResident().setPassword(password);
+            
+            JOptionPane.showMessageDialog(null, "Alterações concluídas com sucesso!");
         }
     }
 

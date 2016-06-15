@@ -350,7 +350,7 @@ public class Register extends javax.swing.JInternalFrame {
                setNull();
            }
            else {
-               JOptionPane.showMessageDialog(null, "A senha e a confirmacao de senha devem ser iguais!");
+               JOptionPane.showMessageDialog(null, "A senha e a confirmação de senha devem ser iguais!");
            }
        }
 

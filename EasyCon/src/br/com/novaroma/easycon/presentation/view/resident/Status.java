@@ -88,7 +88,7 @@ public class Status extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelPassword)
                     .addComponent(jLabelAge))
-                .addContainerGap(400, Short.MAX_VALUE))
+                .addContainerGap(529, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

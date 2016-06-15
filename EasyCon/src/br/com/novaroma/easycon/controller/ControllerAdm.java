@@ -2,41 +2,56 @@ package br.com.novaroma.easycon.controller;
 
 import br.com.novaroma.easycon.dao.IDao;
 import br.com.novaroma.easycon.entities.*;
+import br.com.novaroma.easycon.exception.BlankSpacesException;
+import br.com.novaroma.easycon.exception.InvalidUserExveption;
 import br.com.novaroma.easycon.factories.Factory;
 import br.com.novaroma.easycon.structures.*;
 import java.util.Date;
 
-public class ControllerAdm implements IControllerAdm{ //COLOCAR TODAS AS EXCECOES DEPOIS!
+public class ControllerAdm implements IControllerAdm{ 
 
     private IDao dao = Factory.getDao();
 
     @Override
-    public boolean verifySingInAdm(String login, String password) { //OK
+    public boolean verifySingInAdm(String login, String password) throws BlankSpacesException, InvalidUserExveption{ 
 
+        if (login.equals("") || password.equals("")) {
+            throw new BlankSpacesException();
+        }
         /* boolean permition = false;
 
         if (login.equals("123") && password.equals("123")) {
             permition = true;
-        }*/
+        } else {
+            throw new InvalidUserExveption();
+        }
+        */
         return true;
     }
 
     @Override
-    public boolean verifySingInResident(String id, String password) { //OK
+    public boolean verifySingInResident(String id, String password) throws BlankSpacesException, InvalidUserExveption{ 
 
+        if (id.equals("") || password.equals("")) {
+            throw new BlankSpacesException();
+        }
+        
         boolean permition = false;
         Resident tempResident = (Resident) dao.search(id, Structures.getTree());
 
         if (tempResident != null && tempResident.getPassword().equals(password)) {
             permition = true;
             Resident.setCurrentResident(tempResident);
+        } else {
+            throw new InvalidUserExveption();
         }
 
         return permition;
     }
 
+  
     @Override
-    public void registerResident(String block, String building, String number, String gender, String login, String password, String phoneNumber, String name, String lastName, String age, String cpf) { //OK
+    public void registerResident(String block, String building, String number, String gender, String login, String password, String phoneNumber, String name, String lastName, String age, String cpf) { 
 
         Address address = new Address(block, building, number);
         Resident resident = new Resident(address, gender, login, password, phoneNumber, name, lastName, age, cpf, false);
@@ -46,12 +61,12 @@ public class ControllerAdm implements IControllerAdm{ //COLOCAR TODAS AS EXCECOE
     }
 
     @Override
-    public void removeResident(String id) { //OK
+    public void removeResident(String id) {
         dao.remove(id, Structures.getTree());
     }
 
     @Override
-    public void sendMessage(String cpf, String title, String text) { //TRAVANDO
+    public void sendMessage(String cpf, String title, String text) {
 
         Resident tempResident = (Resident) dao.search(cpf, Structures.getTree());
         Message message = new Message(Maneger.getCurrentManeger(), tempResident, new Date(), Structures.generateCodeOnStack(Structures.getStack()), title, text);
@@ -60,9 +75,9 @@ public class ControllerAdm implements IControllerAdm{ //COLOCAR TODAS AS EXCECOE
     }
 
     @Override
-    public void sendMessageToAll(AvlLink temp, String title, String text) { //TESTAR
+    public void sendMessageToAll(AvlLink temp, String title, String text) { 
 
-        int code = Structures.generateCodeOnStack(Structures.getStack()); //CONSERTAR PRA TER APENAS UM CODIGO
+        int code = Structures.generateCodeOnStack(Structures.getStack()); 
 
         if (temp != null) {
             sendMessageToAll(temp.getLeft(), title, text);
@@ -74,6 +89,7 @@ public class ControllerAdm implements IControllerAdm{ //COLOCAR TODAS AS EXCECOE
             sendMessageToAll(temp.getRight(), title, text);
         }
     }
+
 
     @Override
     public void registerSurvey(String question,String[] alternatives) {

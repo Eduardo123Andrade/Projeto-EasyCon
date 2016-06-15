@@ -38,8 +38,6 @@ public class DesktopDweller extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
@@ -173,23 +171,6 @@ public class DesktopDweller extends javax.swing.JFrame {
         jMenu3.add(jMenuItem11);
 
         jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Alocações");
-
-        jMenuItem8.setText("Locar locais");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
-            }
-        });
-        jMenuItem8.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jMenuItem8KeyPressed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem8);
-
-        jMenuBar1.add(jMenu4);
 
         jMenu6.setText("Reclamações");
 
@@ -327,16 +308,6 @@ public class DesktopDweller extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu5ActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        tenancy();
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
-
-    private void jMenuItem8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenuItem8KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            tenancy();
-        }
-    }//GEN-LAST:event_jMenuItem8KeyPressed
-
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         claims();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
@@ -378,7 +349,6 @@ public class DesktopDweller extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
@@ -392,41 +362,34 @@ public class DesktopDweller extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 
-    private void status() { //OK
+    private void status() {
         Status s = new Status(jDesktopPane1);
         jDesktopPane1.add(s);
         s.setVisible(true);
     }
 
-    private void update() { //OK
+    private void update() { 
         Update u = new Update();
         jDesktopPane1.add(u);
         u.setVisible(true);
     }
 
-    private void tenancy() {
-        Location l = new Location();
-        jDesktopPane1.add(l);
-        l.setVisible(true);
-    }
-
-    private void send() { //OK
+    private void send() { 
         Send s = new Send();
         jDesktopPane1.add(s);
         s.setVisible(true);
     }
 
-    private void inbox() { //OK
+    private void inbox() { 
         Inbox i = new Inbox();
         jDesktopPane1.add(i);
         i.setVisible(true);
     }
 
-    private void pollslist() { //OK
+    private void pollslist() {
         PollsList pl = new PollsList();
         jDesktopPane1.add(pl);
         pl.setVisible(true);
@@ -438,7 +401,7 @@ public class DesktopDweller extends javax.swing.JFrame {
         f.setVisible(true);
     }
 
-    private void claims() {//OK
+    private void claims() {
         Claims c = new Claims();
         jDesktopPane1.add(c);
         c.setVisible(true);

@@ -4,7 +4,7 @@ import br.com.novaroma.easycon.entities.Entity;
 import br.com.novaroma.easycon.entities.Person;
 
 
-public class LinkedList { //90% TESTADO
+public class LinkedList {
     
     private Link first;
     private Link last;
