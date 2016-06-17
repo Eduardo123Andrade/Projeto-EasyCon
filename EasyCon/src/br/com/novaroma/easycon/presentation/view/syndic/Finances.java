@@ -17,11 +17,11 @@ import javax.swing.table.DefaultTableModel;
 public class Finances extends javax.swing.JInternalFrame {
 
     IControllerAdm conAdm = new ControllerAdm();
-    
+
     public Finances() {
         initComponents();
         getContentPane().setBackground(Color.white);
-        
+
         defaultersList(Structures.getTree().getRoot());
         receiptList(Structures.getHashReceipt());
     }
@@ -31,20 +31,20 @@ public class Finances extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableCash = new javax.swing.JTable();
+        jTableReceipts = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTableDebts1 = new javax.swing.JTable();
+        jTableDebts = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jButtonExit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         jLabelTotal = new javax.swing.JLabel();
         jLabelExpenses = new javax.swing.JLabel();
         jLabelBalance = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jButtonView = new javax.swing.JButton();
 
         setTitle("Financas");
 
-        jTableCash.setModel(new javax.swing.table.DefaultTableModel(
+        jTableReceipts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -60,9 +60,9 @@ public class Finances extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTableCash);
+        jScrollPane1.setViewportView(jTableReceipts);
 
-        jTableDebts1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableDebts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -78,23 +78,23 @@ public class Finances extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTableDebts1);
+        jScrollPane2.setViewportView(jTableDebts);
 
-        jLabel2.setText("Moradores inadimplentes");
+        jLabel1.setText("Moradores inadimplentes");
 
-        jButton1.setText("Sair");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonExit.setText("Sair");
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonExitActionPerformed(evt);
             }
         });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+        jButtonExit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton1KeyPressed(evt);
+                jButtonExitKeyPressed(evt);
             }
         });
 
-        jLabel7.setText("Arrecadações mensais");
+        jLabel2.setText("Arrecadações mensais");
 
         jLabelTotal.setText("Total arrecadado: ");
 
@@ -102,10 +102,10 @@ public class Finances extends javax.swing.JInternalFrame {
 
         jLabelBalance.setText("Saldo restante: ");
 
-        jButton2.setText("Abrir recibo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonView.setText("Abrir recibo");
+        jButtonView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonViewActionPerformed(evt);
             }
         });
 
@@ -119,18 +119,18 @@ public class Finances extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelBalance)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(jButtonExit))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelExpenses)
-                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
+                            .addComponent(jLabel2)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabelTotal)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton2))
+                                    .addComponent(jButtonView))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 26, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -139,24 +139,24 @@ public class Finances extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel2)
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jLabel7)
+                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabelTotal))
-                    .addComponent(jButton2))
+                    .addComponent(jButtonView))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelExpenses)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(jButtonExit)
                         .addGap(22, 22, 22))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -167,34 +167,33 @@ public class Finances extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
         exit();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonExitActionPerformed
 
-    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+    private void jButtonExitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonExitKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             exit();
         }
-    }//GEN-LAST:event_jButton1KeyPressed
+    }//GEN-LAST:event_jButtonExitKeyPressed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    private void jButtonViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewActionPerformed
         openReceipt();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonViewActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonExit;
+    private javax.swing.JButton jButtonView;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelBalance;
     private javax.swing.JLabel jLabelExpenses;
     private javax.swing.JLabel jLabelTotal;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTableCash;
-    private javax.swing.JTable jTableDebts1;
+    private javax.swing.JTable jTableDebts;
+    private javax.swing.JTable jTableReceipts;
     // End of variables declaration//GEN-END:variables
 
     private void exit() {
@@ -209,7 +208,7 @@ public class Finances extends javax.swing.JInternalFrame {
             Resident residentTemp = (Resident) temp.getEntity();
 
             if (residentTemp.isOwe()) {
-                DefaultTableModel residentList = (DefaultTableModel) jTableDebts1.getModel();
+                DefaultTableModel residentList = (DefaultTableModel) jTableDebts.getModel();
 
                 residentList.addRow(new String[]{residentTemp.getCpf(), residentTemp.getName() + " " + residentTemp.getLastName()});
             }
@@ -219,16 +218,16 @@ public class Finances extends javax.swing.JInternalFrame {
     }
 
     private void receiptList(Hash hash) {
-        
+
         double total = 0;
-        
+
         for (int i = 0; i < hash.getHash().length; i++) {
             Link temp = hash.getHashOnIndex(i).getFirst();
 
             while (temp != null) {
                 Receipt receiptX = (Receipt) temp.getEntity();
 
-                DefaultTableModel complaintList = (DefaultTableModel) jTableCash.getModel();
+                DefaultTableModel complaintList = (DefaultTableModel) jTableReceipts.getModel();
                 String date[] = receiptX.getDate().toString().split(" ");
                 String currentDate[] = new Date().toString().split(" ");
 
@@ -239,33 +238,33 @@ public class Finances extends javax.swing.JInternalFrame {
                 temp = temp.getNext();
             }
         }
-        
+
         setLabels(total);
     }
-    
+
     private void setLabels(double total) {
-        
+
         double expanses = total * (0.05);
-        
+
         jLabelTotal.setText(jLabelTotal.getText() + String.valueOf(total));
         jLabelExpenses.setText(jLabelExpenses.getText() + String.valueOf(expanses));
         jLabelBalance.setText(jLabelBalance.getText() + String.valueOf(total - expanses));
     }
-    
+
     private void openReceipt() {
-        
+
         try {
-        String id = jTableCash.getValueAt(jTableCash.getSelectedRow(), 0).toString();
-        Receipt receiptX = (Receipt) conAdm.returnEntityHash(id, Structures.getHashReceipt());
-        String date[] = receiptX.getDate().toString().split(" ");
-        
-        JOptionPane.showMessageDialog(null, "RECIBO DE PAGAMENTO" 
-            + "\nCodigo: " + receiptX.getId() + "\n" 
-                + "\nData: " + date[2] + "/" + date[1] + "/" + date[5]
+            String id = jTableReceipts.getValueAt(jTableReceipts.getSelectedRow(), 0).toString();
+            Receipt receiptX = (Receipt) conAdm.returnEntityHash(id, Structures.getHashReceipt());
+            String date[] = receiptX.getDate().toString().split(" ");
+
+            JOptionPane.showMessageDialog(null, "RECIBO DE PAGAMENTO"
+                    + "\nCodigo: " + receiptX.getId() + "\n"
+                    + "\nData: " + date[2] + "/" + date[1] + "/" + date[5]
                     + "\nMorador: " + receiptX.getResident().getName() + " " + receiptX.getResident().getLastName()
-                        + "\nValor: " + receiptX.getValue()
-                            + "\nDescricao: " + receiptX.getDescription());
-        
+                    + "\nValor: " + receiptX.getValue()
+                    + "\nDescricao: " + receiptX.getDescription());
+
         } catch (ArrayIndexOutOfBoundsException ex) {
             JOptionPane.showMessageDialog(null, "Para visualizar um recibo, deve-se primeiro selecionar um dos recibos exibidas na tabela de arrecadações mensais.");
         }

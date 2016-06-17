@@ -22,7 +22,7 @@ public class ControllerResident implements IControllerResident {
     
     private IDao dao = Factory.getDao();
     
-    @Override //AJEITAR
+    @Override 
     public void sendMessage(String title, String text, Resident currentResident) throws BlankSpacesException{
         
         if (title.equals("") || text.equals("")) {

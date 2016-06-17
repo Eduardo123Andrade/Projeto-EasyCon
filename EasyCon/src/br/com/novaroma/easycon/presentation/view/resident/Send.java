@@ -25,10 +25,10 @@ public class Send extends javax.swing.JInternalFrame {
 
         jLabelSyndic = new javax.swing.JLabel();
         jButtonSend = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonExit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextFieldSubject = new javax.swing.JTextField();
+        jTextMessage = new javax.swing.JTextArea();
+        jTextFieldTitle = new javax.swing.JTextField();
 
         setTitle("Enviar mensagem");
 
@@ -46,21 +46,21 @@ public class Send extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Sair");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonExit.setText("Sair");
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonExitActionPerformed(evt);
             }
         });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+        jButtonExit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton1KeyPressed(evt);
+                jButtonExitKeyPressed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextMessage.setColumns(20);
+        jTextMessage.setRows(5);
+        jScrollPane1.setViewportView(jTextMessage);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,8 +75,8 @@ public class Send extends javax.swing.JInternalFrame {
                             .addComponent(jLabelSyndic)
                             .addComponent(jButtonSend))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addComponent(jTextFieldSubject))
+                        .addComponent(jButtonExit))
+                    .addComponent(jTextFieldTitle))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -85,28 +85,28 @@ public class Send extends javax.swing.JInternalFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jLabelSyndic)
                 .addGap(18, 18, 18)
-                .addComponent(jTextFieldSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSend)
-                    .addComponent(jButton1))
+                    .addComponent(jButtonExit))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+    private void jButtonExitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonExitKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             exit();
         }
-    }//GEN-LAST:event_jButton1KeyPressed
+    }//GEN-LAST:event_jButtonExitKeyPressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
         exit();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonExitActionPerformed
 
     private void jButtonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSendActionPerformed
         send();
@@ -120,12 +120,12 @@ public class Send extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonSend;
     private javax.swing.JLabel jLabelSyndic;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextFieldSubject;
+    private javax.swing.JTextField jTextFieldTitle;
+    private javax.swing.JTextArea jTextMessage;
     // End of variables declaration//GEN-END:variables
 
     private void exit() {
@@ -134,8 +134,8 @@ public class Send extends javax.swing.JInternalFrame {
     
     private void send(){ 
         try {
-            String title = jTextFieldSubject.getText();
-            String text = jTextArea1.getText();
+            String title = jTextFieldTitle.getText();
+            String text = jTextMessage.getText();
             
             conRes.sendMessage(title, text, Resident.getCurrentResident());
             setNull();
@@ -147,7 +147,7 @@ public class Send extends javax.swing.JInternalFrame {
     }
     
     private void setNull(){
-        jTextArea1.setText(null);
-        jTextFieldSubject.setText(null);
+        jTextMessage.setText(null);
+        jTextFieldTitle.setText(null);
     }
 }

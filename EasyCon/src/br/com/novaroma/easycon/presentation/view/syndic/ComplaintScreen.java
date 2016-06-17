@@ -27,29 +27,29 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
         buttonGroup2 = new javax.swing.ButtonGroup();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableComplaint = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        buttonOne = new javax.swing.JRadioButton();
-        buttonTwo = new javax.swing.JRadioButton();
-        buttonThree = new javax.swing.JRadioButton();
+        jTextMessage = new javax.swing.JTextArea();
+        jButtonExit = new javax.swing.JButton();
+        jButtonConfirm = new javax.swing.JButton();
+        jTextTitle = new javax.swing.JTextField();
+        jButtonView = new javax.swing.JButton();
+        jRButton1 = new javax.swing.JRadioButton();
+        jRButton2 = new javax.swing.JRadioButton();
+        jRButton3 = new javax.swing.JRadioButton();
 
         jScrollPane3.setViewportView(jEditorPane1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Urgente", "Intermediario", "Trivial" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Urgente", "Intermediario", "Trivial" }));
+        jComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableComplaint.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -65,54 +65,54 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableComplaint);
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jTextMessage.setEditable(false);
+        jTextMessage.setColumns(20);
+        jTextMessage.setRows(5);
+        jScrollPane2.setViewportView(jTextMessage);
 
-        jButton1.setText("Sair");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonExit.setText("Sair");
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonExitActionPerformed(evt);
             }
         });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+        jButtonExit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton1KeyPressed(evt);
+                jButtonExitKeyPressed(evt);
             }
         });
 
-        jButton2.setText("Confirmar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConfirm.setText("Confirmar");
+        jButtonConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonConfirmActionPerformed(evt);
             }
         });
-        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+        jButtonConfirm.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton2KeyPressed(evt);
+                jButtonConfirmKeyPressed(evt);
             }
         });
 
-        jTextField1.setEditable(false);
+        jTextTitle.setEditable(false);
 
-        jButton3.setText("Visualizar reclamacao");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonView.setText("Visualizar reclamacao");
+        jButtonView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonViewActionPerformed(evt);
             }
         });
 
-        buttonGroup2.add(buttonOne);
-        buttonOne.setText("Resolvido");
+        buttonGroup2.add(jRButton1);
+        jRButton1.setText("Resolvido");
 
-        buttonGroup2.add(buttonTwo);
-        buttonTwo.setText("Em andamento");
+        buttonGroup2.add(jRButton2);
+        jRButton2.setText("Em andamento");
 
-        buttonGroup2.add(buttonThree);
-        buttonThree.setText("Planejamento futuro");
+        buttonGroup2.add(jRButton3);
+        jRButton3.setText("Planejamento futuro");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,105 +122,105 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton2)
+                            .addComponent(jButtonView)
+                            .addComponent(jButtonConfirm)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1)
-                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jTextTitle)
+                                .addComponent(jButtonExit, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE))
-                            .addComponent(buttonOne)
-                            .addComponent(buttonTwo)
-                            .addComponent(buttonThree))
+                            .addComponent(jRButton1)
+                            .addComponent(jRButton2)
+                            .addComponent(jRButton3))
                         .addGap(30, 30, 30))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(buttonOne))
+                    .addComponent(jButtonView)
+                    .addComponent(jRButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonTwo)
+                .addComponent(jRButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonThree)
+                .addComponent(jRButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jButtonConfirm)
+                    .addComponent(jButtonExit))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
         exit();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonExitActionPerformed
 
-    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+    private void jButtonExitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonExitKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             exit();
         }
-    }//GEN-LAST:event_jButton1KeyPressed
+    }//GEN-LAST:event_jButtonExitKeyPressed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmActionPerformed
         toSolve();
-        ((DefaultTableModel) jTable1.getModel()).setNumRows(0);
+        ((DefaultTableModel) jTableComplaint.getModel()).setNumRows(0);
         complaintList(Structures.getHash());
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonConfirmActionPerformed
 
-    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+    private void jButtonConfirmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonConfirmKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             toSolve();
         }
-    }//GEN-LAST:event_jButton2KeyPressed
+    }//GEN-LAST:event_jButtonConfirmKeyPressed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewActionPerformed
         // TODO add your handling code here:
         openComplaint();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonViewActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        ((DefaultTableModel) jTable1.getModel()).setNumRows(0);
+    private void jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxActionPerformed
+        ((DefaultTableModel) jTableComplaint.getModel()).setNumRows(0);
         complaintList(Structures.getHash());
 
 
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JRadioButton buttonOne;
-    private javax.swing.JRadioButton buttonThree;
-    private javax.swing.JRadioButton buttonTwo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButtonConfirm;
+    private javax.swing.JButton jButtonExit;
+    private javax.swing.JButton jButtonView;
+    private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JEditorPane jEditorPane1;
+    private javax.swing.JRadioButton jRButton1;
+    private javax.swing.JRadioButton jRButton2;
+    private javax.swing.JRadioButton jRButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable jTableComplaint;
+    private javax.swing.JTextArea jTextMessage;
+    private javax.swing.JTextField jTextTitle;
     // End of variables declaration//GEN-END:variables
 
     private void exit() {
@@ -229,7 +229,7 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
 
     private void complaintList(Hash hash) {
 
-        String category = jComboBox1.getSelectedItem().toString();
+        String category = jComboBox.getSelectedItem().toString();
 
         for (int i = 0; i < hash.getHash().length; i++) {
             Link temp = hash.getHashOnIndex(i).getFirst();
@@ -239,7 +239,7 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
 
                 if (complaintX.getCategory().equals(category) && !complaintX.getStatus().equals("Resolvido")) {
 
-                    DefaultTableModel complaintList = (DefaultTableModel) jTable1.getModel();
+                    DefaultTableModel complaintList = (DefaultTableModel) jTableComplaint.getModel();
                     String date[] = complaintX.getDate().toString().split(" ");
 
                     complaintList.addRow(new String[]{complaintX.getId(), complaintX.getTitle(), complaintX.getResident().getName(), date[2] + "/" + date[1] + "/" + date[5], complaintX.getStatus()});
@@ -253,11 +253,11 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
     private void openComplaint() {
 
         try {
-            String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            String id = jTableComplaint.getValueAt(jTableComplaint.getSelectedRow(), 0).toString();
             Complaint complaintX = (Complaint) conAdm.returnEntityHash(id, Structures.getHash());
 
-            jTextField1.setText(complaintX.getTitle());
-            jTextArea1.setText(complaintX.getText());
+            jTextTitle.setText(complaintX.getTitle());
+            jTextMessage.setText(complaintX.getText());
         } catch (ArrayIndexOutOfBoundsException ex) {
             JOptionPane.showMessageDialog(null, "Para visualizar uma reclamação, deve-se primeiro selecionar uma das reclamações exibidas na tabela.");
         }
@@ -265,14 +265,14 @@ public class ComplaintScreen extends javax.swing.JInternalFrame {
 
     private void toSolve() {
         try {
-            String id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            String id = jTableComplaint.getValueAt(jTableComplaint.getSelectedRow(), 0).toString();
             Complaint complaintX = (Complaint) conAdm.returnEntityHash(id, Structures.getHash());
 
-            if (buttonOne.isSelected()) {
+            if (jRButton1.isSelected()) {
                 complaintX.setStatus("Resolvido");
-            } else if (buttonTwo.isSelected()) {
+            } else if (jRButton2.isSelected()) {
                 complaintX.setStatus("Em andamento");
-            } else if (buttonThree.isSelected()) {
+            } else if (jRButton3.isSelected()) {
                 complaintX.setStatus("Planejamento futuro");
             }
 

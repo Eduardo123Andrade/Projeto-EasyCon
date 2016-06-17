@@ -26,7 +26,7 @@
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonUpdate" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jButtonExit" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -47,7 +47,7 @@
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonExit" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="23" max="32767" attributes="0"/>
           </Group>
@@ -70,24 +70,22 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabelName4" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelName" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="jLabelCpf4" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelCpf" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="jLabelAge4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabelFamily4" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelAge" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jTextFieldName4" min="-2" pref="216" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="348" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -95,10 +93,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelName4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCpf4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelAge4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelFamily4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCpf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelAge" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -111,24 +108,19 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabelName4">
+        <Component class="javax.swing.JLabel" name="jLabelName">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nome"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelCpf4">
+        <Component class="javax.swing.JLabel" name="jLabelCpf">
           <Properties>
             <Property name="text" type="java.lang.String" value="CPF"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelAge4">
+        <Component class="javax.swing.JLabel" name="jLabelAge">
           <Properties>
             <Property name="text" type="java.lang.String" value="Idade"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelFamily4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Numero de moradores"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldName4">
@@ -160,24 +152,25 @@
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="jLabelNumber" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="jLabelSenha" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelPassword" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextFieldPassword2" pref="194" max="32767" attributes="0"/>
-                              <Component id="jTextFieldPassword" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jTextPConfirmation" min="-2" pref="150" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jTextPassword" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="210" pref="373" max="32767" attributes="0"/>
+                  <EmptySpace min="254" pref="399" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -188,17 +181,17 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldPassword2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextPConfirmation" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="18" max="32767" attributes="0"/>
               </Group>
@@ -216,7 +209,7 @@
             <Property name="text" type="java.lang.String" value="Numero"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelSenha">
+        <Component class="javax.swing.JLabel" name="jLabelPassword">
           <Properties>
             <Property name="text" type="java.lang.String" value="Senha"/>
           </Properties>
@@ -226,24 +219,24 @@
             <Property name="text" type="java.lang.String" value="Senha: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldPassword">
+        <Component class="javax.swing.JTextField" name="jTextPassword">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
             <Property name="text" type="java.lang.String" value="Confirmar senha: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldPassword2">
+        <Component class="javax.swing.JTextField" name="jTextPConfirmation">
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="jButtonUpdate">
       <Properties>
         <Property name="text" type="java.lang.String" value="Alterar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jButton2KeyPressed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUpdateActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jButtonUpdateKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonExit">

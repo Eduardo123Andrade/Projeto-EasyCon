@@ -35,30 +35,30 @@ public class Finance extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jButtonExit = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTableReceipts = new javax.swing.JTable();
         jLabelStatus = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabelTotal = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonPay = new javax.swing.JButton();
+        jButtonView = new javax.swing.JButton();
 
         setTitle("Pagamentos");
 
-        jButton1.setText("Sair");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonExit.setText("Sair");
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonExitActionPerformed(evt);
             }
         });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+        jButtonExit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton1KeyPressed(evt);
+                jButtonExitKeyPressed(evt);
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTableReceipts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -74,7 +74,7 @@ public class Finance extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTableReceipts);
 
         jLabelStatus.setText("Status: ");
 
@@ -82,22 +82,22 @@ public class Finance extends javax.swing.JInternalFrame {
 
         jLabelTotal.setText("Total: ");
 
-        jButton2.setText("Pagar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPay.setText("Pagar");
+        jButtonPay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonPayActionPerformed(evt);
             }
         });
-        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+        jButtonPay.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton2KeyPressed(evt);
+                jButtonPayKeyPressed(evt);
             }
         });
 
-        jButton3.setText("Visualizar recibo");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonView.setText("Visualizar recibo");
+        jButtonView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonViewActionPerformed(evt);
             }
         });
 
@@ -110,13 +110,13 @@ public class Finance extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(jButtonPay)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(jButtonExit))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelStatus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3))
+                        .addComponent(jButtonView))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelTotal)
@@ -134,57 +134,57 @@ public class Finance extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelStatus)
-                    .addComponent(jButton3))
+                    .addComponent(jButtonView))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelTotal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButtonExit)
+                    .addComponent(jButtonPay))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
         exit();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonExitActionPerformed
 
-    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+    private void jButtonExitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonExitKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             exit();
         }
-    }//GEN-LAST:event_jButton1KeyPressed
+    }//GEN-LAST:event_jButtonExitKeyPressed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPayActionPerformed
         pay(Structures.getHashReceipt());
-        ((DefaultTableModel) jTable2.getModel()).setNumRows(0);
+        ((DefaultTableModel) jTableReceipts.getModel()).setNumRows(0);
         receiptList(Structures.getHashReceipt());
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonPayActionPerformed
 
-    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+    private void jButtonPayKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonPayKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
         }
-    }//GEN-LAST:event_jButton2KeyPressed
+    }//GEN-LAST:event_jButtonPayKeyPressed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewActionPerformed
         // TODO add your handling code here:
         openReceipt();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonViewActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonExit;
+    private javax.swing.JButton jButtonPay;
+    private javax.swing.JButton jButtonView;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelStatus;
     private javax.swing.JLabel jLabelTotal;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTableReceipts;
     // End of variables declaration//GEN-END:variables
 
     private void exit() {
@@ -201,7 +201,7 @@ public class Finance extends javax.swing.JInternalFrame {
             while (temp != null) {
                 Receipt receiptX = (Receipt) temp.getEntity();
 
-                DefaultTableModel complaintList = (DefaultTableModel) jTable2.getModel();
+                DefaultTableModel complaintList = (DefaultTableModel) jTableReceipts.getModel();
                 String date[] = receiptX.getDate().toString().split(" ");
                 String currentDate[] = new Date().toString().split(" ");
 
@@ -225,7 +225,7 @@ public class Finance extends javax.swing.JInternalFrame {
     private void openReceipt() {
 
         try {
-            String id = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
+            String id = jTableReceipts.getValueAt(jTableReceipts.getSelectedRow(), 0).toString();
             Receipt receiptX = (Receipt) conRes.returnEntityHash(id, Structures.getHashReceipt());
             String date[] = receiptX.getDate().toString().split(" ");
 

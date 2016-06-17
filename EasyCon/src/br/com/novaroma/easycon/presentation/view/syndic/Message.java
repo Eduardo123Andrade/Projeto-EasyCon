@@ -25,17 +25,17 @@ public class Message extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextFieldReceiver = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jTableMessages = new javax.swing.JTable();
+        jTextTitle = new javax.swing.JTextField();
+        jButtonSend = new javax.swing.JButton();
+        jButtonSendToAll = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton3 = new javax.swing.JButton();
+        jTextMessage = new javax.swing.JTextArea();
+        jButtonExit = new javax.swing.JButton();
 
         setTitle("Mensgem");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableMessages.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -43,35 +43,35 @@ public class Message extends javax.swing.JInternalFrame {
                 "CPF", " Morador"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableMessages);
 
-        jButton1.setText("Enviar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSend.setText("Enviar");
+        jButtonSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSendActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Eviar para todos");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSendToAll.setText("Eviar para todos");
+        jButtonSendToAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonSendToAllActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jTextMessage.setColumns(20);
+        jTextMessage.setRows(5);
+        jScrollPane2.setViewportView(jTextMessage);
 
-        jButton3.setText("Sair");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonExit.setText("Sair");
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonExitActionPerformed(evt);
             }
         });
-        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+        jButtonExit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton3KeyPressed(evt);
+                jButtonExitKeyPressed(evt);
             }
         });
 
@@ -84,18 +84,18 @@ public class Message extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 567, Short.MAX_VALUE)
-                        .addComponent(jButton3))
+                        .addComponent(jButtonExit))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldReceiver, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(jButtonSend)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2)))))
+                                .addComponent(jButtonSendToAll)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -104,50 +104,50 @@ public class Message extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextFieldReceiver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1)))
+                            .addComponent(jButtonSendToAll)
+                            .addComponent(jButtonSend)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(jButtonExit)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
         exit();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonExitActionPerformed
 
-    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
+    private void jButtonExitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonExitKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             exit();
         }
-    }//GEN-LAST:event_jButton3KeyPressed
+    }//GEN-LAST:event_jButtonExitKeyPressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSendActionPerformed
         send();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonSendActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonSendToAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSendToAllActionPerformed
         sendToAll();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonSendToAllActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonExit;
+    private javax.swing.JButton jButtonSend;
+    private javax.swing.JButton jButtonSendToAll;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextFieldReceiver;
+    private javax.swing.JTable jTableMessages;
+    private javax.swing.JTextArea jTextMessage;
+    private javax.swing.JTextField jTextTitle;
     // End of variables declaration//GEN-END:variables
 
     private void exit() {
@@ -160,7 +160,7 @@ public class Message extends javax.swing.JInternalFrame {
             residentList(temp.getLeft());
 
             Resident residentTemp = (Resident) temp.getEntity();
-            DefaultTableModel residentList = (DefaultTableModel) jTable1.getModel();
+            DefaultTableModel residentList = (DefaultTableModel) jTableMessages.getModel();
 
             residentList.addRow(new String[]{residentTemp.getCpf(), residentTemp.getName()});
 
@@ -170,10 +170,10 @@ public class Message extends javax.swing.JInternalFrame {
 
     public void send() {
         try {
-            if (jTable1.getRowCount() > 0) {
-                String cpf = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-                String title = jTextFieldReceiver.getText();
-                String text = jTextArea1.getText();
+            if (jTableMessages.getRowCount() > 0) {
+                String cpf = jTableMessages.getValueAt(jTableMessages.getSelectedRow(), 0).toString();
+                String title = jTextTitle.getText();
+                String text = jTextMessage.getText();
 
                 conAdm.sendMessage(cpf, title, text);
                 setNull();
@@ -189,9 +189,9 @@ public class Message extends javax.swing.JInternalFrame {
 
     private void sendToAll() {
        
-        if(jTable1.getRowCount() > 0) {
-            String title = jTextFieldReceiver.getText();
-            String text = jTextArea1.getText();
+        if(jTableMessages.getRowCount() > 0) {
+            String title = jTextTitle.getText();
+            String text = jTextMessage.getText();
 
             conAdm.sendMessageToAll(Structures.getTree().getRoot(), title, text);
             setNull();
@@ -202,7 +202,7 @@ public class Message extends javax.swing.JInternalFrame {
     }
 
     private void setNull() {
-        jTextArea1.setText(null);
-        jTextFieldReceiver.setText(null);
+        jTextMessage.setText(null);
+        jTextTitle.setText(null);
     }
 }

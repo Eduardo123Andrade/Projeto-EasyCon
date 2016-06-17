@@ -14,13 +14,13 @@ public class ControllerAdm implements IControllerAdm{
 
     @Override
     public boolean verifySingInAdm(String login, String password) throws BlankSpacesException, InvalidUserExveption{ 
-
+        /*
         if (login.equals("") || password.equals("")) {
             throw new BlankSpacesException();
         }
-        /* boolean permition = false;
+        boolean permition = false;
 
-        if (login.equals("123") && password.equals("123")) {
+        if (login.equals("admin") && password.equals("123")) {
             permition = true;
         } else {
             throw new InvalidUserExveption();
